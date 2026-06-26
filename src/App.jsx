@@ -2,62 +2,125 @@ import {
   ArrowUpRight,
   BriefcaseBusiness,
   Code2,
+  GraduationCap,
   Mail,
   MapPin,
+  PenLine,
 } from 'lucide-react';
 import heroPortrait from './assets/chanithi-upper-body-cutout.png';
 
 const profile = {
   name: 'Chanithi Perera',
-  role: 'Frontend Developer',
-  location: 'Sri Lanka',
-  email: 'your.email@example.com',
+  role: 'Data Science Undergraduate',
+  location: 'Colombo, Western Province, Sri Lanka',
+  email: 'chanithi.perera23@gmail.com',
   linkedin: 'https://www.linkedin.com/in/chanithi-perera-5253b7392/',
   github: 'https://github.com/',
   summary:
-    'I create clean, responsive web experiences with React, modern CSS, and a strong eye for simple user-friendly interfaces.',
+    'I am a Data Science undergraduate at SLIIT with a growing focus on AI, machine learning, data science, and software engineering.',
 };
 
 const projects = [
   {
-    title: 'Portfolio Website',
-    type: 'React / Vite',
+    title: 'Projects coming soon',
+    type: 'Portfolio update',
     description:
-      'A personal portfolio with a minimal monochrome hero, responsive layout, and React-powered sections.',
-    tags: ['React', 'CSS', 'Responsive'],
+      'This section is ready for your academic, data science, AI, and software engineering projects once you send the details.',
+    tags: ['Data Science', 'AI', 'Software'],
   },
   {
-    title: 'Task Dashboard',
-    type: 'Frontend Practice',
+    title: 'Licenses and certifications',
+    type: 'Details pending',
     description:
-      'A dashboard interface concept focused on readable cards, clear status views, and reusable UI patterns.',
-    tags: ['Components', 'State', 'UX'],
+      'Add course names, issuing organizations, credential links, and dates here when you are ready.',
+    tags: ['Learning', 'Credentials', 'Growth'],
   },
   {
-    title: 'Shop Landing Page',
-    type: 'Frontend Build',
+    title: 'Honors and awards',
+    type: 'Details pending',
     description:
-      'A responsive landing page concept with polished visual hierarchy, product sections, and clean styling.',
-    tags: ['Vite', 'Layout', 'Design'],
+      'A dedicated space for recognitions, competitions, scholarships, and awards you want to showcase.',
+    tags: ['Leadership', 'Recognition', 'Achievement'],
   },
 ];
 
 const skills = [
-  'React',
-  'JavaScript',
-  'HTML',
-  'CSS',
-  'Vite',
-  'Responsive Design',
-  'Git',
-  'UI Design',
-  'Web Design',
+  'Leadership',
+  'Communication',
+  'Technical Writing',
+  'Team Coordination',
+  'Event Planning',
+  'Event Handling',
+  'Finance',
+  'Budgeting',
+  'Project Management',
+  'Programming',
+  'Public Speaking',
+  'Teamwork',
 ];
 
 const stats = [
-  ['React', 'Primary stack'],
-  ['Sri Lanka', 'Based in'],
-  ['2026', 'Portfolio update'],
+  ['SLIIT', 'BSc (Hons) IT'],
+  ['Data', 'Science focus'],
+  ['Open', 'To work'],
+];
+
+const experiences = [
+  {
+    period: 'Jun 2026 - Present',
+    title: 'Vice Secretary',
+    organization: 'SLIIT Women In FOSS Community',
+    description:
+      'Appointed for the 2026/27 term, supporting organizational documentation, meeting records, and official communications.',
+  },
+  {
+    period: 'May 2026 - Present',
+    title: 'Industry 360 Cast Content Writing Team Lead',
+    organization: 'IEEE Student Branch of SLIIT',
+    description:
+      'Leads content writing for Industry 360 Cast while coordinating with the organizing committee and event teams.',
+  },
+  {
+    period: 'Sep 2025 - Present',
+    title: 'Technical Writer',
+    organization: 'Medium',
+    description:
+      'Authors technical articles on artificial intelligence, machine learning, data science, and software engineering.',
+  },
+  {
+    period: 'Dec 2024 - Dec 2025',
+    title: 'Organizing Committee Member',
+    organization: 'SLIIT Gavel Club',
+    description:
+      'Contributed to the 187th Educational Meeting and strengthened public speaking, event planning, and coordination skills.',
+  },
+  {
+    period: 'Jan 2016 - Sep 2023',
+    title: 'President Guide Award Recipient',
+    organization: 'Sri Lanka Girl Guides Association',
+    description:
+      'Completed advanced guiding challenges, national-level assessments, camps, and community initiatives to earn the association highest achievement.',
+  },
+];
+
+const education = [
+  {
+    school: 'SLIIT',
+    period: '2024 - 2028',
+    details: 'BSc (Hons) in Information Technology, Information Technology',
+  },
+  {
+    school: 'Devi Balika Vidyalaya',
+    period: 'Jan 2021 - Dec 2023',
+    details:
+      'GCE A/L - Physical Science English Medium. Committee Member in the Senior Science Society and Model United Nations Club.',
+  },
+  {
+    school: 'Dharmapala Vidyalaya Pannipitiya',
+    period: 'Feb 2010 - Dec 2020',
+    details:
+      'Grade 1 - 11. Junior/Senior Prefect, Junior Western Band member, and Junior/Senior Choir Group member.',
+  },
 ];
 
 function App() {
@@ -73,8 +136,8 @@ function App() {
             <div className="nav-links">
               <a href="#about">About Me</a>
               <a href="#projects">Portfolio</a>
-              <a href="#services">Services</a>
-              <a href="#contact">Blog</a>
+              <a href="#skills">Skills</a>
+              <a href="#contact">Contact</a>
             </div>
             <a className="book-link" href={`mailto:${profile.email}`}>
               Book A Call <ArrowUpRight size={14} />
@@ -91,18 +154,18 @@ function App() {
             <div className="hero-copy-block">
               <div className="hero-stats">
                 <div>
-                  <strong>React</strong>
-                  <span>Frontend focused</span>
+                  <strong>AI</strong>
+                  <span>Data science learner</span>
                 </div>
                 <div>
-                  <strong>UI</strong>
-                  <span>Clean web design</span>
+                  <strong>395</strong>
+                  <span>LinkedIn connections</span>
                 </div>
               </div>
 
               <div className="hello-stack">
                 <h1>Hello</h1>
-                <p>- I&apos;m {profile.name}, a React developer</p>
+                <p>- I&apos;m {profile.name}, a data science undergraduate</p>
               </div>
 
               <a className="scroll-cue" href="#about">
@@ -122,7 +185,6 @@ function App() {
 
       <section
         className="intro-band"
-        id="services"
         aria-label="Profile highlights"
       >
         <div className="intro-grid">
@@ -142,12 +204,14 @@ function App() {
         </div>
         <div className="about-copy">
           <p>
-            I&apos;m Chanithi Perera, a Sri Lanka-based frontend developer
-            shaping modern web interfaces with React, JavaScript, HTML, and CSS.
+            I&apos;m Chanithi Perera, a Colombo-based Data Science undergraduate
+            following the BSc (Hons) in Information Technology pathway at SLIIT.
           </p>
           <p>
-            This portfolio is prepared around your LinkedIn identity and ready
-            for your real photo, email, project links, and detailed experience.
+            My profile brings together technical curiosity, writing, leadership,
+            community work, and event coordination across SLIIT Women In FOSS,
+            IEEE Student Branch of SLIIT, Medium, MS Club of SLIIT, and SLIIT
+            Gavel Club.
           </p>
         </div>
       </section>
@@ -194,32 +258,41 @@ function App() {
           <h2>Experience</h2>
         </div>
         <div className="timeline">
-          <article>
-            <span>2026</span>
-            <h3>Frontend Developer Portfolio</h3>
-            <p>
-              Building a personal React portfolio to present projects, skills,
-              and contact details with a polished first impression.
-            </p>
-          </article>
-          <article>
-            <span>2025</span>
-            <h3>Web Development Practice</h3>
-            <p>
-              Practicing responsive layouts, JavaScript interactions, component
-              structure, and clean visual design through hands-on builds.
-            </p>
-          </article>
+          {experiences.map((experience) => (
+            <article key={`${experience.title}-${experience.organization}`}>
+              <span>{experience.period}</span>
+              <h3>{experience.title}</h3>
+              <p className="timeline-org">{experience.organization}</p>
+              <p>{experience.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section education-section">
+        <div className="experience-title">
+          <GraduationCap size={22} />
+          <h2>Education</h2>
+        </div>
+        <div className="timeline">
+          {education.map((item) => (
+            <article key={item.school}>
+              <span>{item.period}</span>
+              <h3>{item.school}</h3>
+              <p>{item.details}</p>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="contact-section" id="contact">
         <div>
           <p className="section-kicker">Contact</p>
-          <h2>Let&apos;s build something polished.</h2>
+          <h2>Let&apos;s connect and build something meaningful.</h2>
           <p>
-            Connect through LinkedIn now, and add your preferred email or
-            GitHub profile whenever you are ready.
+            I am open to opportunities in Colombo with on-site or hybrid work,
+            and interested in data science, AI, technical writing, and
+            technology community initiatives.
           </p>
         </div>
         <div className="contact-links">
@@ -227,14 +300,18 @@ function App() {
             <Mail size={18} />
             {profile.email}
           </a>
-          <a href={profile.github} target="_blank" rel="noreferrer">
+          <span>
             <b className="link-mark">GH</b>
-            GitHub
-          </a>
+            GitHub details coming soon
+          </span>
           <a href={profile.linkedin} target="_blank" rel="noreferrer">
             <b className="link-mark">IN</b>
             LinkedIn
           </a>
+          <span>
+            <PenLine size={18} />
+            Technical Writer on Medium
+          </span>
           <span>
             <MapPin size={18} />
             {profile.location}
