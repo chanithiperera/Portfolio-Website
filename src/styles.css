@@ -414,7 +414,8 @@ h3 {
   gap: 0.65rem;
 }
 
-.experience-section {
+.experience-section,
+.education-section {
   display: grid;
   gap: 2rem;
   grid-template-columns: 0.5fr 1fr;
@@ -449,6 +450,13 @@ h3 {
 .timeline p {
   color: #526066;
   line-height: 1.65;
+}
+
+.timeline .timeline-org {
+  color: #172026;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
 }
 
 .contact-section {
@@ -550,6 +558,7 @@ h3 {
   .about-section,
   .skills-section,
   .experience-section,
+  .education-section,
   .contact-section {
     grid-template-columns: 1fr;
   }
