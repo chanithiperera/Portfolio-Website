@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   BriefcaseBusiness,
@@ -7,8 +7,10 @@ import {
   Home,
   Mail,
   MapPin,
+  Moon,
   PenLine,
   Send,
+  Sun,
   UserRound,
 } from 'lucide-react';
 import heroPortrait from './assets/chanithi-upper-body-cutout.png';
@@ -129,6 +131,22 @@ const education = [
 
 function App() {
   const mainRef = useRef(null);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = window.localStorage.getItem('portfolio-theme');
+
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      return savedTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const root = mainRef.current;
@@ -221,9 +239,21 @@ function App() {
           <div className="device-notch" />
           <div className="motion-grid" aria-hidden="true" />
           <nav className="navbar" aria-label="Main navigation">
-            <a className="brand" href="#home" aria-label="Home">
-              <span />
-            </a>
+            <button
+              className="theme-toggle theme-toggle-hero"
+              type="button"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              aria-pressed={theme === 'dark'}
+              onClick={() =>
+                setTheme((currentTheme) =>
+                  currentTheme === 'dark' ? 'light' : 'dark',
+                )
+              }
+            >
+              <span className="theme-toggle-thumb">
+                {theme === 'dark' ? <Moon size={15} /> : <Sun size={15} />}
+              </span>
+            </button>
             <div className="nav-links">
               <a href="#about">About Me</a>
               <a href="#projects">Portfolio</a>
