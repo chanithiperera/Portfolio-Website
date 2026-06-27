@@ -1,11 +1,15 @@
+import { useEffect, useRef } from 'react';
 import {
   ArrowUpRight,
   BriefcaseBusiness,
   Code2,
   GraduationCap,
+  Home,
   Mail,
   MapPin,
   PenLine,
+  Send,
+  UserRound,
 } from 'lucide-react';
 import heroPortrait from './assets/chanithi-upper-body-cutout.png';
 
@@ -124,11 +128,98 @@ const education = [
 ];
 
 function App() {
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    const root = mainRef.current;
+    if (!root) return undefined;
+
+    const revealItems = root.querySelectorAll(
+      '.section, .intro-band, .project-card, .timeline article, .contact-links > *',
+    );
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.15 },
+    );
+
+    revealItems.forEach((item, index) => {
+      item.classList.add('reveal-on-scroll');
+      item.style.setProperty('--reveal-delay', `${Math.min(index * 45, 360)}ms`);
+      revealObserver.observe(item);
+    });
+
+    const countItems = root.querySelectorAll('[data-count-to]');
+    const countObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const item = entry.target;
+          const target = Number(item.dataset.countTo);
+          const suffix = item.dataset.countSuffix || '';
+          const start = performance.now();
+          const duration = 1200;
+
+          const tick = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            item.textContent = `${Math.round(target * eased)}${suffix}`;
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            }
+          };
+
+          requestAnimationFrame(tick);
+          countObserver.unobserve(item);
+        });
+      },
+      { threshold: 0.7 },
+    );
+
+    countItems.forEach((item) => countObserver.observe(item));
+
+    return () => {
+      revealObserver.disconnect();
+      countObserver.disconnect();
+    };
+  }, []);
+
   return (
-    <main>
+    <>
+      <aside className="site-sidebar" aria-label="Section navigation">
+        <a className="sidebar-mark" href="#home" aria-label="Home">
+          <span>CP</span>
+        </a>
+        <nav className="sidebar-nav" aria-label="Quick links">
+          <a href="#home" aria-label="Home">
+            <Home size={18} />
+          </a>
+          <a href="#about" aria-label="About">
+            <UserRound size={18} />
+          </a>
+          <a href="#projects" aria-label="Projects">
+            <Code2 size={18} />
+          </a>
+          <a href="#contact" aria-label="Contact">
+            <Send size={18} />
+          </a>
+        </nav>
+      </aside>
+      <main className="site-main" ref={mainRef}>
+      <div className="scroll-progress" aria-hidden="true" />
       <section className="index-frame" id="home" aria-label="Portfolio home">
         <div className="device-shell">
           <div className="device-notch" />
+          <div className="motion-grid" aria-hidden="true" />
           <nav className="navbar" aria-label="Main navigation">
             <a className="brand" href="#home" aria-label="Home">
               <span />
@@ -158,7 +249,7 @@ function App() {
                   <span>Data science learner</span>
                 </div>
                 <div>
-                  <strong>395</strong>
+                  <strong data-count-to="395">0</strong>
                   <span>LinkedIn connections</span>
                 </div>
               </div>
@@ -318,7 +409,8 @@ function App() {
           </span>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
 
