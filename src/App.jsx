@@ -445,9 +445,9 @@ function App() {
               <div className="hello-stack">
                 <h1>Hello</h1>
                 <p>
-                  - I&apos;m {profile.name}, a Data Science
+                  <span>- I&apos;m {profile.name},</span>
                   <br />
-                  undergraduate
+                  <span className="intro-line-two">a Data Science undergraduate</span>
                 </p>
                 <div className="hero-socials" aria-label="Featured profile links">
                   <a href={profile.linkedin} target="_blank" rel="noreferrer">
