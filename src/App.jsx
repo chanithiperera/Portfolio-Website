@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
+  Award,
+  BadgeCheck,
   BriefcaseBusiness,
   ChevronLeft,
   ChevronRight,
@@ -193,7 +195,7 @@ const stats = [
   ['Open', 'To work'],
 ];
 
-const experiences = [
+const leadershipActivities = [
   {
     period: 'Jun 2026 - Present',
     title: 'Vice Secretary',
@@ -222,6 +224,19 @@ const experiences = [
     description:
       'Contributed to the 187th Educational Meeting and strengthened public speaking, event planning, and coordination skills.',
   },
+];
+
+const licensesCertifications = [
+  {
+    period: 'Coming soon',
+    title: 'Licenses and certifications',
+    organization: 'Details to be added',
+    description:
+      'A dedicated place for professional certificates, completed courses, badges, and verified credentials.',
+  },
+];
+
+const honoursAwards = [
   {
     period: 'Jan 2016 - Sep 2023',
     title: 'President Guide Award Recipient',
@@ -640,18 +655,52 @@ function App() {
         </div>
       </section>
 
-      <section className="section experience-section">
+      <section className="section leadership-section" id="leadership">
         <div className="experience-title">
           <BriefcaseBusiness size={22} />
-          <h2>Experience</h2>
+          <h2>Leadership & Activities</h2>
         </div>
         <div className="timeline">
-          {experiences.map((experience) => (
+          {leadershipActivities.map((experience) => (
             <article key={`${experience.title}-${experience.organization}`}>
               <span>{experience.period}</span>
               <h3>{experience.title}</h3>
               <p className="timeline-org">{experience.organization}</p>
               <p>{experience.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section credentials-section" id="certifications">
+        <div className="experience-title">
+          <BadgeCheck size={22} />
+          <h2>Licenses & Certifications</h2>
+        </div>
+        <div className="timeline">
+          {licensesCertifications.map((credential) => (
+            <article key={`${credential.title}-${credential.organization}`}>
+              <span>{credential.period}</span>
+              <h3>{credential.title}</h3>
+              <p className="timeline-org">{credential.organization}</p>
+              <p>{credential.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section awards-section" id="awards">
+        <div className="experience-title">
+          <Award size={22} />
+          <h2>Honours & Awards</h2>
+        </div>
+        <div className="timeline">
+          {honoursAwards.map((award) => (
+            <article key={`${award.title}-${award.organization}`}>
+              <span>{award.period}</span>
+              <h3>{award.title}</h3>
+              <p className="timeline-org">{award.organization}</p>
+              <p>{award.description}</p>
             </article>
           ))}
         </div>
