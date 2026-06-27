@@ -71,7 +71,7 @@ code {
   content: "PORTFOLIO";
   font-size: 0.64rem;
   font-weight: 900;
-  letter-spacing: 0;
+  letter-spacing: 0em;
   writing-mode: vertical-rl;
 }
 
@@ -406,7 +406,7 @@ code {
 .hello-stack h1 {
   animation: hello-rise 950ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
   font-size: clamp(4.9rem, 10.4vw, 9.8rem);
-  font-weight: 300;
+  font-weight: 420;
   letter-spacing: 0;
   line-height: 0.82;
   margin: 0;
@@ -445,7 +445,7 @@ code {
   color: #20262a;
   display: inline-flex;
   font-size: 0.88rem;
-  font-weight: 900;
+  font-weight: 620;
   gap: 0.55rem;
   min-height: 40px;
   padding: 0.58rem 1rem;
