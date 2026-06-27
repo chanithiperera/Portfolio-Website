@@ -445,6 +445,20 @@ function App() {
               <div className="hello-stack">
                 <h1>Hello</h1>
                 <p>- I&apos;m {profile.name}, a data science undergraduate</p>
+                <div className="hero-socials" aria-label="Featured profile links">
+                  <a href={profile.linkedin} target="_blank" rel="noreferrer">
+                    <b>IN</b>
+                    LinkedIn
+                  </a>
+                  <a href={profile.github} target="_blank" rel="noreferrer">
+                    <b>GH</b>
+                    GitHub
+                  </a>
+                  <a href="#writing">
+                    <b>M</b>
+                    Medium
+                  </a>
+                </div>
               </div>
 
               <a className="scroll-cue" href="#about">
