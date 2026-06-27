@@ -400,7 +400,7 @@ code {
 
 .hello-stack {
   align-self: center;
-  margin-top: 1rem;
+  margin-top: -2.2rem;
 }
 
 .hello-stack h1 {
@@ -414,9 +414,13 @@ code {
 
 .hello-stack p {
   animation: slide-fade-up 720ms ease 620ms both;
-  font-size: clamp(1rem, 1.7vw, 1.28rem);
-  font-weight: 600;
-  margin: 0.75rem 0 0 0.3rem;
+  color: #202020;
+  font-size: clamp(1.02rem, 1.42vw, 1.2rem);
+  font-weight: 560;
+  line-height: 2.05;
+  margin: 0.8rem 0 0 0.3rem;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+  word-spacing: 0;
 }
 
 .hero-socials {
@@ -424,7 +428,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-  margin: 1.25rem 0 0 0.3rem;
+  margin: 1.75rem 0 0 0.3rem;
 }
 
 .hero-socials a {
