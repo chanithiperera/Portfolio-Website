@@ -304,6 +304,34 @@ code {
   position: relative;
 }
 
+.hero-grid::before,
+.hero-grid::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.hero-grid::before {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0 15%, rgba(255, 255, 255, 0) 15%),
+    linear-gradient(180deg, rgba(255, 204, 205, 0.66) 0 11%, rgba(255, 132, 137, 0.58) 11% 100%);
+  bottom: 0;
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%, 0 64%);
+  right: 0;
+  top: -82px;
+  width: 48%;
+}
+
+.hero-grid::after {
+  background: rgba(255, 184, 186, 0.34);
+  bottom: 50%;
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%, 0 48%);
+  right: 0;
+  top: -82px;
+  width: 43%;
+}
+
 .side-rail {
   align-items: center;
   animation: slide-fade-up 780ms ease 160ms both;
@@ -342,6 +370,7 @@ code {
 .hero-stats {
   display: flex;
   gap: clamp(2rem, 5vw, 4rem);
+  visibility: hidden;
 }
 
 .hero-stats strong {
@@ -390,6 +419,55 @@ code {
   margin: 0.75rem 0 0 0.3rem;
 }
 
+.hero-socials {
+  animation: slide-fade-up 720ms ease 720ms both;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.25rem 0 0 0.3rem;
+}
+
+.hero-socials a {
+  align-items: center;
+  background: rgba(255, 250, 240, 0.76);
+  border: 1px solid rgba(23, 32, 38, 0.09);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(23, 32, 38, 0.06);
+  color: #20262a;
+  display: inline-flex;
+  font-size: 0.88rem;
+  font-weight: 900;
+  gap: 0.55rem;
+  min-height: 40px;
+  padding: 0.58rem 1rem;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.hero-socials b {
+  align-items: center;
+  background: rgba(255, 114, 119, 0.14);
+  border-radius: 50%;
+  color: #ff7477;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 0.66rem;
+  height: 22px;
+  justify-content: center;
+  width: 22px;
+}
+
+.hero-socials a:hover,
+.hero-socials a:focus-visible {
+  background: #fffaf0;
+  border-color: rgba(240, 93, 94, 0.28);
+  color: #f05d5e;
+  transform: translateY(-2px);
+}
+
 .scroll-cue {
   align-items: center;
   color: #555;
@@ -406,8 +484,15 @@ code {
 .portrait {
   align-self: end;
   animation: portrait-enter 1s cubic-bezier(0.22, 1, 0.36, 1) 420ms both;
-  filter: grayscale(1);
+  filter:
+    grayscale(1)
+    drop-shadow(8px 0 0 #fff8ed)
+    drop-shadow(-8px 0 0 #fff8ed)
+    drop-shadow(0 8px 0 #fff8ed)
+    drop-shadow(0 -8px 0 #fff8ed);
   justify-self: end;
+  margin-bottom: 2rem;
+  margin-right: -5.2vw;
   max-height: min(88vh, 900px);
   max-width: 100%;
   object-fit: contain;
