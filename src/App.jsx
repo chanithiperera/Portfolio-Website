@@ -7,6 +7,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Code2,
+  Download,
   GraduationCap,
   Home,
   Mail,
@@ -19,6 +20,33 @@ import {
 } from 'lucide-react';
 import heroPortrait from './assets/chanithi-upper-body-cutout.png';
 
+const LinkedInLogo = () => (
+  <svg aria-hidden="true" viewBox="0 0 24 24">
+    <path
+      d="M5.1 8.9h3.2v10.2H5.1V8.9Zm1.6-5a1.86 1.86 0 1 1 0 3.72 1.86 1.86 0 0 1 0-3.72ZM10.3 8.9h3.1v1.4h.04c.43-.81 1.47-1.67 3.03-1.67 3.24 0 3.84 2.13 3.84 4.9v5.57h-3.2v-4.94c0-1.18-.02-2.7-1.64-2.7-1.65 0-1.9 1.29-1.9 2.62v5.02h-3.2V8.9Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const GitHubLogo = () => (
+  <svg aria-hidden="true" viewBox="0 0 24 24">
+    <path
+      d="M12 2.2a10 10 0 0 0-3.16 19.48c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.35-1.18-3.35-1.18-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.88 1.52 2.32 1.08 2.88.83.09-.64.35-1.08.63-1.33-2.21-.25-4.54-1.1-4.54-4.92 0-1.08.39-1.97 1.02-2.67-.1-.25-.44-1.26.1-2.63 0 0 .84-.27 2.75 1.02A9.48 9.48 0 0 1 12 7.26c.85 0 1.7.11 2.5.34 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.38.1 2.63.64.7 1.02 1.59 1.02 2.67 0 3.83-2.33 4.66-4.55 4.91.36.31.68.92.68 1.85v2.56c0 .26.18.58.69.48A10 10 0 0 0 12 2.2Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const MediumLogo = () => (
+  <svg aria-hidden="true" viewBox="0 0 24 24">
+    <path
+      d="M4.2 7.4c.02-.2-.06-.4-.22-.53L2.4 4.95v-.28h5.04l3.9 8.55 3.43-8.55h4.8v.28l-1.35 1.3c-.12.09-.18.24-.16.39v9.52c-.02.15.04.3.16.39l1.32 1.3v.28h-6.82v-.28l1.36-1.33c.14-.14.14-.18.14-.39V8.44l-3.78 9.66h-.52L5.5 8.44v6.46c-.04.28.06.57.26.78l1.77 2.15v.28H2.5v-.28l1.77-2.15c.2-.21.29-.5.25-.78V7.4Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 const profile = {
   name: 'Chanithi Perera',
   role: 'Data Science Undergraduate',
@@ -26,6 +54,8 @@ const profile = {
   email: 'chanithi.perera23@gmail.com',
   linkedin: 'https://www.linkedin.com/in/chanithi-perera-5253b7392/',
   github: 'https://github.com/',
+  medium: 'https://medium.com/@chanithidehansa',
+  cv: '/Chanithi_Perera_CV.pdf',
   summary:
     'I am a Data Science undergraduate at SLIIT with a growing focus on AI, machine learning, data science, and software engineering.',
 };
@@ -418,8 +448,8 @@ function App() {
               <a href="#skills">Skills</a>
               <a href="#contact">Contact</a>
             </div>
-            <a className="book-link" href={`mailto:${profile.email}`}>
-              Book A Call <ArrowUpRight size={14} />
+            <a className="book-link" href={profile.cv} download>
+              Download CV <Download size={14} />
             </a>
           </nav>
 
@@ -451,15 +481,21 @@ function App() {
                 </p>
                 <div className="hero-socials" aria-label="Featured profile links">
                   <a href={profile.linkedin} target="_blank" rel="noreferrer">
-                    <b>IN</b>
+                    <span className="brand-icon linkedin-icon">
+                      <LinkedInLogo />
+                    </span>
                     LinkedIn
                   </a>
                   <a href={profile.github} target="_blank" rel="noreferrer">
-                    <b>GH</b>
+                    <span className="brand-icon github-icon">
+                      <GitHubLogo />
+                    </span>
                     GitHub
                   </a>
-                  <a href="#writing">
-                    <b>M</b>
+                  <a href={profile.medium} target="_blank" rel="noreferrer">
+                    <span className="brand-icon medium-icon">
+                      <MediumLogo />
+                    </span>
                     Medium
                   </a>
                 </div>
