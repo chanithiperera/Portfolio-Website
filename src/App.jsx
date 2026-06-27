@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   BriefcaseBusiness,
+  ChevronLeft,
+  ChevronRight,
   Code2,
   GraduationCap,
   Home,
@@ -28,25 +30,145 @@ const profile = {
 
 const projects = [
   {
-    title: 'Projects coming soon',
-    type: 'Portfolio update',
+    title:
+      'GoviSmart - Smart Fertilizer Recommendation for Paddy Cultivation',
+    type: 'Y2S2 AIML Project',
+    academicYear: '2nd Year',
+    year: '2026',
     description:
-      'This section is ready for your academic, data science, AI, and software engineering projects once you send the details.',
-    tags: ['Data Science', 'AI', 'Software'],
+      'Integrated agricultural web platform for data-driven fertilizer guidance and centralized resource management in Sri Lanka, powered by an XGBoost microservice.',
+    contribution:
+      'Focused on agricultural service booking workflows, officer availability, farmer request tracking, notifications, and structured soil and climate datasets.',
+    github:
+      'https://github.com/chanithiperera/Smart_Fertilizer_Recommendation.git',
+    tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Python', 'XGBoost'],
   },
   {
-    title: 'Licenses and certifications',
-    type: 'Details pending',
+    title: 'Zoo & Visitor Management System',
+    type: 'Y2S2 Mobile Application Project',
+    academicYear: '2nd Year',
+    year: '2026',
     description:
-      'Add course names, issuing organizations, credential links, and dates here when you are ready.',
-    tags: ['Learning', 'Credentials', 'Growth'],
+      'Full-stack mobile application for zoo operations and visitor experiences, covering ticketing, animal information, online shopping, and administrative management.',
+    contribution:
+      'Built ticket and show booking workflows, scheduling, visitor validation, backend API integration, and MongoDB database management.',
+    github: 'https://github.com/chanithiperera/Zoo-Management.git',
+    tags: ['React Native', 'Expo', 'Node.js', 'Express.js', 'MongoDB Atlas'],
   },
   {
-    title: 'Honors and awards',
-    type: 'Details pending',
+    title: 'Student Depression Prediction System',
+    type: '2nd Year AI & Machine Learning Group Project',
+    academicYear: '2nd Year',
+    year: '2025',
     description:
-      'A dedicated space for recognitions, competitions, scholarships, and awards you want to showcase.',
-    tags: ['Leadership', 'Recognition', 'Achievement'],
+      'Predictive system that identifies students at risk of depression using supervised machine learning models and a Streamlit decision-support interface.',
+    contribution:
+      'Developed and evaluated the Random Forest model, built the Streamlit app, and focused on interpretability, ethics, and performance tuning.',
+    github:
+      'https://github.com/chanithiperera/Student_Depression_Prediction_System.git',
+    tags: ['Python', 'scikit-learn', 'TensorFlow', 'Streamlit', 'pandas'],
+  },
+  {
+    title: 'Web-Based Healthcare Customer Care System',
+    type: '2nd Year Software Engineering Group Project',
+    academicYear: '2nd Year',
+    year: '2025',
+    description:
+      'Healthcare management platform for appointment handling, medical records, customer support tickets, feedback, and real-time notifications.',
+    contribution:
+      'Applied software engineering principles, design patterns, Agile practices, secure backend development, and UI/database integration.',
+    github:
+      'https://github.com/chanithiperera/Healthcare_CustomerCare_System.git',
+    tags: ['Java 17', 'Spring Boot', 'Spring Security', 'SQL Server', 'Thymeleaf'],
+  },
+  {
+    title: 'Online Medicine Store',
+    type: '1st Year Java Spring Boot & JSON Group Project',
+    academicYear: '1st Year',
+    year: '2025',
+    description:
+      'Web-based e-commerce medicine store with separate user and admin workflows, JSON-based storage, cart checkout, prescription uploads, and order processing.',
+    contribution:
+      'Implemented cart and checkout functionality, queue-based order processing, and JSON CRUD logic for products and cart operations.',
+    github:
+      'https://github.com/chanithiperera/Online-Medicine-Store-Springboot.git',
+    tags: ['Java', 'Spring Boot', 'HTML', 'CSS', 'JavaScript', 'JSON'],
+  },
+  {
+    title: 'Automated Garage System',
+    type: '1st Year Arduino + IoT Project',
+    academicYear: '1st Year',
+    year: '2025',
+    description:
+      'Smart garage prototype using Arduino microcontrollers, IoT monitoring, RFID access, sensor automation, lighting control, and remote control via Blynk.',
+    contribution:
+      'Designed sensor-based automation with RFID, ultrasonic and IR validation, smart lighting, display output, and Bluetooth-controlled ventilation.',
+    github: 'https://github.com/chanithiperera/AutomatedGarageSystem.git',
+    tags: ['Arduino', 'ESP8266', 'IoT', 'Sensors', 'Blynk', 'C/C++'],
+  },
+];
+
+const projectGroups = ['1st Year', '2nd Year', '3rd Year', 'Final Year'];
+const currentAcademicYear = '2nd Year';
+
+const writingArticles = [
+  {
+    title: 'What Are Artificial Neural Networks? A Simple Guide for Beginners',
+    publication: 'Medium',
+    category: 'Artificial Intelligence',
+    description:
+      'A beginner-friendly guide explaining how AI thinks through neural networks, with simple language for readers new to machine learning.',
+    link: 'https://lnkd.in/gstD3t7d',
+    tags: ['Artificial Intelligence', 'Machine Learning', 'Neural Networks'],
+  },
+  {
+    title:
+      'Prompt Engineering for Beginners: How to Get Better Results from ChatGPT',
+    publication: 'SLIIT Women in FOSS Medium',
+    category: 'Prompt Engineering',
+    description:
+      'Breaks down how small changes in prompts can improve AI outputs, using simple examples and the C.L.E.A.R. framework.',
+    link: 'https://lnkd.in/guK9gReZ',
+    tags: ['Prompt Engineering', 'ChatGPT', 'Women in Tech'],
+  },
+  {
+    title: 'Navigating Software Quality with Black Box and White Box Testing',
+    publication: 'MS Club of SLIIT',
+    category: 'Software Quality',
+    description:
+      'Explores the difference between black box and white box testing, their role in QA, and how both support reliable software delivery.',
+    link: 'https://lnkd.in/gDdctPjh',
+    tags: ['Software Testing', 'Quality Assurance', 'Technical Writing'],
+  },
+];
+
+const communityHighlights = [
+  {
+    title: 'She Talks Tech - Guest Speaker',
+    role: 'Guest Speaker',
+    organization: 'SLIIT Women in FOSS',
+    date: 'August 28',
+    description:
+      'Delivered “From Bugs to Breakthroughs: Why Software Projects Fail and How Teams Succeed,” sharing practical lessons on scope creep, technical debt, communication gaps, collaboration, agile workflows, and resilient teams.',
+    tags: ['Tech Talks', 'Leadership', 'Women in FOSS'],
+  },
+  {
+    title: 'She Talks Tech Podcast - Psychology of Getting Hacked',
+    role: 'Moderator',
+    organization: 'Women in FOSS Community - SLIIT',
+    date: 'January session',
+    description:
+      'Moderated a cybersecurity discussion on the human factors behind scams, social engineering, and awareness, guiding the conversation and audience questions.',
+    tags: ['Moderation', 'Cybersecurity', 'Public Speaking'],
+  },
+  {
+    title: 'GO 101 - Practical Introduction for University Students',
+    role: 'Moderator',
+    organization: 'SLIIT FOSS Community',
+    date: 'Community session',
+    description:
+      'Moderated a beginner-friendly session introducing the Go programming language, its simplicity, performance, and relevance in modern software development.',
+    tags: ['GoLang', 'Tech Community', 'Student Life'],
   },
 ];
 
@@ -131,6 +253,9 @@ const education = [
 
 function App() {
   const mainRef = useRef(null);
+  const projectScrollerRef = useRef(null);
+  const [activeProjectGroup, setActiveProjectGroup] =
+    useState(currentAcademicYear);
   const [theme, setTheme] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme');
 
@@ -153,7 +278,7 @@ function App() {
     if (!root) return undefined;
 
     const revealItems = root.querySelectorAll(
-      '.section, .intro-band, .project-card, .timeline article, .contact-links > *',
+      '.section, .intro-band, .project-card, .feature-card, .timeline article, .contact-links > *',
     );
 
     const revealObserver = new IntersectionObserver(
@@ -210,6 +335,24 @@ function App() {
       countObserver.disconnect();
     };
   }, []);
+
+  const filteredProjects = projects.filter(
+    (project) => project.academicYear === activeProjectGroup,
+  );
+
+  useEffect(() => {
+    projectScrollerRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
+  }, [activeProjectGroup]);
+
+  const scrollProjectRow = (direction) => {
+    const scroller = projectScrollerRef.current;
+    if (!scroller) return;
+
+    scroller.scrollBy({
+      left: direction === 'next' ? 420 : -420,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <>
@@ -342,17 +485,141 @@ function App() {
           <p className="section-kicker">Selected work</p>
           <h2>Projects</h2>
         </div>
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.title}>
-              <div className="project-icon">
-                <Code2 size={22} />
+        <div className="project-tabs" role="tablist" aria-label="Project groups">
+          {projectGroups.map((group) => (
+            <button
+              key={group}
+              className={activeProjectGroup === group ? 'is-active' : ''}
+              type="button"
+              role="tab"
+              aria-selected={activeProjectGroup === group}
+              onClick={() => setActiveProjectGroup(group)}
+            >
+              {group} Projects
+            </button>
+          ))}
+        </div>
+        <div className="project-panel" role="tabpanel">
+          {filteredProjects.length > 0 ? (
+            <>
+              <div className="project-row-header">
+                <span>{filteredProjects.length} projects</span>
+                <div className="project-row-controls">
+                  <button
+                    type="button"
+                    aria-label="Previous projects"
+                    onClick={() => scrollProjectRow('previous')}
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next projects"
+                    onClick={() => scrollProjectRow('next')}
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
               </div>
-              <p>{project.type}</p>
-              <h3>{project.title}</h3>
-              <span>{project.description}</span>
+              <div className="projects-grid" ref={projectScrollerRef}>
+                {filteredProjects.map((project) => (
+                  <article className="project-card" key={project.title}>
+                    <div className="project-media-slot">
+                      <Code2 size={24} />
+                      <span>Media coming soon</span>
+                    </div>
+                    <p>{project.type}</p>
+                    <h3>{project.title}</h3>
+                    <small className="project-year">{project.year}</small>
+                    <span>{project.description}</span>
+                    <strong className="project-contribution">
+                      My contribution
+                    </strong>
+                    <span>{project.contribution}</span>
+                    <div className="tag-row">
+                      {project.tags.map((tag) => (
+                        <small key={tag}>{tag}</small>
+                      ))}
+                    </div>
+                    <a
+                      className="project-link"
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GitHub <ArrowUpRight size={14} />
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </>
+          ) : (
+            <article className="project-empty-card">
+              <Code2 size={24} />
+              <h3>{activeProjectGroup} projects coming soon</h3>
+              <p>
+                This space is ready for the projects, media, links, and outcomes
+                you add later.
+              </p>
+            </article>
+          )}
+        </div>
+      </section>
+
+      <section className="section feature-section" id="writing">
+        <div className="section-heading">
+          <p className="section-kicker">Writing</p>
+          <h2>Medium Articles</h2>
+        </div>
+        <div className="feature-grid">
+          {writingArticles.map((article) => (
+            <article className="feature-card" key={article.title}>
+              <div className="feature-media-slot">
+                <PenLine size={24} />
+                <span>Article media coming soon</span>
+              </div>
+              <p>{article.publication}</p>
+              <h3>{article.title}</h3>
+              <small>{article.category}</small>
+              <span>{article.description}</span>
               <div className="tag-row">
-                {project.tags.map((tag) => (
+                {article.tags.map((tag) => (
+                  <small key={tag}>{tag}</small>
+                ))}
+              </div>
+              <a
+                className="project-link"
+                href={article.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read article <ArrowUpRight size={14} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section feature-section" id="community">
+        <div className="section-heading">
+          <p className="section-kicker">Community</p>
+          <h2>Speaking & Moderation</h2>
+        </div>
+        <div className="feature-grid">
+          {communityHighlights.map((highlight) => (
+            <article className="feature-card" key={highlight.title}>
+              <div className="feature-media-slot">
+                <UserRound size={24} />
+                <span>Session media coming soon</span>
+              </div>
+              <p>{highlight.role}</p>
+              <h3>{highlight.title}</h3>
+              <small>
+                {highlight.organization} · {highlight.date}
+              </small>
+              <span>{highlight.description}</span>
+              <div className="tag-row">
+                {highlight.tags.map((tag) => (
                   <small key={tag}>{tag}</small>
                 ))}
               </div>
