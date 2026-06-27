@@ -488,10 +488,10 @@ code {
     grayscale(1)
     drop-shadow(8px 0 0 #fff8ed)
     drop-shadow(-8px 0 0 #fff8ed)
-    drop-shadow(0 8px 0 #fff8ed)
+    drop-shadow(0 13px 0 #fff8ed)
     drop-shadow(0 -8px 0 #fff8ed);
   justify-self: end;
-  margin-bottom: 2rem;
+  margin-bottom: 2.45rem;
   margin-right: -5.2vw;
   max-height: min(88vh, 900px);
   max-width: 100%;
