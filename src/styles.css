@@ -400,12 +400,12 @@ code {
 
 .hello-stack {
   align-self: center;
-  margin-top: -2.2rem;
+  margin-top: -3rem;
 }
 
 .hello-stack h1 {
   animation: hello-rise 950ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
-  font-size: clamp(7rem, 15vw, 14rem);
+  font-size: clamp(4.9rem, 10.4vw, 9.8rem);
   font-weight: 300;
   letter-spacing: 0;
   line-height: 0.82;
@@ -414,13 +414,18 @@ code {
 
 .hello-stack p {
   animation: slide-fade-up 720ms ease 620ms both;
-  color: #202020;
-  font-size: clamp(1.02rem, 1.42vw, 1.2rem);
+  color: #171717;
+  font-size: clamp(1.34rem, 2.15vw, 1.88rem);
   font-weight: 560;
-  line-height: 2.05;
-  margin: 0.8rem 0 0 0.3rem;
+  line-height: 1.65;
+  margin: 1.75rem 0 0 0.3rem;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
   word-spacing: 0;
+}
+
+.intro-line-two {
+  display: inline-block;
+  margin-left: 1.05em;
 }
 
 .hero-socials {
@@ -428,7 +433,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-  margin: 1.75rem 0 0 0.3rem;
+  margin: 3.45rem 0 0 0.3rem;
 }
 
 .hero-socials a {
