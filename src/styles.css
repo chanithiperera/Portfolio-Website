@@ -456,17 +456,34 @@ code {
     transform 180ms ease;
 }
 
-.hero-socials b {
+.brand-icon {
   align-items: center;
-  background: rgba(255, 114, 119, 0.14);
+  background: rgba(255, 114, 119, 0.2);
   border-radius: 50%;
   color: #ff7477;
   display: inline-flex;
   flex: 0 0 auto;
-  font-size: 0.66rem;
-  height: 22px;
+  height: 26px;
   justify-content: center;
-  width: 22px;
+  width: 26px;
+}
+
+.brand-icon svg {
+  display: block;
+  height: 17px;
+  width: 17px;
+}
+
+.linkedin-icon {
+  color: #0a66c2;
+}
+
+.github-icon {
+  color: #24292f;
+}
+
+.medium-icon {
+  color: #111;
 }
 
 .hero-socials a:hover,
