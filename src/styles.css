@@ -883,7 +883,9 @@ h3 {
   gap: 0.65rem;
 }
 
-.experience-section,
+.leadership-section,
+.credentials-section,
+.awards-section,
 .education-section {
   display: grid;
   gap: 2rem;
@@ -1422,7 +1424,9 @@ h3 {
   .feature-grid,
   .about-section,
   .skills-section,
-  .experience-section,
+  .leadership-section,
+  .credentials-section,
+  .awards-section,
   .education-section,
   .contact-section {
     grid-template-columns: 1fr;
