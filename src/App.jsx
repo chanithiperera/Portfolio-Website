@@ -936,7 +936,7 @@ function App() {
               <h3>{article.title}</h3>
               <small>{article.category}</small>
               <span>{article.description}</span>
-              <div className="tag-row">
+              <div className="tag-row article-tag-row">
                 {article.tags.map((tag) => (
                   <small key={tag}>{tag}</small>
                 ))}
