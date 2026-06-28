@@ -35,11 +35,19 @@ import garagePrototypeFront from './assets/garage-prototype-front.png';
 import goviSmartHome from './assets/govismart-home.png';
 import goviSmartRecommendationForm from './assets/govismart-recommendation-form.png';
 import goviSmartRecommendationInputs from './assets/govismart-recommendation-inputs.png';
+import go101HostSession from './assets/go101-host-session.png';
+import go101IntroSlide from './assets/go101-intro-slide.png';
+import go101SpeakerView from './assets/go101-speaker-view.png';
 import healthcareCustomerCareHome from './assets/healthcare-customer-care-home.png';
 import heroPortrait from './assets/chanithi-upper-body-cutout.png';
 import medicineStoreHome from './assets/medicine-store-home.jpg';
 import studentDepressionHighRisk from './assets/student-depression-high-risk.png';
 import studentDepressionLowRisk from './assets/student-depression-low-risk.png';
+import sheTalksTechPoster from './assets/she-talks-tech-poster.png';
+import sheTalksTechPodcastPanel from './assets/she-talks-tech-podcast-panel.png';
+import sheTalksTechPodcastSpeaker from './assets/she-talks-tech-podcast-speaker.png';
+import sheTalksTechSessionIntro from './assets/she-talks-tech-session-intro.png';
+import sheTalksTechSessionSdlc from './assets/she-talks-tech-session-sdlc.png';
 import zooManagementWelcome from './assets/zoo-management-welcome.png';
 
 const LinkedInLogo = () => (
@@ -319,31 +327,67 @@ const writingArticles = [
 
 const communityHighlights = [
   {
-    title: 'She Talks Tech - Guest Speaker',
+    title:
+      'She Talks Tech Podcast - From Bugs to Breakthroughs: Why Software Projects Fail and How Teams Succeed',
     role: 'Guest Speaker',
-    organization: 'SLIIT Women in FOSS',
-    date: 'August 28',
+    organization: 'Women in FOSS Community',
+    images: [
+      {
+        src: sheTalksTechSessionIntro,
+        alt: 'She Talks Tech presentation introduction slide in MS Teams',
+      },
+      {
+        src: sheTalksTechSessionSdlc,
+        alt: 'She Talks Tech SDLC roadmap presentation slide in MS Teams',
+      },
+      {
+        src: sheTalksTechPoster,
+        alt: 'She Talks Tech guest speaker event poster',
+      },
+    ],
     description:
-      'Delivered “From Bugs to Breakthroughs: Why Software Projects Fail and How Teams Succeed,” sharing practical lessons on scope creep, technical debt, communication gaps, collaboration, agile workflows, and resilient teams.',
-    tags: ['Tech Talks', 'Leadership', 'Women in FOSS'],
+      'Had a great opportunity to speak about the SDLC lifecycle, agile workflows, and practical principles software development teams can follow to build successful projects.',
+    tags: ['SDLC', 'Agile', 'Software Development'],
   },
   {
     title: 'She Talks Tech Podcast - Psychology of Getting Hacked',
     role: 'Moderator',
-    organization: 'Women in FOSS Community - SLIIT',
-    date: 'January session',
+    organization: 'Women in FOSS Community',
+    images: [
+      {
+        src: sheTalksTechPodcastSpeaker,
+        alt: 'She Talks Tech podcast speaker view in MS Teams',
+      },
+      {
+        src: sheTalksTechPodcastPanel,
+        alt: 'She Talks Tech podcast panel view in MS Teams',
+      },
+    ],
     description:
       'Moderated a cybersecurity discussion on the human factors behind scams, social engineering, and awareness, guiding the conversation and audience questions.',
-    tags: ['Moderation', 'Cybersecurity', 'Public Speaking'],
+    tags: ['Cybersecurity', 'Cyber Awareness', 'Social Engineering'],
   },
   {
     title: 'GO 101 - Practical Introduction for University Students',
     role: 'Moderator',
-    organization: 'SLIIT FOSS Community',
-    date: 'Community session',
+    organization: 'FOSS Community',
+    images: [
+      {
+        src: go101IntroSlide,
+        alt: 'GO 101 introduction slide in online session',
+      },
+      {
+        src: go101HostSession,
+        alt: 'GO 101 online session with speaker and moderator',
+      },
+      {
+        src: go101SpeakerView,
+        alt: 'GO 101 online session speaker view',
+      },
+    ],
     description:
       'Moderated a beginner-friendly session introducing the Go programming language, its simplicity, performance, and relevance in modern software development.',
-    tags: ['GoLang', 'Tech Community', 'Student Life'],
+    tags: ['Go Lang', 'Programming'],
   },
 ];
 
@@ -965,14 +1009,37 @@ function App() {
         <div className="feature-grid">
           {communityHighlights.map((highlight) => (
             <article className="feature-card" key={highlight.title}>
-              <div className="feature-media-slot">
-                <UserRound size={24} />
-                <span>Session media coming soon</span>
-              </div>
+              {highlight.images?.length ? (
+                <button
+                  className="feature-media-button"
+                  type="button"
+                  aria-label={`Open ${highlight.title} gallery`}
+                  onClick={() => openMediaViewer(highlight)}
+                >
+                  <img
+                    src={highlight.images[0].src}
+                    alt={
+                      highlight.images[0].alt ||
+                      `${highlight.title} preview`
+                    }
+                  />
+                  <span>
+                    <Images size={14} />
+                    {highlight.images.length > 1
+                      ? 'View gallery'
+                      : 'View image'}
+                  </span>
+                </button>
+              ) : (
+                <div className="feature-media-slot">
+                  <UserRound size={24} />
+                  <span>Session media coming soon</span>
+                </div>
+              )}
               <p>{highlight.role}</p>
               <h3>{highlight.title}</h3>
               <small>
-                {highlight.organization} · {highlight.date}
+                {highlight.organization} {highlight.date}
               </small>
               <span>{highlight.description}</span>
               <div className="tag-row">
