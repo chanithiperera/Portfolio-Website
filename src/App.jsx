@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
+  Images,
   Award,
   BadgeCheck,
   BriefcaseBusiness,
@@ -17,8 +18,29 @@ import {
   Send,
   Sun,
   UserRound,
+  X,
 } from 'lucide-react';
+import articleAiFutureWorkWomenTech from './assets/article-ai-future-work-women-tech.png';
+import articleNeuralNetworks from './assets/article-neural-networks.png';
+import articlePromptEngineering from './assets/article-prompt-engineering.png';
+import articleSoftwareQualityCover from './assets/article-software-quality-cover.png';
+import articleSoftwareQualityTesting from './assets/article-software-quality-testing.png';
+import automatedGaragePhoto from './assets/automated-garage-system.jpeg';
+import garageCircuitGate from './assets/garage-circuit-gate.png';
+import garageCircuitLighting from './assets/garage-circuit-lighting.png';
+import garageCircuitVentilation from './assets/garage-circuit-ventilation.png';
+import garageControlBoard from './assets/garage-control-board.png';
+import garagePoster from './assets/garage-poster.png';
+import garagePrototypeFront from './assets/garage-prototype-front.png';
+import goviSmartHome from './assets/govismart-home.png';
+import goviSmartRecommendationForm from './assets/govismart-recommendation-form.png';
+import goviSmartRecommendationInputs from './assets/govismart-recommendation-inputs.png';
+import healthcareCustomerCareHome from './assets/healthcare-customer-care-home.png';
 import heroPortrait from './assets/chanithi-upper-body-cutout.png';
+import medicineStoreHome from './assets/medicine-store-home.jpg';
+import studentDepressionHighRisk from './assets/student-depression-high-risk.png';
+import studentDepressionLowRisk from './assets/student-depression-low-risk.png';
+import zooManagementWelcome from './assets/zoo-management-welcome.png';
 
 const LinkedInLogo = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -64,9 +86,24 @@ const projects = [
   {
     title:
       'GoviSmart - Smart Fertilizer Recommendation for Paddy Cultivation',
-    type: 'Y2S2 AIML Project',
+    titleNote: '& Agricultural Resource Management System',
+    type: 'Y2S2 AIML Project - Team Leader',
     academicYear: '2nd Year',
     year: '2026',
+    images: [
+      {
+        src: goviSmartHome,
+        alt: 'GoviSmart paddy solutions home page',
+      },
+      {
+        src: goviSmartRecommendationForm,
+        alt: 'GoviSmart fertilizer recommendation form',
+      },
+      {
+        src: goviSmartRecommendationInputs,
+        alt: 'GoviSmart fertilizer recommendation input fields',
+      },
+    ],
     description:
       'Integrated agricultural web platform for data-driven fertilizer guidance and centralized resource management in Sri Lanka, powered by an XGBoost microservice.',
     contribution:
@@ -76,10 +113,16 @@ const projects = [
     tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Python', 'XGBoost'],
   },
   {
-    title: 'Zoo & Visitor Management System',
-    type: 'Y2S2 Mobile Application Project',
+    title: 'ZentraZoo - Zoo & Visitor Management System',
+    type: 'Y2S2 Mobile Application Project - Team Leader',
     academicYear: '2nd Year',
     year: '2026',
+    images: [
+      {
+        src: zooManagementWelcome,
+        alt: 'ZentraZoo mobile app welcome screen',
+      },
+    ],
     description:
       'Full-stack mobile application for zoo operations and visitor experiences, covering ticketing, animal information, online shopping, and administrative management.',
     contribution:
@@ -89,9 +132,19 @@ const projects = [
   },
   {
     title: 'Student Depression Prediction System',
-    type: '2nd Year AI & Machine Learning Group Project',
+    type: 'Y2S1 AIML Project - Team Leader',
     academicYear: '2nd Year',
     year: '2025',
+    images: [
+      {
+        src: studentDepressionHighRisk,
+        alt: 'Student Depression Risk Predictor high risk result',
+      },
+      {
+        src: studentDepressionLowRisk,
+        alt: 'Student Depression Risk Predictor low risk result',
+      },
+    ],
     description:
       'Predictive system that identifies students at risk of depression using supervised machine learning models and a Streamlit decision-support interface.',
     contribution:
@@ -102,9 +155,15 @@ const projects = [
   },
   {
     title: 'Web-Based Healthcare Customer Care System',
-    type: '2nd Year Software Engineering Group Project',
+    type: 'Y2S1 Software Engineering Project - Team Leader',
     academicYear: '2nd Year',
     year: '2025',
+    images: [
+      {
+        src: healthcareCustomerCareHome,
+        alt: 'MediFlow Connect healthcare customer care home page',
+      },
+    ],
     description:
       'Healthcare management platform for appointment handling, medical records, customer support tickets, feedback, and real-time notifications.',
     contribution:
@@ -115,9 +174,15 @@ const projects = [
   },
   {
     title: 'Online Medicine Store',
-    type: '1st Year Java Spring Boot & JSON Group Project',
+    type: 'Y1S2 - Java Spring Boot Project',
     academicYear: '1st Year',
     year: '2025',
+    images: [
+      {
+        src: medicineStoreHome,
+        alt: 'Online Medicine Store home page interface',
+      },
+    ],
     description:
       'Web-based e-commerce medicine store with separate user and admin workflows, JSON-based storage, cart checkout, prescription uploads, and order processing.',
     contribution:
@@ -128,15 +193,52 @@ const projects = [
   },
   {
     title: 'Automated Garage System',
-    type: '1st Year Arduino + IoT Project',
+    type: 'Y1S1 - Arduino + IoT Project',
     academicYear: '1st Year',
-    year: '2025',
+    year: '2024',
+    images: [
+      {
+        src: automatedGaragePhoto,
+        alt: 'Automated Garage System prototype collage',
+      },
+      {
+        src: garagePrototypeFront,
+        alt: 'Front view of the Automated Garage System model',
+      },
+      {
+        src: garageControlBoard,
+        alt: 'Arduino and IoT control board wiring for the garage system',
+      },
+      {
+        src: garagePoster,
+        alt: 'Intelly Home project poster for the garage automation system',
+      },
+      {
+        src: garageCircuitLighting,
+        alt: 'Circuit diagram for lighting and ventilation controls',
+      },
+      {
+        src: garageCircuitGate,
+        alt: 'Circuit diagram for RFID gate access and obstacle detection',
+      },
+      {
+        src: garageCircuitVentilation,
+        alt: 'Circuit diagram for fan, lighting, clock, and display modules',
+      },
+    ],
     description:
-      'Smart garage prototype using Arduino microcontrollers, IoT monitoring, RFID access, sensor automation, lighting control, and remote control via Blynk.',
+      'Developed a smart garage prototype that automates access control, lighting, ventilation, and real-time monitoring using Arduino and IoT technologies.',
+    highlights: [
+      'RFID-based smart gate access',
+      'Obstacle detection with ultrasonic & IR sensors',
+      'PIR + LDR smart lighting',
+      'ESP8266 + Blynk remote monitoring',
+      'Bluetooth-controlled ventilation system',
+    ],
     contribution:
-      'Designed sensor-based automation with RFID, ultrasonic and IR validation, smart lighting, display output, and Bluetooth-controlled ventilation.',
+      'Built the embedded control flow, sensor validation logic, smart lighting behavior, monitoring setup, and ventilation control workflow.',
     github: 'https://github.com/chanithiperera/AutomatedGarageSystem.git',
-    tags: ['Arduino', 'ESP8266', 'IoT', 'Sensors', 'Blynk', 'C/C++'],
+    tags: ['Arduino', 'IoT', 'Embedded Systems', 'ESP8266', 'RFID', 'C/C++'],
   },
 ];
 
@@ -146,31 +248,72 @@ const currentAcademicYear = '2nd Year';
 const writingArticles = [
   {
     title: 'What Are Artificial Neural Networks? A Simple Guide for Beginners',
-    publication: 'Medium',
+    publication: 'Self Published',
     category: 'Artificial Intelligence',
+    images: [
+      {
+        src: articleNeuralNetworks,
+        alt: 'Artificial neural networks article cover',
+      },
+    ],
     description:
       'A beginner-friendly guide explaining how AI thinks through neural networks, with simple language for readers new to machine learning.',
-    link: 'https://lnkd.in/gstD3t7d',
+    link:
+      'https://medium.com/@chanithidehansa/what-are-artificial-neural-networks-a-simple-guide-for-beginners-ea2053d6bbe4?sharedUserId=chanithidehansa',
     tags: ['Artificial Intelligence', 'Machine Learning', 'Neural Networks'],
   },
   {
     title:
       'Prompt Engineering for Beginners: How to Get Better Results from ChatGPT',
-    publication: 'SLIIT Women in FOSS Medium',
+    publication: 'Published by Women in FOSS Community',
     category: 'Prompt Engineering',
+    images: [
+      {
+        src: articlePromptEngineering,
+        alt: 'Prompt engineering article cover',
+      },
+    ],
     description:
       'Breaks down how small changes in prompts can improve AI outputs, using simple examples and the C.L.E.A.R. framework.',
-    link: 'https://lnkd.in/guK9gReZ',
-    tags: ['Prompt Engineering', 'ChatGPT', 'Women in Tech'],
+    link:
+      'https://medium.com/sliitwif/prompt-engineering-for-beginners-how-to-get-better-results-from-chatgpt-87f5e618f564?sharedUserId=chanithidehansa',
+    tags: ['Prompt Engineering', 'ChatGPT', 'AI'],
   },
   {
     title: 'Navigating Software Quality with Black Box and White Box Testing',
-    publication: 'MS Club of SLIIT',
+    publication: 'Published by MS Club',
     category: 'Software Quality',
+    images: [
+      {
+        src: articleSoftwareQualityCover,
+        alt: 'Navigating software quality article cover',
+      },
+      {
+        src: articleSoftwareQualityTesting,
+        alt: 'Black box and white box testing comparison visual',
+      },
+    ],
     description:
       'Explores the difference between black box and white box testing, their role in QA, and how both support reliable software delivery.',
-    link: 'https://lnkd.in/gDdctPjh',
-    tags: ['Software Testing', 'Quality Assurance', 'Technical Writing'],
+    link:
+      'https://medium.com/ms-club-of-sliit/beyond-the-surface-navigating-software-quality-with-black-box-and-white-box-testing-ed6a37fcacf7?sharedUserId=chanithidehansa',
+    tags: ['Software Testing', 'Quality Assurance', 'Software Engineering'],
+  },
+  {
+    title: 'AI and the Future of Work: A New Era for Women in Tech',
+    publication: 'Self Published - ImpactX Article Writing Challenge',
+    category: 'Artificial Intelligence',
+    images: [
+      {
+        src: articleAiFutureWorkWomenTech,
+        alt: 'AI and the future of work article cover for women in tech',
+      },
+    ],
+    description:
+      'Explores how AI is reshaping work, skills, and opportunity, while highlighting why women must be included in building a fair and innovative future.',
+    link:
+      'https://medium.com/@chanithidehansa/ai-and-the-future-of-work-a-new-era-for-women-in-tech-035e61704933?sharedUserId=chanithidehansa',
+    tags: ['AI', 'Future of Work', 'Women in Tech'],
   },
 ];
 
@@ -299,8 +442,10 @@ const education = [
 function App() {
   const mainRef = useRef(null);
   const projectScrollerRef = useRef(null);
+  const articleScrollerRef = useRef(null);
   const [activeProjectGroup, setActiveProjectGroup] =
     useState(currentAcademicYear);
+  const [mediaViewer, setMediaViewer] = useState(null);
   const [theme, setTheme] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme');
 
@@ -398,6 +543,70 @@ function App() {
       behavior: 'smooth',
     });
   };
+
+  const scrollArticleRow = (direction) => {
+    const scroller = articleScrollerRef.current;
+    if (!scroller) return;
+
+    scroller.scrollBy({
+      left: direction === 'next' ? 420 : -420,
+      behavior: 'smooth',
+    });
+  };
+
+  const openMediaViewer = (project, imageIndex = 0) => {
+    if (!project.images?.length) return;
+
+    setMediaViewer({
+      imageIndex,
+      images: project.images,
+      title: project.title,
+    });
+  };
+
+  const closeMediaViewer = () => {
+    setMediaViewer(null);
+  };
+
+  const showMediaImage = (direction) => {
+    setMediaViewer((currentViewer) => {
+      if (!currentViewer) return null;
+
+      const totalImages = currentViewer.images.length;
+      const nextIndex =
+        (currentViewer.imageIndex + (direction === 'next' ? 1 : -1) + totalImages) %
+        totalImages;
+
+      return {
+        ...currentViewer,
+        imageIndex: nextIndex,
+      };
+    });
+  };
+
+  useEffect(() => {
+    if (!mediaViewer) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeMediaViewer();
+      }
+
+      if (event.key === 'ArrowLeft' && mediaViewer.images.length > 1) {
+        showMediaImage('previous');
+      }
+
+      if (event.key === 'ArrowRight' && mediaViewer.images.length > 1) {
+        showMediaImage('next');
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mediaViewer]);
 
   return (
     <>
@@ -598,18 +807,53 @@ function App() {
               <div className="projects-grid" ref={projectScrollerRef}>
                 {filteredProjects.map((project) => (
                   <article className="project-card" key={project.title}>
-                    <div className="project-media-slot">
-                      <Code2 size={24} />
-                      <span>Media coming soon</span>
-                    </div>
+                    {project.images?.length ? (
+                      <button
+                        className="project-media-button"
+                        type="button"
+                        aria-label={`Open ${project.title} gallery`}
+                        onClick={() => openMediaViewer(project)}
+                      >
+                        <img
+                          className="project-media-image"
+                          src={project.images[0].src}
+                          alt={project.images[0].alt || `${project.title} preview`}
+                        />
+                        <span>View gallery</span>
+                      </button>
+                    ) : (
+                      <div className="project-media-slot">
+                        <Code2 size={24} />
+                        <span>Media coming soon</span>
+                      </div>
+                    )}
                     <p>{project.type}</p>
                     <h3>{project.title}</h3>
+                    {project.titleNote ? (
+                      <span className="project-title-note">
+                        {project.titleNote}
+                      </span>
+                    ) : null}
                     <small className="project-year">{project.year}</small>
                     <span>{project.description}</span>
-                    <strong className="project-contribution">
-                      My contribution
-                    </strong>
-                    <span>{project.contribution}</span>
+                    {project.highlights ? (
+                      <div className="project-highlights">
+                        <strong>What I built</strong>
+                        <ul>
+                          {project.highlights.map((highlight) => (
+                            <li key={highlight}>{highlight}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                    {project.highlights ? null : (
+                      <>
+                        <strong className="project-contribution">
+                          My contribution
+                        </strong>
+                        <span>{project.contribution}</span>
+                      </>
+                    )}
                     <div className="tag-row">
                       {project.tags.map((tag) => (
                         <small key={tag}>{tag}</small>
@@ -621,6 +865,9 @@ function App() {
                       target="_blank"
                       rel="noreferrer"
                     >
+                      <span className="project-link-icon">
+                        <GitHubLogo />
+                      </span>
                       GitHub <ArrowUpRight size={14} />
                     </a>
                   </article>
@@ -631,10 +878,6 @@ function App() {
             <article className="project-empty-card">
               <Code2 size={24} />
               <h3>{activeProjectGroup} projects coming soon</h3>
-              <p>
-                This space is ready for the projects, media, links, and outcomes
-                you add later.
-              </p>
             </article>
           )}
         </div>
@@ -645,13 +888,50 @@ function App() {
           <p className="section-kicker">Writing</p>
           <h2>Medium Articles</h2>
         </div>
-        <div className="feature-grid">
+        <div className="project-row-header article-row-header">
+          <span>{writingArticles.length} articles</span>
+          <div className="project-row-controls">
+            <button
+              type="button"
+              aria-label="Previous articles"
+              onClick={() => scrollArticleRow('previous')}
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next articles"
+              onClick={() => scrollArticleRow('next')}
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </div>
+        <div className="feature-grid article-grid" ref={articleScrollerRef}>
           {writingArticles.map((article) => (
             <article className="feature-card" key={article.title}>
-              <div className="feature-media-slot">
-                <PenLine size={24} />
-                <span>Article media coming soon</span>
-              </div>
+              {article.images?.length ? (
+                <button
+                  className="feature-media-button"
+                  type="button"
+                  aria-label={`Open ${article.title} gallery`}
+                  onClick={() => openMediaViewer(article)}
+                >
+                  <img
+                    src={article.images[0].src}
+                    alt={article.images[0].alt || `${article.title} preview`}
+                  />
+                  <span>
+                    <Images size={14} />
+                    {article.images.length > 1 ? 'View gallery' : 'View image'}
+                  </span>
+                </button>
+              ) : (
+                <div className="feature-media-slot">
+                  <PenLine size={24} />
+                  <span>Article media coming soon</span>
+                </div>
+              )}
               <p>{article.publication}</p>
               <h3>{article.title}</h3>
               <small>{article.category}</small>
@@ -667,6 +947,9 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
               >
+                <span className="project-link-icon">
+                  <MediumLogo />
+                </span>
                 Read article <ArrowUpRight size={14} />
               </a>
             </article>
@@ -814,6 +1097,58 @@ function App() {
           </span>
         </div>
       </section>
+      {mediaViewer ? (
+        <div
+          className="media-viewer"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${mediaViewer.title} gallery`}
+          onClick={closeMediaViewer}
+        >
+          <div className="media-viewer-panel" onClick={(event) => event.stopPropagation()}>
+            <div className="media-viewer-header">
+              <div>
+                <strong>{mediaViewer.title}</strong>
+                <span>
+                  {mediaViewer.imageIndex + 1} / {mediaViewer.images.length}
+                </span>
+              </div>
+              <button type="button" aria-label="Close gallery" onClick={closeMediaViewer}>
+                <X size={18} />
+              </button>
+            </div>
+            <div className="media-viewer-stage">
+              {mediaViewer.images.length > 1 ? (
+                <button
+                  className="media-viewer-arrow media-viewer-arrow-left"
+                  type="button"
+                  aria-label="Previous image"
+                  onClick={() => showMediaImage('previous')}
+                >
+                  <ChevronLeft size={22} />
+                </button>
+              ) : null}
+              <img
+                src={mediaViewer.images[mediaViewer.imageIndex].src}
+                alt={
+                  mediaViewer.images[mediaViewer.imageIndex].alt ||
+                  `${mediaViewer.title} gallery image`
+                }
+              />
+              {mediaViewer.images.length > 1 ? (
+                <button
+                  className="media-viewer-arrow media-viewer-arrow-right"
+                  type="button"
+                  aria-label="Next image"
+                  onClick={() => showMediaImage('next')}
+                >
+                  <ChevronRight size={22} />
+                </button>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
       </main>
     </>
   );
