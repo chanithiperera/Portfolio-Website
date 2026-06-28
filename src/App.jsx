@@ -220,9 +220,9 @@ const skills = [
 ];
 
 const stats = [
-  ['SLIIT', 'BSc (Hons) IT'],
-  ['Data', 'Science focus'],
-  ['Open', 'To work'],
+  ['Explore', 'Driven by curiosity and continuous learning'],
+  ['Innovate', 'Building intelligent, data-driven solutions'],
+  ['Lead', 'Empowering communities through collaboration'],
 ];
 
 const leadershipActivities = [
@@ -533,18 +533,23 @@ function App() {
       <section className="section about-section" id="about">
         <div>
           <p className="section-kicker">About</p>
-          <h2>Clean interfaces, practical code, and details that feel right.</h2>
+          <h2>Where Data Science meets creativity, community, and impact.</h2>
         </div>
         <div className="about-copy">
           <p>
-            I&apos;m Chanithi Perera, a Colombo-based Data Science undergraduate
-            following the BSc (Hons) in Information Technology pathway at SLIIT.
+            I&apos;m Chanithi Perera, a Data Science undergraduate at SLIIT
+            passionate about Machine Learning, Data Analytics, and building
+            practical solutions through technology.
           </p>
           <p>
-            My profile brings together technical curiosity, writing, leadership,
-            community work, and event coordination across SLIIT Women In FOSS,
-            IEEE Student Branch of SLIIT, Medium, MS Club of SLIIT, and SLIIT
-            Gavel Club.
+            Beyond academics, I enjoy exploring new technologies, writing
+            technical content, and contributing to student communities. I
+            believe in continuous learning, collaboration, and using technology
+            to create meaningful impact.
+          </p>
+          <p>
+            Through projects, leadership roles, and extracurricular involvement,
+            I continue to grow as both a technologist and a community builder.
           </p>
         </div>
       </section>
