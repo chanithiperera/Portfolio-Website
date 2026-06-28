@@ -449,7 +449,7 @@ function App() {
               <a href="#contact">Contact</a>
             </div>
             <a className="book-link" href={profile.cv} download>
-              Download CV <Download size={14} />
+              Download My CV <Download size={15} />
             </a>
           </nav>
 
