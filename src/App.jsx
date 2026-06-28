@@ -365,7 +365,7 @@ const communityHighlights = [
     ],
     description:
       'Moderated a cybersecurity discussion on the human factors behind scams, social engineering, and awareness, guiding the conversation and audience questions.',
-    tags: ['Cybersecurity', 'Cyber Awareness', 'Social Engineering'],
+    tags: ['Cybersecurity', 'Social Engineering'],
   },
   {
     title: 'GO 101 - Practical Introduction for University Students',
@@ -930,7 +930,7 @@ function App() {
       <section className="section feature-section" id="writing">
         <div className="section-heading">
           <p className="section-kicker">Writing</p>
-          <h2>Medium Articles</h2>
+          <h2>Technical Writing</h2>
         </div>
         <div className="project-row-header article-row-header">
           <span>{writingArticles.length} articles</span>
