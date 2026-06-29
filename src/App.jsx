@@ -391,19 +391,51 @@ const communityHighlights = [
   },
 ];
 
-const skills = [
-  'Leadership',
-  'Communication',
-  'Technical Writing',
-  'Team Coordination',
-  'Event Planning',
-  'Event Handling',
-  'Finance',
-  'Budgeting',
-  'Project Management',
-  'Programming',
-  'Public Speaking',
-  'Teamwork',
+const skillGroups = [
+  {
+    title: 'Programming Languages',
+    items: ['Python', 'Java', 'JavaScript', 'C', 'SQL'],
+  },
+  {
+    title: 'Data Science & AI',
+    items: [
+      'Machine Learning',
+      'Pandas',
+      'NumPy',
+      'Scikit-learn',
+      'TensorFlow',
+      'XGBoost',
+      'Streamlit',
+      'Data Analytics',
+      'Data Visualization',
+      'Power BI',
+    ],
+  },
+  {
+    title: 'Software Development',
+    items: [
+      'Node.js',
+      'Express.js',
+      'REST APIs',
+      'HTML',
+      'CSS',
+      'Spring Boot',
+      'Flask',
+      'TypeScript',
+    ],
+  },
+  {
+    title: 'Mobile Development',
+    items: ['React Native', 'Expo'],
+  },
+  {
+    title: 'Databases',
+    items: ['MongoDB', 'MySQL', 'MS SQL'],
+  },
+  {
+    title: 'Tools & Platforms',
+    items: ['Git', 'GitHub', 'Jupyter Notebook', 'VS Code', 'Postman'],
+  },
 ];
 
 const stats = [
@@ -809,8 +841,14 @@ function App() {
 
       <section className="section" id="projects">
         <div className="section-heading">
-          <p className="section-kicker">Selected work</p>
-          <h2>Projects</h2>
+          <div>
+            <p className="section-kicker">Projects</p>
+            <h2>Featured Projects</h2>
+            <p className="section-tagline">
+              A collection of projects built to solve real-world problems
+              through technology.
+            </p>
+          </div>
         </div>
         <div className="project-tabs" role="tablist" aria-label="Project groups">
           {projectGroups.map((group) => (
@@ -927,10 +965,39 @@ function App() {
         </div>
       </section>
 
+      <section className="section skills-section" id="skills">
+        <div className="section-heading">
+          <p className="section-kicker">Skills</p>
+          <h2>Technical Toolkit</h2>
+          <p className="section-tagline">
+            Technologies and tools I use to build data-driven and software
+            solutions.
+          </p>
+        </div>
+        <div className="skills-grid">
+          {skillGroups.map((group) => (
+            <article className="skill-category" key={group.title}>
+              <h3>{group.title}</h3>
+              <div className="skills-list">
+                {group.items.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="section feature-section" id="writing">
         <div className="section-heading">
-          <p className="section-kicker">Writing</p>
-          <h2>Technical Writing</h2>
+          <div>
+            <p className="section-kicker">Writing</p>
+            <h2>Technical Writing</h2>
+            <p className="section-tagline">
+              Sharing knowledge and simplifying complex technical concepts
+              through writing.
+            </p>
+          </div>
         </div>
         <div className="project-row-header article-row-header">
           <span>{writingArticles.length} articles</span>
@@ -1003,8 +1070,14 @@ function App() {
 
       <section className="section feature-section" id="community">
         <div className="section-heading">
-          <p className="section-kicker">Community</p>
-          <h2>Speaking & Moderation</h2>
+          <div>
+            <p className="section-kicker">Community</p>
+            <h2>Speaking & Moderation</h2>
+            <p className="section-tagline">
+              Engaging audiences, fostering discussions, and sharing ideas with
+              the community.
+            </p>
+          </div>
         </div>
         <div className="feature-grid">
           {communityHighlights.map((highlight) => (
@@ -1052,22 +1125,16 @@ function App() {
         </div>
       </section>
 
-      <section className="section skills-section" id="skills">
-        <div className="section-heading">
-          <p className="section-kicker">Toolkit</p>
-          <h2>Skills</h2>
-        </div>
-        <div className="skills-list">
-          {skills.map((skill) => (
-            <span key={skill}>{skill}</span>
-          ))}
-        </div>
-      </section>
-
       <section className="section leadership-section" id="leadership">
         <div className="experience-title">
           <BriefcaseBusiness size={22} />
-          <h2>Leadership & Activities</h2>
+          <div>
+            <h2>Leadership & Activities</h2>
+            <p className="section-tagline">
+              Leading initiatives, building communities, and creating meaningful
+              impact.
+            </p>
+          </div>
         </div>
         <div className="timeline">
           {leadershipActivities.map((experience) => (
@@ -1084,7 +1151,13 @@ function App() {
       <section className="section credentials-section" id="certifications">
         <div className="experience-title">
           <BadgeCheck size={22} />
-          <h2>Licenses & Certifications</h2>
+          <div>
+            <h2>Licenses & Certifications</h2>
+            <p className="section-tagline">
+              A reflection of my commitment to continuous learning and
+              professional growth.
+            </p>
+          </div>
         </div>
         <div className="timeline">
           {licensesCertifications.map((credential) => (
@@ -1101,7 +1174,13 @@ function App() {
       <section className="section awards-section" id="awards">
         <div className="experience-title">
           <Award size={22} />
-          <h2>Honours & Awards</h2>
+          <div>
+            <h2>Honours & Awards</h2>
+            <p className="section-tagline">
+              Recognitions that celebrate dedication, leadership, and
+              excellence.
+            </p>
+          </div>
         </div>
         <div className="timeline">
           {honoursAwards.map((award) => (
@@ -1118,7 +1197,13 @@ function App() {
       <section className="section education-section">
         <div className="experience-title">
           <GraduationCap size={22} />
-          <h2>Education</h2>
+          <div>
+            <h2>Education</h2>
+            <p className="section-tagline">
+              Academic experiences that laid the foundation for my journey in
+              technology.
+            </p>
+          </div>
         </div>
         <div className="timeline">
           {education.map((item) => (
@@ -1135,6 +1220,10 @@ function App() {
         <div>
           <p className="section-kicker">Contact</p>
           <h2>Let&apos;s connect and build something meaningful.</h2>
+          <p className="section-tagline">
+            Always open to collaborations, opportunities, and meaningful
+            conversations.
+          </p>
           <p>
             I am open to opportunities in Colombo with on-site or hybrid work,
             and interested in data science, AI, technical writing, and
