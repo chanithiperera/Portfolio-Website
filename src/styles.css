@@ -280,10 +280,12 @@ code {
 
 .book-link {
   align-items: center;
-  background: rgba(255, 250, 240, 0.62);
-  border: 1px solid rgba(23, 32, 38, 0.12);
+  background: rgba(255, 226, 223, 0.82);
+  border: 1px solid rgba(240, 93, 94, 0.24);
   border-radius: 999px;
-  box-shadow: 0 10px 28px rgba(23, 32, 38, 0.08);
+  box-shadow:
+    0 10px 28px rgba(23, 32, 38, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
   color: #202020;
   display: inline-flex;
   font-size: 0.86rem;
@@ -307,9 +309,9 @@ code {
 
 .book-link:hover,
 .book-link:focus-visible {
-  background: #fffaf0;
-  border-color: rgba(240, 93, 94, 0.34);
-  color: #f05d5e;
+  background: #f05d5e;
+  border-color: rgba(240, 93, 94, 0.68);
+  color: #fff8ed;
   transform: translateY(-2px);
 }
 
@@ -335,22 +337,147 @@ code {
 
 .hero-grid::before {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0 15%, rgba(255, 255, 255, 0) 15%),
-    linear-gradient(180deg, rgba(255, 204, 205, 0.66) 0 11%, rgba(255, 132, 137, 0.58) 11% 100%);
+    linear-gradient(90deg, transparent 0 98%, rgba(23, 32, 38, 0.095) 98% 100%),
+    linear-gradient(0deg, transparent 0 98%, rgba(23, 32, 38, 0.07) 98% 100%),
+    radial-gradient(circle at 58% 45%, rgba(240, 93, 94, 0.2) 0 30%, transparent 30.5%),
+    radial-gradient(circle at 11% 96%, rgba(15, 118, 110, 0.26) 0 22%, transparent 22.5%),
+    linear-gradient(132deg, transparent 0 40%, rgba(240, 93, 94, 0.26) 40% calc(40% + 1px), transparent calc(40% + 1px) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.76) 0 14%, rgba(255, 255, 255, 0) 14%),
+    linear-gradient(180deg, rgba(255, 250, 240, 0.97) 0, rgba(248, 244, 238, 0.94) 100%);
+  background-size:
+    64px 64px,
+    64px 64px,
+    auto,
+    auto,
+    auto,
+    auto,
+    auto;
   bottom: 0;
-  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%, 0 64%);
+  clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 62%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.28) 15%, rgba(0, 0, 0, 0.7) 30%, #000 43%);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.28) 15%, rgba(0, 0, 0, 0.7) 30%, #000 43%);
   right: 0;
   top: -82px;
-  width: 48%;
+  width: 62%;
 }
 
 .hero-grid::after {
-  background: rgba(255, 184, 186, 0.34);
-  bottom: 50%;
-  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%, 0 48%);
+  background:
+    linear-gradient(90deg, transparent 0 98%, rgba(47, 159, 193, 0.07) 98% 100%),
+    linear-gradient(0deg, transparent 0 98%, rgba(240, 93, 94, 0.07) 98% 100%),
+    radial-gradient(circle at 78% 47%, #2f9fc1 0 5px, transparent 5.5px),
+    radial-gradient(circle at 15% 53%, rgba(240, 93, 94, 0.46) 0 11px, transparent 11.5px),
+    linear-gradient(132deg, transparent 0 67%, rgba(47, 159, 193, 0.5) 67% calc(67% + 1px), transparent calc(67% + 1px) 100%),
+    linear-gradient(132deg, transparent 0 78%, rgba(47, 159, 193, 0.28) 78% calc(78% + 1px), transparent calc(78% + 1px) 100%),
+    linear-gradient(90deg, transparent 0 83%, rgba(47, 159, 193, 0.18) 83% 100%),
+    linear-gradient(0deg, transparent 0 29%, rgba(240, 93, 94, 0.28) 29% calc(29% + 1px), transparent calc(29% + 1px) 100%);
+  background-size:
+    64px 64px,
+    64px 64px,
+    auto,
+    auto,
+    auto,
+    auto,
+    auto,
+    auto;
+  bottom: 0;
+  clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 62%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0, rgba(0, 0, 0, 0.22) 15%, rgba(0, 0, 0, 0.62) 30%, #000 43%);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0, rgba(0, 0, 0, 0.22) 15%, rgba(0, 0, 0, 0.62) 30%, #000 43%);
+  opacity: 0.95;
   right: 0;
   top: -82px;
-  width: 43%;
+  width: 62%;
+}
+
+.hero-dot-field {
+  background-image: radial-gradient(
+    circle,
+    rgba(47, 159, 193, 0.5) 0 1.2px,
+    transparent 1.5px
+  );
+  background-size: 15px 15px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.hero-dot-field--primary {
+  height: 132px;
+  right: 37%;
+  top: 4.6rem;
+  width: 160px;
+}
+
+.hero-dot-field--small {
+  background-size: 13px 13px;
+  height: 86px;
+  opacity: 0.72;
+  right: 14%;
+  top: 9.2rem;
+  width: 104px;
+}
+
+.hero-dot-field--low {
+  background-image: radial-gradient(
+    circle,
+    rgba(240, 93, 94, 0.38) 0 1.15px,
+    transparent 1.45px
+  );
+  background-size: 16px 16px;
+  bottom: 8.5rem;
+  height: 96px;
+  opacity: 0.58;
+  right: 28%;
+  width: 132px;
+}
+
+.hero-dot-half-circle {
+  background-image: radial-gradient(
+    circle,
+    rgba(47, 159, 193, 0.46) 0 1.2px,
+    transparent 1.5px
+  );
+  background-size: 16px 16px;
+  border-radius: 50%;
+  bottom: 2.6rem;
+  clip-path: inset(0 48% 0 0);
+  height: 178px;
+  opacity: 0.72;
+  pointer-events: none;
+  position: absolute;
+  right: 31%;
+  width: 178px;
+  z-index: 1;
+}
+
+.hero-dot-ball {
+  background-image: radial-gradient(
+    circle,
+    rgba(47, 159, 193, 0.42) 0 1.15px,
+    transparent 1.45px
+  );
+  background-size: 14px 14px;
+  border-radius: 50%;
+  height: 118px;
+  opacity: 0.58;
+  pointer-events: none;
+  position: absolute;
+  right: 46%;
+  top: 57%;
+  transform: translateY(-50%);
+  width: 118px;
+  z-index: 1;
+}
+
+.hero-dot-ball--edge {
+  bottom: 6.1rem;
+  height: 92px;
+  opacity: 0.46;
+  right: 4.8%;
+  top: auto;
+  transform: none;
+  width: 92px;
 }
 
 .side-rail {
@@ -426,6 +553,7 @@ code {
 
 .hello-stack h1 {
   animation: hello-rise 950ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+  color: #202020;
   font-size: clamp(4.9rem, 10.4vw, 9.8rem);
   font-weight: 420;
   letter-spacing: 0;
@@ -433,9 +561,45 @@ code {
   margin: 0;
 }
 
+.animated-text {
+  display: inline;
+}
+
+.animated-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.animated-space {
+  display: inline-block;
+  width: 0.26em;
+}
+
+.animated-letter {
+  animation: letter-rise 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(160ms + (var(--letter-index) * 24ms));
+  display: inline-block;
+  transform-origin: 50% 80%;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.hello-stack h1 .animated-letter {
+  animation-delay: calc(360ms + (var(--letter-index) * 70ms));
+}
+
+.hello-stack h1:hover .animated-letter {
+  transform: translateY(-0.035em);
+}
+
+.about-section h2 .animated-letter {
+  animation-delay: calc(80ms + (var(--letter-index) * 12ms));
+}
+
 .hello-stack p {
   animation: slide-fade-up 720ms ease 620ms both;
-  color: #171717;
+  color: #202020;
   font-size: clamp(1.34rem, 2.15vw, 1.88rem);
   font-weight: 560;
   line-height: 1.65;
@@ -445,6 +609,7 @@ code {
 }
 
 .intro-line-two {
+  color: inherit;
   display: inline-block;
   margin-left: 1.05em;
 }
@@ -1671,7 +1836,7 @@ h3 {
 
 .leadership-role-preview strong {
   color: #172026;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   line-height: 1.35;
 }
 
@@ -2012,7 +2177,7 @@ h3 {
 
 .media-viewer-details p {
   color: #526066;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   line-height: 1.6;
   margin: 0;
 }
@@ -2221,6 +2386,18 @@ h3 {
   }
 }
 
+@keyframes letter-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.32em, 0) rotateX(18deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+  }
+}
+
 @keyframes portrait-enter {
   from {
     opacity: 0;
@@ -2315,17 +2492,89 @@ h3 {
 }
 
 :root[data-theme="dark"] .book-link {
-  background: rgba(255, 248, 237, 0.12);
-  border-color: rgba(255, 248, 237, 0.2);
+  background: rgba(255, 119, 120, 0.16);
+  border-color: rgba(255, 119, 120, 0.36);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
   color: #fff8ed;
 }
 
 :root[data-theme="dark"] .book-link:hover,
 :root[data-theme="dark"] .book-link:focus-visible {
-  background: rgba(255, 248, 237, 0.2);
-  border-color: rgba(255, 119, 120, 0.44);
-  color: #ffb1b3;
+  background: #ff7778;
+  border-color: rgba(255, 119, 120, 0.72);
+  color: #11181c;
+}
+
+:root[data-theme="dark"] .hero-grid::before {
+  background:
+    linear-gradient(90deg, transparent 0 98%, rgba(255, 248, 237, 0.1) 98% 100%),
+    linear-gradient(0deg, transparent 0 98%, rgba(255, 248, 237, 0.08) 98% 100%),
+    radial-gradient(circle at 58% 45%, rgba(255, 119, 120, 0.2) 0 30%, transparent 30.5%),
+    radial-gradient(circle at 11% 96%, rgba(127, 221, 205, 0.23) 0 22%, transparent 22.5%),
+    linear-gradient(132deg, transparent 0 40%, rgba(255, 119, 120, 0.25) 40% calc(40% + 1px), transparent calc(40% + 1px) 100%),
+    linear-gradient(135deg, rgba(255, 248, 237, 0.14) 0 14%, rgba(255, 248, 237, 0) 14%),
+    linear-gradient(180deg, rgba(17, 24, 28, 0.9) 0, rgba(13, 30, 34, 0.88) 100%);
+  background-size:
+    64px 64px,
+    64px 64px,
+    auto,
+    auto,
+    auto,
+    auto,
+    auto;
+}
+
+:root[data-theme="dark"] .hero-grid::after {
+  background:
+    linear-gradient(90deg, transparent 0 98%, rgba(127, 221, 205, 0.08) 98% 100%),
+    linear-gradient(0deg, transparent 0 98%, rgba(255, 119, 120, 0.08) 98% 100%),
+    radial-gradient(circle at 78% 47%, #7fddcd 0 5px, transparent 5.5px),
+    radial-gradient(circle at 15% 53%, rgba(255, 119, 120, 0.44) 0 11px, transparent 11.5px),
+    linear-gradient(132deg, transparent 0 67%, rgba(127, 221, 205, 0.42) 67% calc(67% + 1px), transparent calc(67% + 1px) 100%),
+    linear-gradient(132deg, transparent 0 78%, rgba(127, 221, 205, 0.24) 78% calc(78% + 1px), transparent calc(78% + 1px) 100%),
+    linear-gradient(90deg, transparent 0 83%, rgba(127, 221, 205, 0.16) 83% 100%),
+    linear-gradient(0deg, transparent 0 29%, rgba(255, 119, 120, 0.24) 29% calc(29% + 1px), transparent calc(29% + 1px) 100%);
+  background-size:
+    64px 64px,
+    64px 64px,
+    auto,
+    auto,
+    auto,
+    auto,
+    auto,
+    auto;
+}
+
+:root[data-theme="dark"] .hero-dot-field {
+  background-image: radial-gradient(
+    circle,
+    rgba(127, 221, 205, 0.46) 0 1.2px,
+    transparent 1.5px
+  );
+}
+
+:root[data-theme="dark"] .hero-dot-field--low {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 119, 120, 0.34) 0 1.15px,
+    transparent 1.45px
+  );
+}
+
+:root[data-theme="dark"] .hero-dot-half-circle {
+  background-image: radial-gradient(
+    circle,
+    rgba(127, 221, 205, 0.4) 0 1.2px,
+    transparent 1.5px
+  );
+}
+
+:root[data-theme="dark"] .hero-dot-ball {
+  background-image: radial-gradient(
+    circle,
+    rgba(127, 221, 205, 0.34) 0 1.15px,
+    transparent 1.45px
+  );
 }
 
 :root[data-theme="dark"] .side-rail {
@@ -2343,6 +2592,10 @@ h3 {
 :root[data-theme="dark"] .project-card span,
 :root[data-theme="dark"] .timeline p {
   color: rgba(247, 240, 230, 0.68);
+}
+
+:root[data-theme="dark"] .hello-stack h1 {
+  color: #fff8ed;
 }
 
 :root[data-theme="dark"] .hello-stack p {
@@ -2902,6 +3155,11 @@ h3 {
   }
 
   .portrait {
+    transform: none;
+  }
+
+  .animated-letter {
+    opacity: 1;
     transform: none;
   }
 
