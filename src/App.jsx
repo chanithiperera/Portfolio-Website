@@ -250,9 +250,6 @@ const projects = [
   },
 ];
 
-const projectGroups = ['1st Year', '2nd Year', '3rd Year', 'Final Year'];
-const currentAcademicYear = '2nd Year';
-
 const writingArticles = [
   {
     title: 'What Are Artificial Neural Networks? A Simple Guide for Beginners',
@@ -583,9 +580,8 @@ function App() {
   const mainRef = useRef(null);
   const projectScrollerRef = useRef(null);
   const articleScrollerRef = useRef(null);
-  const [activeProjectGroup, setActiveProjectGroup] =
-    useState(currentAcademicYear);
   const [mediaViewer, setMediaViewer] = useState(null);
+  const [projectDetails, setProjectDetails] = useState(null);
   const [theme, setTheme] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme');
 
@@ -666,9 +662,6 @@ function App() {
     };
   }, []);
 
-  const filteredProjects = projects.filter(
-    (project) => project.academicYear === activeProjectGroup,
-  );
   const groupedLeadershipActivities = leadershipActivities.reduce(
     (groups, activity) => {
       if (
@@ -698,10 +691,6 @@ function App() {
     [],
   );
 
-  useEffect(() => {
-    projectScrollerRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
-  }, [activeProjectGroup]);
-
   const scrollProjectRow = (direction) => {
     const scroller = projectScrollerRef.current;
     if (!scroller) return;
@@ -729,11 +718,22 @@ function App() {
       imageIndex,
       images: project.images,
       title: project.title,
+      description: project.description,
+      organization: project.organization || project.publication,
+      date: project.date || project.year,
     });
   };
 
   const closeMediaViewer = () => {
     setMediaViewer(null);
+  };
+
+  const openProjectDetails = (project) => {
+    setProjectDetails(project);
+  };
+
+  const closeProjectDetails = () => {
+    setProjectDetails(null);
   };
 
   const showMediaImage = (direction) => {
@@ -775,6 +775,22 @@ function App() {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [mediaViewer]);
+
+  useEffect(() => {
+    if (!projectDetails) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeProjectDetails();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [projectDetails]);
 
   return (
     <>
@@ -942,118 +958,80 @@ function App() {
             </p>
           </div>
         </div>
-        <div className="project-tabs" role="tablist" aria-label="Project groups">
-          {projectGroups.map((group) => (
-            <button
-              key={group}
-              className={activeProjectGroup === group ? 'is-active' : ''}
-              type="button"
-              role="tab"
-              aria-selected={activeProjectGroup === group}
-              onClick={() => setActiveProjectGroup(group)}
-            >
-              {group} Projects
-            </button>
-          ))}
-        </div>
-        <div className="project-panel" role="tabpanel">
-          {filteredProjects.length > 0 ? (
-            <>
-              <div className="project-row-header">
-                <span>{filteredProjects.length} projects</span>
-                <div className="project-row-controls">
+        <div className="project-panel">
+          <div className="project-row-header">
+            <span>{projects.length} projects</span>
+            <div className="project-row-controls">
+              <button
+                type="button"
+                aria-label="Previous projects"
+                onClick={() => scrollProjectRow('previous')}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                type="button"
+                aria-label="Next projects"
+                onClick={() => scrollProjectRow('next')}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+          <div className="projects-grid" ref={projectScrollerRef}>
+            {projects.map((project) => (
+              <article className="project-card" key={project.title}>
+                {project.images?.length ? (
                   <button
+                    className="project-media-button"
                     type="button"
-                    aria-label="Previous projects"
-                    onClick={() => scrollProjectRow('previous')}
+                    aria-label={`Open ${project.title} gallery`}
+                    onClick={() => openMediaViewer(project)}
                   >
-                    <ChevronLeft size={18} />
+                    <img
+                      className="project-media-image"
+                      src={project.images[0].src}
+                      alt={project.images[0].alt || `${project.title} preview`}
+                    />
+                    <span>View gallery</span>
                   </button>
-                  <button
-                    type="button"
-                    aria-label="Next projects"
-                    onClick={() => scrollProjectRow('next')}
+                ) : (
+                  <div className="project-media-slot">
+                    <Code2 size={24} />
+                    <span>Media coming soon</span>
+                  </div>
+                )}
+                <p>{project.type}</p>
+                <h3>{project.title}</h3>
+                <span>{project.description}</span>
+                <div className="tag-row">
+                  {project.tags.map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+                </div>
+                <div className="project-actions">
+                  <a
+                    className="project-link"
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    <ChevronRight size={18} />
+                    <span className="project-link-icon">
+                      <GitHubLogo />
+                    </span>
+                    GitHub <ArrowUpRight size={14} />
+                  </a>
+                  <button
+                    className="project-details-button"
+                    type="button"
+                    onClick={() => openProjectDetails(project)}
+                  >
+                    View Details
                   </button>
                 </div>
-              </div>
-              <div className="projects-grid" ref={projectScrollerRef}>
-                {filteredProjects.map((project) => (
-                  <article className="project-card" key={project.title}>
-                    {project.images?.length ? (
-                      <button
-                        className="project-media-button"
-                        type="button"
-                        aria-label={`Open ${project.title} gallery`}
-                        onClick={() => openMediaViewer(project)}
-                      >
-                        <img
-                          className="project-media-image"
-                          src={project.images[0].src}
-                          alt={project.images[0].alt || `${project.title} preview`}
-                        />
-                        <span>View gallery</span>
-                      </button>
-                    ) : (
-                      <div className="project-media-slot">
-                        <Code2 size={24} />
-                        <span>Media coming soon</span>
-                      </div>
-                    )}
-                    <p>{project.type}</p>
-                    <h3>{project.title}</h3>
-                    {project.titleNote ? (
-                      <span className="project-title-note">
-                        {project.titleNote}
-                      </span>
-                    ) : null}
-                    <small className="project-year">{project.year}</small>
-                    <span>{project.description}</span>
-                    {project.highlights ? (
-                      <div className="project-highlights">
-                        <strong>What I built</strong>
-                        <ul>
-                          {project.highlights.map((highlight) => (
-                            <li key={highlight}>{highlight}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-                    {project.highlights ? null : (
-                      <>
-                        <strong className="project-contribution">
-                          My contribution
-                        </strong>
-                        <span>{project.contribution}</span>
-                      </>
-                    )}
-                    <div className="tag-row">
-                      {project.tags.map((tag) => (
-                        <small key={tag}>{tag}</small>
-                      ))}
-                    </div>
-                    <a
-                      className="project-link"
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span className="project-link-icon">
-                        <GitHubLogo />
-                      </span>
-                      GitHub <ArrowUpRight size={14} />
-                    </a>
-                  </article>
-                ))}
-              </div>
-            </>
-          ) : (
-            <article className="project-empty-card">
-              <Code2 size={24} />
-              <h3>{activeProjectGroup} projects coming soon</h3>
-            </article>
-          )}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1178,7 +1156,6 @@ function App() {
               )}
               <p>{article.publication}</p>
               <h3>{article.title}</h3>
-              <small>{article.category}</small>
               <span>{article.description}</span>
               <div className="tag-row article-tag-row">
                 {article.tags.map((tag) => (
@@ -1359,6 +1336,96 @@ function App() {
           </span>
         </div>
       </section>
+      {projectDetails ? (
+        <div
+          className="media-viewer project-details-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${projectDetails.title} details`}
+          onClick={closeProjectDetails}
+        >
+          <div
+            className="media-viewer-panel project-details-panel"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="media-viewer-header">
+              <div>
+                <strong>{projectDetails.title}</strong>
+                <span>
+                  {projectDetails.type} • {projectDetails.year}
+                </span>
+              </div>
+              <button
+                type="button"
+                aria-label="Close project details"
+                onClick={closeProjectDetails}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="project-details-content">
+              {projectDetails.images?.[0] ? (
+                <button
+                  className="project-details-media"
+                  type="button"
+                  aria-label={`Open ${projectDetails.title} gallery`}
+                  onClick={() => {
+                    closeProjectDetails();
+                    openMediaViewer(projectDetails);
+                  }}
+                >
+                  <img
+                    src={projectDetails.images[0].src}
+                    alt={
+                      projectDetails.images[0].alt ||
+                      `${projectDetails.title} preview`
+                    }
+                  />
+                  <span>
+                    <Images size={14} />
+                    View gallery
+                  </span>
+                </button>
+              ) : null}
+              <div className="project-details-copy">
+                <p>{projectDetails.description}</p>
+                {projectDetails.highlights ? (
+                  <div className="project-highlights">
+                    <strong>What I built</strong>
+                    <ul>
+                      {projectDetails.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                {projectDetails.contribution ? (
+                  <div className="project-details-contribution">
+                    <strong>My contribution</strong>
+                    <p>{projectDetails.contribution}</p>
+                  </div>
+                ) : null}
+                <div className="tag-row">
+                  {projectDetails.tags.map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+                </div>
+                <a
+                  className="project-link"
+                  href={projectDetails.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="project-link-icon">
+                    <GitHubLogo />
+                  </span>
+                  GitHub <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
       {mediaViewer ? (
         <div
           className="media-viewer"
