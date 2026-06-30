@@ -77,6 +77,34 @@ const MediumLogo = () => (
   </svg>
 );
 
+const AnimatedText = ({ text }) => {
+  let letterIndex = 0;
+
+  return (
+    <span className="animated-text" aria-hidden="true">
+      {text.split(' ').map((word, wordIndex, words) => (
+        <span className="animated-word" key={`${word}-${wordIndex}`}>
+          {word.split('').map((letter, index) => {
+            const currentIndex = letterIndex;
+            letterIndex += 1;
+
+            return (
+              <span
+                className="animated-letter"
+                key={`${letter}-${index}`}
+                style={{ '--letter-index': currentIndex }}
+              >
+                {letter}
+              </span>
+            );
+          })}
+          {wordIndex < words.length - 1 ? <span className="animated-space"> </span> : null}
+        </span>
+      ))}
+    </span>
+  );
+};
+
 const profile = {
   name: 'Chanithi Perera',
   role: 'Data Science Undergraduate',
@@ -866,7 +894,9 @@ function App() {
               </div>
 
               <div className="hello-stack">
-                <h1>Hello</h1>
+                <h1 aria-label="Hello">
+                  <AnimatedText text="Hello" />
+                </h1>
                 <p>
                   <span>- I&apos;m {profile.name},</span>
                   <br />
@@ -900,6 +930,12 @@ function App() {
               </a>
             </div>
 
+            <span className="hero-dot-field hero-dot-field--primary" aria-hidden="true" />
+            <span className="hero-dot-field hero-dot-field--small" aria-hidden="true" />
+            <span className="hero-dot-field hero-dot-field--low" aria-hidden="true" />
+            <span className="hero-dot-half-circle" aria-hidden="true" />
+            <span className="hero-dot-ball" aria-hidden="true" />
+            <span className="hero-dot-ball hero-dot-ball--edge" aria-hidden="true" />
             <img
               className="portrait"
               src={heroPortrait}
@@ -926,7 +962,9 @@ function App() {
       <section className="section about-section" id="about">
         <div>
           <p className="section-kicker">About</p>
-          <h2>Where Data Science meets creativity, community, and impact.</h2>
+          <h2 aria-label="Where Data Science meets creativity, community, and impact.">
+            <AnimatedText text="Where Data Science meets creativity, community, and impact." />
+          </h2>
         </div>
         <div className="about-copy">
           <p>
