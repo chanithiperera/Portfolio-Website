@@ -4,7 +4,6 @@ import {
   Images,
   Award,
   BadgeCheck,
-  BriefcaseBusiness,
   ChevronLeft,
   ChevronRight,
   Code2,
@@ -142,6 +141,8 @@ const projects = [
     ],
     description:
       'Integrated agricultural web platform for data-driven fertilizer guidance and centralized resource management in Sri Lanka, powered by an XGBoost microservice.',
+    shortDescription:
+      'AI-powered platform for personalized paddy fertilizer recommendations and agricultural resource management.',
     contribution:
       'Focused on agricultural service booking workflows, officer availability, farmer request tracking, notifications, and structured soil and climate datasets.',
     github:
@@ -161,6 +162,8 @@ const projects = [
     ],
     description:
       'Full-stack mobile application for zoo operations and visitor experiences, covering ticketing, animal information, online shopping, and administrative management.',
+    shortDescription:
+      'Mobile platform for zoo ticketing, animal information, shopping, and admin workflows.',
     contribution:
       'Built ticket and show booking workflows, scheduling, visitor validation, backend API integration, and MongoDB database management.',
     github: 'https://github.com/chanithiperera/Zoo-Management.git',
@@ -183,6 +186,8 @@ const projects = [
     ],
     description:
       'Predictive system that identifies students at risk of depression using supervised machine learning models and a Streamlit decision-support interface.',
+    shortDescription:
+      'Machine learning app that predicts student depression risk through a Streamlit interface.',
     contribution:
       'Developed and evaluated the Random Forest model, built the Streamlit app, and focused on interpretability, ethics, and performance tuning.',
     github:
@@ -202,6 +207,8 @@ const projects = [
     ],
     description:
       'Healthcare management platform for appointment handling, medical records, customer support tickets, feedback, and real-time notifications.',
+    shortDescription:
+      'Healthcare support platform for appointments, records, tickets, feedback, and notifications.',
     contribution:
       'Applied software engineering principles, design patterns, Agile practices, secure backend development, and UI/database integration.',
     github:
@@ -221,6 +228,8 @@ const projects = [
     ],
     description:
       'Web-based e-commerce medicine store with separate user and admin workflows, JSON-based storage, cart checkout, prescription uploads, and order processing.',
+    shortDescription:
+      'Medicine e-commerce app with cart checkout, prescription uploads, and admin workflows.',
     contribution:
       'Implemented cart and checkout functionality, queue-based order processing, and JSON CRUD logic for products and cart operations.',
     github:
@@ -264,6 +273,8 @@ const projects = [
     ],
     description:
       'Developed a smart garage prototype that automates access control, lighting, ventilation, and real-time monitoring using Arduino and IoT technologies.',
+    shortDescription:
+      'Arduino and IoT prototype for automated access, lighting, ventilation, and monitoring.',
     highlights: [
       'RFID-based smart gate access',
       'Obstacle detection with ultrasonic & IR sensors',
@@ -471,6 +482,29 @@ const stats = [
   ['Lead', 'Empowering communities through collaboration'],
 ];
 
+const leadershipImpact = [
+  {
+    value: 7,
+    label: 'Leadership Roles',
+    detail: 'Across student organizations and communities',
+  },
+  {
+    value: 5,
+    label: 'Communities',
+    detail: 'Women in FOSS, IEEE, FOSS, MS Club, and Gavel',
+  },
+  {
+    value: 15,
+    label: 'Events Organized',
+    detail: 'Community programs, sessions, podcasts, and meetings',
+  },
+  {
+    value: 8,
+    label: 'Years Involved',
+    detail: 'A leadership journey shaped by service and teamwork',
+  },
+];
+
 const leadershipActivities = [
   {
     period: 'Jun 2026 - Present',
@@ -606,10 +640,10 @@ const education = [
 
 function App() {
   const mainRef = useRef(null);
-  const projectScrollerRef = useRef(null);
   const articleScrollerRef = useRef(null);
   const [mediaViewer, setMediaViewer] = useState(null);
   const [projectDetails, setProjectDetails] = useState(null);
+  const [showMoreProjects, setShowMoreProjects] = useState(false);
   const [theme, setTheme] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme');
 
@@ -632,7 +666,7 @@ function App() {
     if (!root) return undefined;
 
     const revealItems = root.querySelectorAll(
-      '.section, .intro-band, .project-card, .feature-card, .timeline article, .contact-links > *',
+      '.section, .intro-band, .project-card, .feature-card, .impact-card, .timeline article, .contact-links > *',
     );
 
     const revealObserver = new IntersectionObserver(
@@ -719,15 +753,9 @@ function App() {
     [],
   );
 
-  const scrollProjectRow = (direction) => {
-    const scroller = projectScrollerRef.current;
-    if (!scroller) return;
-
-    scroller.scrollBy({
-      left: direction === 'next' ? 420 : -420,
-      behavior: 'smooth',
-    });
-  };
+  const featuredProjects = projects.slice(0, -2);
+  const extraProjects = projects.slice(-2);
+  const hiddenProjectCount = extraProjects.length;
 
   const scrollArticleRow = (direction) => {
     const scroller = articleScrollerRef.current;
@@ -999,26 +1027,13 @@ function App() {
         <div className="project-panel">
           <div className="project-row-header">
             <span>{projects.length} projects</span>
-            <div className="project-row-controls">
-              <button
-                type="button"
-                aria-label="Previous projects"
-                onClick={() => scrollProjectRow('previous')}
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                type="button"
-                aria-label="Next projects"
-                onClick={() => scrollProjectRow('next')}
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
           </div>
-          <div className="projects-grid" ref={projectScrollerRef}>
-            {projects.map((project) => (
-              <article className="project-card" key={project.title}>
+          <div className="projects-grid">
+            {featuredProjects.map((project, index) => (
+              <article
+                className={`project-card${index === 0 ? ' project-card-featured' : ''}`}
+                key={project.title}
+              >
                 {project.images?.length ? (
                   <button
                     className="project-media-button"
@@ -1041,11 +1056,14 @@ function App() {
                 )}
                 <p>{project.type}</p>
                 <h3>{project.title}</h3>
-                <span>{project.description}</span>
+                <span>{project.shortDescription || project.description}</span>
                 <div className="tag-row">
-                  {project.tags.map((tag) => (
+                  {project.tags.slice(0, 5).map((tag) => (
                     <small key={tag}>{tag}</small>
                   ))}
+                  {project.tags.length > 5 ? (
+                    <small>+{project.tags.length - 5}</small>
+                  ) : null}
                 </div>
                 <div className="project-actions">
                   <a
@@ -1069,6 +1087,26 @@ function App() {
                 </div>
               </article>
             ))}
+            {!showMoreProjects && (
+              <button
+                className="project-card project-more-card"
+                type="button"
+                onClick={() => setShowMoreProjects(true)}
+              >
+                <span className="project-more-icon">
+                  <Images size={21} />
+                </span>
+                <p>{hiddenProjectCount} more projects</p>
+                <h3>View More Projects</h3>
+                <span>
+                  Open additional project showcases, including the medicine
+                  store and automated garage system.
+                </span>
+                <strong>
+                  View projects <ArrowUpRight size={15} />
+                </strong>
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -1084,7 +1122,10 @@ function App() {
         </div>
         <div className="skills-grid">
           {skillGroups.map((group) => (
-            <article className="skill-category" key={group.title}>
+            <article
+              className={`skill-category${group.title === 'Data Science & AI' ? ' skill-category-featured' : ''}${group.title === 'Tools & Platforms' ? ' skill-category-wide' : ''}`}
+              key={group.title}
+            >
               <h3>{group.title}</h3>
               <div className="skills-list">
                 {group.items.map((skill) => (
@@ -1105,6 +1146,17 @@ function App() {
               impact.
             </p>
           </div>
+        </div>
+        <div className="impact-dashboard" aria-label="Leadership impact summary">
+          {leadershipImpact.map((item) => (
+            <article className="impact-card" key={item.label}>
+              <strong data-count-to={item.value} data-count-suffix="+">
+                0
+              </strong>
+              <span>{item.label}</span>
+              <p>{item.detail}</p>
+            </article>
+          ))}
         </div>
         <div className="timeline leadership-timeline">
           {groupedLeadershipActivities.map((group) => (
@@ -1374,6 +1426,104 @@ function App() {
           </span>
         </div>
       </section>
+      {showMoreProjects ? (
+        <div
+          className="media-viewer project-more-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Additional projects"
+          onClick={() => setShowMoreProjects(false)}
+        >
+          <div
+            className="media-viewer-panel project-more-modal-panel"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="media-viewer-header">
+              <div>
+                <strong>Additional Projects</strong>
+                <span>Two more project showcases</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Close additional projects"
+                onClick={() => setShowMoreProjects(false)}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="project-more-modal-grid">
+              {extraProjects.map((project) => (
+                <article className="project-card project-card-compact" key={project.title}>
+                  {project.images?.length ? (
+                    <button
+                      className="project-media-button"
+                      type="button"
+                      aria-label={`Open ${project.title} gallery`}
+                      onClick={() => {
+                        setShowMoreProjects(false);
+                        openMediaViewer(project);
+                      }}
+                    >
+                      <img
+                        className="project-media-image"
+                        src={project.images[0].src}
+                        alt={project.images[0].alt || `${project.title} preview`}
+                      />
+                      <span>View gallery</span>
+                    </button>
+                  ) : (
+                    <div className="project-media-slot">
+                      <Code2 size={24} />
+                      <span>Media coming soon</span>
+                    </div>
+                  )}
+                  <p>{project.type}</p>
+                  <h3>{project.title}</h3>
+                  <span>{project.shortDescription || project.description}</span>
+                  <div className="tag-row">
+                    {project.tags.slice(0, 5).map((tag) => (
+                      <small key={tag}>{tag}</small>
+                    ))}
+                    {project.tags.length > 5 ? (
+                      <small>+{project.tags.length - 5}</small>
+                    ) : null}
+                  </div>
+                  <div className="project-actions">
+                    <a
+                      className="project-link"
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="project-link-icon">
+                        <GitHubLogo />
+                      </span>
+                      GitHub <ArrowUpRight size={14} />
+                    </a>
+                    <button
+                      className="project-details-button"
+                      type="button"
+                      onClick={() => {
+                        setShowMoreProjects(false);
+                        openProjectDetails(project);
+                      }}
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <button
+              className="project-collapse-button project-more-modal-close"
+              type="button"
+              onClick={() => setShowMoreProjects(false)}
+            >
+              Collapse
+            </button>
+          </div>
+        </div>
+      ) : null}
       {projectDetails ? (
         <div
           className="media-viewer project-details-modal"
