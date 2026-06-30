@@ -448,30 +448,92 @@ const leadershipActivities = [
   {
     period: 'Jun 2026 - Present',
     title: 'Vice Secretary',
-    organization: 'SLIIT Women In FOSS Community',
+    organization: 'SLIIT Women in FOSS Community',
+    category: 'Community Leadership',
     description:
-      'Appointed for the 2026/27 term, supporting organizational documentation, meeting records, and official communications.',
+      'Coordinates official communications and documentation while supporting community initiatives and events.',
+    tags: ['Leadership', 'Communication', 'Coordination'],
   },
   {
     period: 'May 2026 - Present',
     title: 'Industry 360 Cast Content Writing Team Lead',
     organization: 'IEEE Student Branch of SLIIT',
+    category: 'Content Leadership',
     description:
-      'Leads content writing for Industry 360 Cast while coordinating with the organizing committee and event teams.',
+      'Leads content planning and writing for Industry 360 Cast communications.',
+    tags: ['Team Leadership', 'Content Writing', 'Team Coordination'],
+  },
+  {
+    period: 'May 2026 - Present',
+    title: 'Industry 360 Cast Organizing Committee Member',
+    organization: 'IEEE Student Branch of SLIIT',
+    category: 'Event Organizing',
+    description:
+      'Supports planning, workflows, and committee coordination for an industry-focused student initiative.',
+    tags: ['Event Planning', 'Event Handling', 'Teamwork'],
+  },
+  {
+    period: 'Feb 2026 - Apr 2026',
+    title: 'Finance Committee Member - ImpactX 2026',
+    organization: 'SLIIT Women in FOSS Community',
+    category: 'Finance & Events',
+    description:
+      'Contributed to ImpactX 2026, SLIIT first Women’s Day tech event, supporting finance-related planning, budgeting, and event coordination.',
+    tags: ['Finance', 'Budgeting', 'Event Coordination'],
   },
   {
     period: 'Sep 2025 - Present',
     title: 'Technical Writer',
     organization: 'Medium',
+    category: 'Technical Writing',
     description:
-      'Authors technical articles on artificial intelligence, machine learning, data science, and software engineering.',
+      'Writes beginner-friendly articles that simplify AI, data science, and software engineering concepts.',
+    tags: ['Technical Writing', 'AI', 'Software Engineering'],
+  },
+  {
+    period: 'Aug 2025 - Present',
+    title: 'Member',
+    organization: 'MS Club of SLIIT',
+    category: 'Student Community',
+    description:
+      'Participates in a student tech community focused on learning, collaboration, and knowledge sharing around Microsoft and software technologies.',
+    tags: ['Community', 'Learning', 'Technology'],
+  },
+  {
+    period: 'Jul 2025 - Present',
+    title: 'Member',
+    organization: 'SLIIT Women in FOSS Community',
+    category: 'Women in Tech',
+    description:
+      'Engages with initiatives that promote collaboration, innovation, and opportunities for women in technology.',
+    tags: ['Women in Tech', 'Collaboration', 'Community'],
+  },
+  {
+    period: 'Jul 2025 - Jun 2026',
+    title: 'Member',
+    organization: 'SLIIT FOSS Community',
+    category: 'Open Source Community',
+    description:
+      'Participated in open-source community activities, programming-focused initiatives, and student-led technology events.',
+    tags: ['Programming', 'Open Source', 'Hosting Events'],
   },
   {
     period: 'Dec 2024 - Dec 2025',
     title: 'Organizing Committee Member',
     organization: 'SLIIT Gavel Club',
+    category: 'Public Speaking',
     description:
-      'Contributed to the 187th Educational Meeting and strengthened public speaking, event planning, and coordination skills.',
+      'Helped organize educational meetings while strengthening public speaking and event coordination.',
+    tags: ['Public Speaking', 'Event Planning', 'Communication'],
+  },
+  {
+    period: 'Jan 2016 - Sep 2023',
+    title: 'President Guide Award Recipient',
+    organization: 'Sri Lanka Girl Guides Association',
+    category: 'Early Leadership',
+    description:
+      'Completed national-level guiding challenges and community initiatives to earn the association highest award.',
+    tags: ['Leadership', 'Teamwork', 'Community Service'],
   },
 ];
 
@@ -605,6 +667,34 @@ function App() {
   const filteredProjects = projects.filter(
     (project) => project.academicYear === activeProjectGroup,
   );
+  const groupedLeadershipActivities = leadershipActivities.reduce(
+    (groups, activity) => {
+      if (
+        activity.title === 'Member' &&
+        activity.organization === 'SLIIT Women in FOSS Community'
+      ) {
+        return groups;
+      }
+
+      const existingGroup = groups.find(
+        (group) => group.organization === activity.organization,
+      );
+
+      if (existingGroup) {
+        existingGroup.roles.push(activity);
+        return groups;
+      }
+
+      return [
+        ...groups,
+        {
+          organization: activity.organization,
+          roles: [activity],
+        },
+      ];
+    },
+    [],
+  );
 
   useEffect(() => {
     projectScrollerRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
@@ -668,11 +758,11 @@ function App() {
         closeMediaViewer();
       }
 
-      if (event.key === 'ArrowLeft' && mediaViewer.images.length > 1) {
+      if (event.key === 'ArrowLeft' && mediaViewer?.images.length > 1) {
         showMediaImage('previous');
       }
 
-      if (event.key === 'ArrowRight' && mediaViewer.images.length > 1) {
+      if (event.key === 'ArrowRight' && mediaViewer?.images.length > 1) {
         showMediaImage('next');
       }
     };
@@ -988,6 +1078,47 @@ function App() {
         </div>
       </section>
 
+      <section className="section leadership-section" id="leadership">
+        <div className="experience-title">
+          <div>
+            <h2>Leadership & Impact</h2>
+            <p className="section-tagline">
+              Leading initiatives, building communities, and creating meaningful
+              impact.
+            </p>
+          </div>
+        </div>
+        <div className="timeline leadership-timeline">
+          {groupedLeadershipActivities.map((group) => (
+            <article
+              className="leadership-card leadership-group-card"
+              key={group.organization}
+            >
+              <div className="leadership-group-head">
+                <div>
+                  <h3>{group.organization}</h3>
+                  <div className="leadership-role-summary">
+                    {group.roles.slice(0, 2).map((role) => (
+                      <span key={role.title}>{role.title}</span>
+                    ))}
+                  </div>
+                </div>
+                <span>{group.roles[group.roles.length - 1].period}</span>
+              </div>
+              <div className="leadership-card-tags">
+                {Array.from(
+                  new Set(group.roles.flatMap((role) => role.tags)),
+                )
+                  .slice(0, 3)
+                  .map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="section feature-section" id="writing">
         <div className="section-heading">
           <div>
@@ -1120,29 +1251,6 @@ function App() {
                   <small key={tag}>{tag}</small>
                 ))}
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section leadership-section" id="leadership">
-        <div className="experience-title">
-          <BriefcaseBusiness size={22} />
-          <div>
-            <h2>Leadership & Activities</h2>
-            <p className="section-tagline">
-              Leading initiatives, building communities, and creating meaningful
-              impact.
-            </p>
-          </div>
-        </div>
-        <div className="timeline">
-          {leadershipActivities.map((experience) => (
-            <article key={`${experience.title}-${experience.organization}`}>
-              <span>{experience.period}</span>
-              <h3>{experience.title}</h3>
-              <p className="timeline-org">{experience.organization}</p>
-              <p>{experience.description}</p>
             </article>
           ))}
         </div>
@@ -1311,3 +1419,4 @@ function App() {
 }
 
 export default App;
+
