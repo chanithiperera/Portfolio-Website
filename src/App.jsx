@@ -329,6 +329,8 @@ const communityHighlights = [
   {
     title:
       'She Talks Tech Podcast - From Bugs to Breakthroughs: Why Software Projects Fail and How Teams Succeed',
+    bentoTitle: 'She Talks Tech Podcast - From Bugs to Breakthroughs',
+    bentoSubtitle: 'Women in FOSS Community',
     role: 'Guest Speaker',
     organization: 'Women in FOSS Community',
     images: [
@@ -1210,48 +1212,44 @@ function App() {
             </p>
           </div>
         </div>
-        <div className="feature-grid">
-          {communityHighlights.map((highlight) => (
-            <article className="feature-card" key={highlight.title}>
+        <div className="speaking-bento">
+          {communityHighlights.map((highlight, index) => (
+            <button
+              className={`speaking-tile ${index === 0 ? 'is-featured' : ''}`}
+              type="button"
+              key={highlight.title}
+              aria-label={`Open ${highlight.title} gallery`}
+              onClick={() => openMediaViewer(highlight)}
+            >
               {highlight.images?.length ? (
-                <button
-                  className="feature-media-button"
-                  type="button"
-                  aria-label={`Open ${highlight.title} gallery`}
-                  onClick={() => openMediaViewer(highlight)}
-                >
-                  <img
-                    src={highlight.images[0].src}
-                    alt={
-                      highlight.images[0].alt ||
-                      `${highlight.title} preview`
-                    }
-                  />
-                  <span>
-                    <Images size={14} />
-                    {highlight.images.length > 1
-                      ? 'View gallery'
-                      : 'View image'}
-                  </span>
-                </button>
+                <img
+                  src={highlight.images[0].src}
+                  alt={highlight.images[0].alt || `${highlight.title} preview`}
+                />
               ) : (
-                <div className="feature-media-slot">
-                  <UserRound size={24} />
-                  <span>Session media coming soon</span>
-                </div>
+                <span className="speaking-tile-fallback">
+                  <UserRound size={26} />
+                </span>
               )}
-              <p>{highlight.role}</p>
-              <h3>{highlight.title}</h3>
-              <small>
-                {highlight.organization} {highlight.date}
-              </small>
-              <span>{highlight.description}</span>
-              <div className="tag-row">
-                {highlight.tags.map((tag) => (
-                  <small key={tag}>{tag}</small>
-                ))}
-              </div>
-            </article>
+              <span className="speaking-tile-shade" />
+              <span className="speaking-tile-count">
+                <Images size={14} />
+                {highlight.images?.length || 0}
+              </span>
+              <span className="speaking-tile-content">
+                <small>{highlight.role}</small>
+                <strong>{highlight.bentoTitle || highlight.title}</strong>
+                <em>
+                  {highlight.bentoSubtitle ||
+                    `${highlight.organization}${highlight.date ? ` • ${highlight.date}` : ''}`}
+                </em>
+                <span className="speaking-tags">
+                  {highlight.tags.slice(0, 3).map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </span>
+              </span>
+            </button>
           ))}
         </div>
       </section>
@@ -1381,6 +1379,18 @@ function App() {
                 <X size={18} />
               </button>
             </div>
+            {mediaViewer.description ? (
+              <div className="media-viewer-details">
+                {mediaViewer.organization || mediaViewer.date ? (
+                  <small>
+                    {[mediaViewer.organization, mediaViewer.date]
+                      .filter(Boolean)
+                      .join(' • ')}
+                  </small>
+                ) : null}
+                <p>{mediaViewer.description}</p>
+              </div>
+            ) : null}
             <div className="media-viewer-stage">
               {mediaViewer.images.length > 1 ? (
                 <button
