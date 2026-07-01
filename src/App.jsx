@@ -9,12 +9,16 @@ import {
   Code2,
   Download,
   GraduationCap,
+  HeartHandshake,
   Home,
   Mail,
   MapPin,
+  Mic2,
   Moon,
   PenLine,
+  RadioTower,
   Send,
+  Sparkles,
   Sun,
   UserRound,
   X,
@@ -39,6 +43,10 @@ import go101IntroSlide from './assets/go101-intro-slide.png';
 import go101SpeakerView from './assets/go101-speaker-view.png';
 import healthcareCustomerCareHome from './assets/healthcare-customer-care-home.png';
 import heroPortrait from './assets/chanithi-upper-body-cutout.png';
+import impactCommunities from './assets/impact-communities.png';
+import impactEvents from './assets/impact-events.png';
+import impactLeadershipRoles from './assets/impact-leadership-roles.png';
+import impactYearsInvolved from './assets/impact-years-involved.png';
 import medicineStoreHome from './assets/medicine-store-home.jpg';
 import studentDepressionHighRisk from './assets/student-depression-high-risk.png';
 import studentDepressionLowRisk from './assets/student-depression-low-risk.png';
@@ -487,21 +495,26 @@ const leadershipImpact = [
     value: 7,
     label: 'Leadership Roles',
     detail: 'Across student organizations and communities',
+    image: impactLeadershipRoles,
   },
   {
     value: 5,
     label: 'Communities',
     detail: 'Women in FOSS, IEEE, FOSS, MS Club, and Gavel',
+    image: impactCommunities,
   },
   {
     value: 15,
     label: 'Events Organized',
     detail: 'Community programs, sessions, podcasts, and meetings',
+    image: impactEvents,
   },
   {
     value: 8,
     label: 'Years Involved',
     detail: 'A leadership journey shaped by service and teamwork',
+    image: impactYearsInvolved,
+    imagePosition: 'center 66%',
   },
 ];
 
@@ -597,6 +610,37 @@ const leadershipActivities = [
     tags: ['Leadership', 'Teamwork', 'Community Service'],
   },
 ];
+
+const leadershipGroupMeta = {
+  'SLIIT Women in FOSS Community': {
+    period: 'Jul 2025 - Present',
+    icon: HeartHandshake,
+  },
+  'IEEE Student Branch of SLIIT': {
+    period: 'May 2026 - Present',
+    icon: RadioTower,
+  },
+  Medium: {
+    period: 'Sep 2025 - Present',
+    icon: PenLine,
+  },
+  'MS Club of SLIIT': {
+    period: 'Aug 2025 - Present',
+    icon: Code2,
+  },
+  'SLIIT FOSS Community': {
+    period: 'Jul 2025 - Jun 2026',
+    icon: Code2,
+  },
+  'SLIIT Gavel Club': {
+    period: 'Dec 2024 - Dec 2025',
+    icon: Mic2,
+  },
+  'Sri Lanka Girl Guides Association': {
+    period: 'Jan 2016 - Sep 2023',
+    icon: Sparkles,
+  },
+};
 
 const licensesCertifications = [
   {
@@ -746,6 +790,7 @@ function App() {
         ...groups,
         {
           organization: activity.organization,
+          ...leadershipGroupMeta[activity.organization],
           roles: [activity],
         },
       ];
@@ -1149,7 +1194,12 @@ function App() {
         </div>
         <div className="impact-dashboard" aria-label="Leadership impact summary">
           {leadershipImpact.map((item) => (
-            <article className="impact-card" key={item.label}>
+            <article
+              className="impact-card"
+              key={item.label}
+              style={{ '--impact-image-position': item.imagePosition || 'center' }}
+            >
+              <img src={item.image} alt="" aria-hidden="true" />
               <strong data-count-to={item.value} data-count-suffix="+">
                 0
               </strong>
@@ -1159,33 +1209,35 @@ function App() {
           ))}
         </div>
         <div className="timeline leadership-timeline">
-          {groupedLeadershipActivities.map((group) => (
-            <article
-              className="leadership-card leadership-group-card"
-              key={group.organization}
-            >
-              <div className="leadership-group-head">
-                <div>
-                  <h3>{group.organization}</h3>
-                  <div className="leadership-role-summary">
-                    {group.roles.slice(0, 2).map((role) => (
-                      <span key={role.title}>{role.title}</span>
-                    ))}
+          {groupedLeadershipActivities.map((group) => {
+            const LeadershipIcon = group.icon;
+
+            return (
+              <article
+                className="leadership-card leadership-group-card"
+                key={group.organization}
+              >
+                <div className="leadership-group-head">
+                  <div>
+                    <h3>
+                      {LeadershipIcon ? (
+                        <span className="leadership-org-icon" aria-hidden="true">
+                          <LeadershipIcon size={15} strokeWidth={2.2} />
+                        </span>
+                      ) : null}
+                      {group.organization}
+                    </h3>
+                    <span className="leadership-period">{group.period}</span>
+                    <div className="leadership-role-summary">
+                      {group.roles.map((role) => (
+                        <span key={role.title}>{role.title}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <span>{group.roles[group.roles.length - 1].period}</span>
-              </div>
-              <div className="leadership-card-tags">
-                {Array.from(
-                  new Set(group.roles.flatMap((role) => role.tags)),
-                )
-                  .slice(0, 3)
-                  .map((tag) => (
-                    <small key={tag}>{tag}</small>
-                  ))}
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
 
