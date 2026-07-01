@@ -1819,9 +1819,31 @@ h3 {
 }
 
 .skill-category h3 {
+  align-items: center;
   color: #172026;
+  display: flex;
   font-size: 1rem;
+  gap: 0.48rem;
   margin: 0;
+}
+
+.skill-category-icon {
+  align-items: center;
+  background: rgba(255, 223, 221, 0.78);
+  border: 1px solid rgba(240, 93, 94, 0.16);
+  border-radius: 999px;
+  color: #f05d5e;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 1.75rem;
+  justify-content: center;
+  width: 1.75rem;
+}
+
+.skill-category-featured .skill-category-icon {
+  background: rgba(217, 244, 239, 0.9);
+  border-color: rgba(47, 159, 193, 0.24);
+  color: #2f9fc1;
 }
 
 .skills-list {
@@ -3099,6 +3121,18 @@ h3 {
 
 :root[data-theme="dark"] .skill-category h3 {
   color: #f7f0e6;
+}
+
+:root[data-theme="dark"] .skill-category-icon {
+  background: rgba(255, 119, 120, 0.14);
+  border-color: rgba(255, 119, 120, 0.24);
+  color: #ff7778;
+}
+
+:root[data-theme="dark"] .skill-category-featured .skill-category-icon {
+  background: rgba(127, 221, 205, 0.16);
+  border-color: rgba(127, 221, 205, 0.28);
+  color: #7fddcd;
 }
 
 :root[data-theme="dark"] .project-media-slot,
