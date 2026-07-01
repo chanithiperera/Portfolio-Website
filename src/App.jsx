@@ -4,9 +4,12 @@ import {
   Images,
   Award,
   BadgeCheck,
+  Braces,
+  BrainCircuit,
   ChevronLeft,
   ChevronRight,
   Code2,
+  Database,
   Download,
   GraduationCap,
   HeartHandshake,
@@ -18,9 +21,12 @@ import {
   PenLine,
   RadioTower,
   Send,
+  ServerCog,
+  Smartphone,
   Sparkles,
   Sun,
   UserRound,
+  Wrench,
   X,
 } from 'lucide-react';
 import articleAiFutureWorkWomenTech from './assets/article-ai-future-work-women-tech.png';
@@ -440,10 +446,12 @@ const communityHighlights = [
 const skillGroups = [
   {
     title: 'Programming Languages',
+    icon: Braces,
     items: ['Python', 'Java', 'JavaScript', 'C', 'SQL'],
   },
   {
     title: 'Data Science & AI',
+    icon: BrainCircuit,
     items: [
       'Machine Learning',
       'Pandas',
@@ -459,6 +467,7 @@ const skillGroups = [
   },
   {
     title: 'Software Development',
+    icon: ServerCog,
     items: [
       'Node.js',
       'Express.js',
@@ -472,14 +481,17 @@ const skillGroups = [
   },
   {
     title: 'Mobile Development',
+    icon: Smartphone,
     items: ['React Native', 'Expo'],
   },
   {
     title: 'Databases',
+    icon: Database,
     items: ['MongoDB', 'MySQL', 'MS SQL'],
   },
   {
     title: 'Tools & Platforms',
+    icon: Wrench,
     items: ['Git', 'GitHub', 'Jupyter Notebook', 'VS Code', 'Postman'],
   },
 ];
@@ -1166,19 +1178,28 @@ function App() {
           </p>
         </div>
         <div className="skills-grid">
-          {skillGroups.map((group) => (
-            <article
-              className={`skill-category${group.title === 'Data Science & AI' ? ' skill-category-featured' : ''}${group.title === 'Tools & Platforms' ? ' skill-category-wide' : ''}`}
-              key={group.title}
-            >
-              <h3>{group.title}</h3>
-              <div className="skills-list">
-                {group.items.map((skill) => (
-                  <span key={skill}>{skill}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {skillGroups.map((group) => {
+            const SkillIcon = group.icon;
+
+            return (
+              <article
+                className={`skill-category${group.title === 'Data Science & AI' ? ' skill-category-featured' : ''}${group.title === 'Tools & Platforms' ? ' skill-category-wide' : ''}`}
+                key={group.title}
+              >
+                <h3>
+                  <span className="skill-category-icon" aria-hidden="true">
+                    <SkillIcon size={15} strokeWidth={2.2} />
+                  </span>
+                  {group.title}
+                </h3>
+                <div className="skills-list">
+                  {group.items.map((skill) => (
+                    <span key={skill}>{skill}</span>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
