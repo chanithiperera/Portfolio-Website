@@ -979,14 +979,28 @@ function App() {
               </div>
 
               <div className="hello-stack">
-                <h1 aria-label="Hello">
-                  <AnimatedText text="Hello" />
+                <span className="hero-eyebrow">Hello I'm,</span>
+                <h1 className="hero-name" aria-label={`Hello I'm, ${profile.name}`}>
+                  <span>
+                    <AnimatedText text="Chanithi" />
+                  </span>
+                  <span>
+                    <AnimatedText text="Perera" />
+                  </span>
                 </h1>
-                <p>
-                  <span>- I&apos;m {profile.name},</span>
-                  <br />
-                  <span className="intro-line-two">a Data Science undergraduate</span>
+                <p className="hero-role">Data Science Undergraduate</p>
+                <p className="hero-description">
+                  Passionate about Machine Learning, Data Analytics, and building practical
+                  solutions through technology.
                 </p>
+                <div className="hero-cta-row" aria-label="Primary actions">
+                  <a className="hero-primary-link" href="#projects">
+                    View Projects <ArrowUpRight size={17} />
+                  </a>
+                  <a className="hero-secondary-link" href="#contact">
+                    Get In Touch <Mail size={17} />
+                  </a>
+                </div>
                 <div className="hero-socials" aria-label="Featured profile links">
                   <a href={profile.linkedin} target="_blank" rel="noreferrer">
                     <span className="brand-icon linkedin-icon">
@@ -1007,6 +1021,7 @@ function App() {
                     Medium
                   </a>
                 </div>
+
               </div>
 
               <a className="scroll-cue" href="#about">
@@ -1015,17 +1030,54 @@ function App() {
               </a>
             </div>
 
-            <span className="hero-dot-field hero-dot-field--primary" aria-hidden="true" />
-            <span className="hero-dot-field hero-dot-field--small" aria-hidden="true" />
-            <span className="hero-dot-field hero-dot-field--low" aria-hidden="true" />
-            <span className="hero-dot-half-circle" aria-hidden="true" />
-            <span className="hero-dot-ball" aria-hidden="true" />
-            <span className="hero-dot-ball hero-dot-ball--edge" aria-hidden="true" />
-            <img
-              className="portrait"
-              src={heroPortrait}
-              alt="Portrait of Chanithi Perera"
-            />
+
+            <div className="hero-portrait-stage" aria-label="Portrait of Chanithi Perera">
+              <span className="portrait-binary" aria-hidden="true">10110 01101<br />01001 11100<br />11010 00101<br />00111 10110</span>
+              <span className="portrait-dots portrait-dots--top" aria-hidden="true" />
+              <span className="portrait-dots portrait-dots--bottom" aria-hidden="true" />
+              <svg className="portrait-chart" viewBox="0 0 180 140" aria-hidden="true">
+                <path d="M18 108 L58 70 L96 84 L138 34" />
+                <circle cx="18" cy="108" r="5" />
+                <circle cx="58" cy="70" r="5" />
+                <circle cx="96" cy="84" r="5" />
+                <circle cx="138" cy="34" r="5" />
+                <line x1="18" y1="26" x2="18" y2="126" />
+                <line x1="58" y1="26" x2="58" y2="126" />
+                <line x1="96" y1="26" x2="96" y2="126" />
+                <line x1="138" y1="26" x2="138" y2="126" />
+              </svg>
+              <img
+                className="portrait"
+                src={heroPortrait}
+                alt=""
+              />
+            </div>
+            <div className="hero-marquee" aria-label="Portfolio focus areas">
+              <div className="hero-marquee-track">
+                {[0, 1].map((copyIndex) => (
+                  <span
+                    className="hero-marquee-set"
+                    aria-hidden={copyIndex === 1}
+                    key={copyIndex}
+                  >
+                    {[
+                      'Data Science',
+                      'Machine Learning',
+                      'Data Analytics',
+                      'Open Source',
+                      'Leadership',
+                      'Community',
+                      'Problem Solving',
+                    ].map((item) => (
+                      <span className="hero-marquee-item" key={copyIndex + '-' + item}>
+                        <span className="hero-marquee-label">{item}</span>
+                        <i className="hero-marquee-dot" aria-hidden="true" />
+                      </span>
+                    ))}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
