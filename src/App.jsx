@@ -656,21 +656,109 @@ const leadershipGroupMeta = {
 
 const licensesCertifications = [
   {
-    period: 'Coming soon',
-    title: 'Licenses and certifications',
-    organization: 'Details to be added',
-    description:
-      'A dedicated place for professional certificates, completed courses, badges, and verified credentials.',
+    period: 'Jul 2026',
+    title: 'Get Started with Databricks for Data Engineering',
+    organization: 'Simplilearn',
+    credentialId: '10416397',
+    credentialUrl: '',
+    logo: 'SL',
+    tags: ['Azure Databricks', 'Data Engineering', 'Apache Spark'],
+    featured: true,
+  },
+  {
+    period: 'Jun 2026',
+    title: 'What is Data Science?',
+    organization: 'IBM',
+    credentialId: 'DNAZZGEJFWYG',
+    credentialUrl:
+      'https://www.coursera.org/account/accomplishments/records/DNAZZGEJFWYG',
+    logo: 'IBM',
+    tags: ['Data Science', 'Data Analysis', 'Cloud Computing'],
+    featured: true,
+  },
+  {
+    period: 'Jun 2026',
+    title: 'Python for Beginners',
+    organization: 'University of Moratuwa',
+    credentialId: 'w1XLCovTmx',
+    credentialUrl: 'https://open.uom.lk/verify',
+    logo: 'UoM',
+    tags: ['Python', 'Programming'],
+    featured: true,
+  },
+  {
+    period: 'May 2026',
+    title: 'Building AI Agents with MongoDB',
+    organization: 'MongoDB',
+    credentialId: '',
+    credentialUrl:
+      'https://www.credly.com/badges/ab579c92-499d-4486-a7ec-2c981e852aa9/public_url',
+    logo: 'MDB',
+    tags: ['Artificial Intelligence', 'MongoDB', 'AI Agents'],
+    featured: true,
+  },
+];
+
+const certificationStats = [
+  {
+    value: '13+',
+    label: 'Certifications',
+    detail: 'Completed and upcoming verified credentials',
+  },
+  {
+    value: '5+',
+    label: 'Issuing Organizations',
+    detail: 'Learning across recognized institutions',
+  },
+  {
+    value: '2025-Present',
+    label: 'Learning Journey',
+    detail: 'Continuous professional growth',
   },
 ];
 
 const honoursAwards = [
   {
-    period: 'Jan 2016 - Sep 2023',
-    title: 'President Guide Award Recipient',
-    organization: 'Sri Lanka Girl Guides Association',
+    period: 'May 2026',
+    title: "Dean's List Award - Year 2 Semester 1",
+    organization: 'SLIIT',
+    association: 'SLIIT',
     description:
-      'Completed advanced guiding challenges, national-level assessments, camps, and community initiatives to earn the association highest achievement.',
+      "Awarded Dean's List recognition for Year 2 Semester 1 with a GPA of 3.85, reflecting strong academic performance and dedication to excellence in undergraduate studies.",
+  },
+  {
+    period: 'Dec 2025',
+    title: "Dean's List Award - Year 1 Semester 2",
+    organization: 'SLIIT',
+    association: 'SLIIT',
+    description:
+      "Awarded Dean's List recognition for Year 1 Semester 2 with a GPA of 3.75, reflecting consistency, focus, and strong academic performance.",
+  },
+  {
+    period: 'Sep 2023',
+    title: 'President Guide Award',
+    organization: 'Sri Lanka Girl Guides Association',
+    association: 'Devi Balika Vidyalaya',
+    description:
+      'Earned the highest achievement in the Sri Lanka Girl Guides Association through leadership, community service, and advanced guiding challenges.',
+  },
+];
+
+const awardStats = [
+  {
+    value: '3+',
+    label: 'Awards',
+    detail: 'Academic and national recognitions',
+  },
+  {
+    value: 'National & Academic',
+    label: 'Recognition',
+    detail: 'Achievements across studies and service',
+  },
+  {
+    value: '2016-Present',
+    label: 'Award Journey',
+    detail: 'A growing record of dedication and excellence',
   },
 ];
 
@@ -700,6 +788,7 @@ function App() {
   const [mediaViewer, setMediaViewer] = useState(null);
   const [projectDetails, setProjectDetails] = useState(null);
   const [showMoreProjects, setShowMoreProjects] = useState(false);
+  const [showCertifications, setShowCertifications] = useState(false);
   const [theme, setTheme] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme');
 
@@ -904,6 +993,22 @@ function App() {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [projectDetails]);
+
+  useEffect(() => {
+    if (!showCertifications) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setShowCertifications(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showCertifications]);
 
   return (
     <>
@@ -1457,16 +1562,59 @@ function App() {
             </p>
           </div>
         </div>
-        <div className="timeline">
-          {licensesCertifications.map((credential) => (
-            <article key={`${credential.title}-${credential.organization}`}>
-              <span>{credential.period}</span>
-              <h3>{credential.title}</h3>
-              <p className="timeline-org">{credential.organization}</p>
-              <p>{credential.description}</p>
+        <div className="certification-impact-grid">
+          {certificationStats.map((item) => (
+            <article className="certification-stat-card" key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+              <p>{item.detail}</p>
             </article>
           ))}
         </div>
+        <div className="certification-featured-grid">
+          {licensesCertifications
+            .filter((credential) => credential.featured)
+            .slice(0, 4)
+            .map((credential) => (
+              <article
+                className="certification-card"
+                key={`${credential.title}-${credential.organization}`}
+              >
+                <span className="certification-period">{credential.period}</span>
+                <h3>{credential.title}</h3>
+                <p className="certification-issuer">
+                  <span className="certification-logo">{credential.logo}</span>
+                  {credential.organization}
+                </p>
+                <div className="tag-row certification-tags">
+                  {credential.tags.slice(0, 3).map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+                </div>
+                {credential.credentialUrl ? (
+                  <a
+                    className="certification-link"
+                    href={credential.credentialUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View Credential <ArrowUpRight size={14} />
+                  </a>
+                ) : (
+                  <span className="certification-link certification-link-muted">
+                    Credential URL soon
+                  </span>
+                )}
+              </article>
+            ))}
+        </div>
+        <button
+          className="certifications-view-all"
+          type="button"
+          onClick={() => setShowCertifications(true)}
+        >
+          View All Licenses & Certifications <ArrowUpRight size={15} />
+        </button>
       </section>
 
       <section className="section awards-section" id="awards">
@@ -1480,13 +1628,27 @@ function App() {
             </p>
           </div>
         </div>
-        <div className="timeline">
+        <div className="awards-impact-grid">
+          {awardStats.map((item) => (
+            <article className="award-stat-card" key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+        <div className="award-list">
           {honoursAwards.map((award) => (
-            <article key={`${award.title}-${award.organization}`}>
-              <span>{award.period}</span>
-              <h3>{award.title}</h3>
-              <p className="timeline-org">{award.organization}</p>
-              <p>{award.description}</p>
+            <article className="award-card" key={`${award.title}-${award.period}`}>
+              <span className="award-period">{award.period}</span>
+              <div className="award-card-copy">
+                <h3>{award.title}</h3>
+                <p className="award-issuer">Issued by {award.organization}</p>
+                {award.association ? (
+                  <p className="award-associated">Associated with {award.association}</p>
+                ) : null}
+                <p>{award.description}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -1551,6 +1713,70 @@ function App() {
           </span>
         </div>
       </section>
+      {showCertifications ? (
+        <div
+          className="media-viewer certifications-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="All licenses and certifications"
+          onClick={() => setShowCertifications(false)}
+        >
+          <div
+            className="media-viewer-panel certifications-modal-panel"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="media-viewer-header">
+              <div>
+                <strong>Licenses & Certifications</strong>
+                <span>Featured credentials added so far</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Close certifications"
+                onClick={() => setShowCertifications(false)}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="certifications-modal-list">
+              {licensesCertifications.map((credential) => (
+                <article
+                  className="certifications-modal-item"
+                  key={`${credential.title}-${credential.organization}`}
+                >
+                  <div>
+                    <span>{credential.period}</span>
+                    <h3>{credential.title}</h3>
+                    <p className="certification-issuer">
+                      <span className="certification-logo">{credential.logo}</span>
+                      <span>
+                        {credential.organization}
+                      {credential.credentialId
+                        ? ` - Credential ID: ${credential.credentialId}`
+                        : ''}
+                      </span>
+                    </p>
+                  </div>
+                  {credential.credentialUrl ? (
+                    <a
+                      className="certification-link"
+                      href={credential.credentialUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View Credential <ArrowUpRight size={14} />
+                    </a>
+                  ) : (
+                    <span className="certification-link certification-link-muted">
+                      Credential URL soon
+                    </span>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
       {showMoreProjects ? (
         <div
           className="media-viewer project-more-modal"
