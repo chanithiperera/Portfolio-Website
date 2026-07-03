@@ -28,6 +28,9 @@ import {
   UserRound,
   Wrench,
   X,
+  ShieldCheck,
+  Medal,
+  Trophy,
 } from 'lucide-react';
 import articleAiFutureWorkWomenTech from './assets/article-ai-future-work-women-tech.png';
 import articleNeuralNetworks from './assets/article-neural-networks.png';
@@ -62,6 +65,16 @@ import sheTalksTechPodcastSpeaker from './assets/she-talks-tech-podcast-speaker.
 import sheTalksTechSessionIntro from './assets/she-talks-tech-session-intro.png';
 import sheTalksTechSessionSdlc from './assets/she-talks-tech-session-sdlc.png';
 import zooManagementWelcome from './assets/zoo-management-welcome.png';
+import certificateDatabricks from './assets/certificate-databricks.png';
+import certificateImpactx2026 from './assets/certificate-impactx-2026.png';
+import badgePostmanApi from './assets/badge-postman-api.png';
+import githubDevDayCertificate from './assets/github-dev-day-certificate.png';
+import githubDevDayBadge from './assets/github-dev-day-badge.png';
+import githubDevDayAttendee from './assets/github-dev-day-attendee.png';
+import certificateKaspersky from './assets/certificate-kaspersky.png';
+import awardDeansListY2S1 from './assets/award-deans-list-y2s1.png';
+import awardDeansListY1S2 from './assets/award-deans-list-y1s2.png';
+import awardPresidentGuide from './assets/award-president-guide.jpg';
 
 const LinkedInLogo = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -661,7 +674,8 @@ const licensesCertifications = [
     organization: 'Simplilearn',
     credentialId: '10416397',
     credentialUrl: '',
-    logo: 'SL',
+    icon: Database,
+    image: certificateDatabricks,
     tags: ['Azure Databricks', 'Data Engineering', 'Apache Spark'],
     featured: true,
   },
@@ -671,7 +685,7 @@ const licensesCertifications = [
     organization: 'IBM',
     credentialId: '',
     credentialUrl: 'https://www.credly.com/badges/db9d73f5-37d6-4314-950a-b7e69c1c60bb',
-    logo: 'IBM',
+    icon: BrainCircuit,
     tags: ['Data Science', 'Python', 'SQL', 'Jupyter', 'Data Analysis', 'Data Visualization'],
     featured: true,
   },
@@ -681,7 +695,7 @@ const licensesCertifications = [
     organization: 'IBM',
     credentialId: '',
     credentialUrl: 'https://coursera.org/verify/TBOMJNMACLT5',
-    logo: 'IBM',
+    icon: BrainCircuit,
     tags: ['Data Science', 'Python', 'R', 'GitHub'],
     featured: true,
   },
@@ -692,7 +706,7 @@ const licensesCertifications = [
     credentialId: 'DNAZZGEJFWYG',
     credentialUrl:
       'https://www.coursera.org/account/accomplishments/records/DNAZZGEJFWYG',
-    logo: 'IBM',
+    icon: BrainCircuit,
     tags: ['Data Science', 'Data Analysis', 'Cloud Computing'],
     featured: true,
   },
@@ -702,7 +716,7 @@ const licensesCertifications = [
     organization: 'University of Moratuwa',
     credentialId: 'w1XLCovTmx',
     credentialUrl: 'https://open.uom.lk/verify',
-    logo: 'UoM',
+    icon: Braces,
     tags: ['Python', 'Programming'],
     featured: true,
   },
@@ -712,7 +726,7 @@ const licensesCertifications = [
     organization: 'IBM',
     credentialId: '',
     credentialUrl: 'https://www.credly.com/badges/8584e1cd-6499-4dfa-bc45-2e739e4c3d22',
-    logo: 'IBM',
+    icon: BrainCircuit,
     tags: ['Big Data', 'Artificial Intelligence', 'Machine Learning'],
     featured: true,
   },
@@ -723,7 +737,7 @@ const licensesCertifications = [
     credentialId: '',
     credentialUrl:
       'https://www.credly.com/badges/ab579c92-499d-4486-a7ec-2c981e852aa9/public_url',
-    logo: 'MDB',
+    icon: BrainCircuit,
     tags: ['Artificial Intelligence', 'MongoDB', 'AI Agents'],
     featured: true,
   },
@@ -733,7 +747,9 @@ const licensesCertifications = [
     organization: 'Postman',
     credentialId: '',
     credentialUrl: 'https://github.com/nisalgunawardhana/api-learning-101/pull/256',
-    logo: 'PM',
+    icon: ServerCog,
+    image: badgePostmanApi,
+    isBadge: true,
     tags: ['API Testing', 'Postman API', 'REST APIs', 'JSON', 'HTTP Methods'],
     featured: true,
   },
@@ -743,7 +759,8 @@ const licensesCertifications = [
     organization: 'Microsoft Learn Student Ambassadors - Sri Lanka',
     credentialId: '',
     credentialUrl: 'https://github.com/nisalgunawardhana/Github-for-beginners/pull/846',
-    logo: 'MLSA',
+    icon: Code2,
+    images: [githubDevDayCertificate, githubDevDayBadge, githubDevDayAttendee],
     tags: ['Version Control'],
     featured: true,
   },
@@ -753,7 +770,8 @@ const licensesCertifications = [
     organization: 'SLIIT Women In FOSS Community',
     credentialId: '',
     credentialUrl: '',
-    logo: 'WIF',
+    icon: Award,
+    image: certificateImpactx2026,
     tags: ['Technical Writing', 'English'],
     featured: true,
   },
@@ -763,7 +781,8 @@ const licensesCertifications = [
     organization: 'Kaspersky',
     credentialId: '',
     credentialUrl: 'https://certification.kaspersky.com/certificates/185508',
-    logo: 'KASP',
+    icon: ShieldCheck,
+    image: certificateKaspersky,
     tags: ['Cybersecurity'],
     featured: true,
   },
@@ -774,7 +793,7 @@ const licensesCertifications = [
     credentialId: '',
     credentialUrl:
       'https://badges.parchment.com/public/assertions/4ltykpAvTFuOSHNbGcO43w?identity__email=chanithidehansa%40gmail.com',
-    logo: 'PCS',
+    icon: Sparkles,
     tags: ['Programming'],
     featured: true,
   },
@@ -782,7 +801,7 @@ const licensesCertifications = [
 
 const certificationStats = [
   {
-    value: '13+',
+    value: '12+',
     label: 'Certifications',
     detail: 'Completed and upcoming verified credentials',
   },
@@ -804,41 +823,47 @@ const honoursAwards = [
     title: "Dean's List Award - Year 2 Semester 1",
     organization: 'SLIIT',
     association: 'SLIIT',
+    icon: Medal,
+    image: awardDeansListY2S1,
     description:
-      "Awarded Dean's List recognition for Year 2 Semester 1 with a GPA of 3.85, reflecting strong academic performance and dedication to excellence in undergraduate studies.",
+      'Recognized for outstanding academic performance with a GPA of 3.85 during Year 2 Semester 1.',
   },
   {
     period: 'Dec 2025',
     title: "Dean's List Award - Year 1 Semester 2",
     organization: 'SLIIT',
     association: 'SLIIT',
+    icon: Medal,
+    image: awardDeansListY1S2,
     description:
-      "Awarded Dean's List recognition for Year 1 Semester 2 with a GPA of 3.75, reflecting consistency, focus, and strong academic performance.",
+      "Earned Dean's List recognition for maintaining exceptional academic performance with a GPA of 3.75.",
   },
   {
     period: 'Sep 2023',
     title: 'President Guide Award',
     organization: 'Sri Lanka Girl Guides Association',
     association: 'Devi Balika Vidyalaya',
+    icon: Trophy,
+    image: awardPresidentGuide,
     description:
-      'Earned the highest achievement in the Sri Lanka Girl Guides Association through leadership, community service, and advanced guiding challenges.',
+      'Awarded the highest honor in the Sri Lanka Girl Guides Association for excellence in leadership, community service, and advanced guiding.',
   },
 ];
 
 const awardStats = [
   {
     value: '3+',
-    label: 'Awards',
+    label: 'Awards Earned',
     detail: 'Academic and national recognitions',
   },
   {
     value: 'National & Academic',
-    label: 'Recognition',
+    label: 'Recognitions',
     detail: 'Achievements across studies and service',
   },
   {
     value: '2016-Present',
-    label: 'Award Journey',
+    label: 'Excellence Journey',
     detail: 'A growing record of dedication and excellence',
   },
 ];
@@ -1664,7 +1689,7 @@ function App() {
                 <span className="certification-period">{credential.period}</span>
                 <h3>{credential.title}</h3>
                 <p className="certification-issuer">
-                  <span className="certification-logo">{credential.logo}</span>
+                  <span className="certification-logo"><credential.icon size={16} /></span>
                   {credential.organization}
                 </p>
                 <div className="tag-row certification-tags">
@@ -1672,7 +1697,30 @@ function App() {
                     <small key={tag}>{tag}</small>
                   ))}
                 </div>
-                {credential.credentialUrl ? (
+                {credential.images || credential.image ? (
+                  <button
+                    type="button"
+                    className="certification-link"
+                    onClick={() => {
+                      const imgList = credential.images
+                        ? credential.images.map((img, idx) => ({
+                            src: img,
+                            alt: `${credential.title} - Image ${idx + 1}`,
+                          }))
+                        : [{ src: credential.image, alt: credential.title }];
+                      openMediaViewer({
+                        images: imgList,
+                        title: credential.title,
+                        description: `Verification for ${credential.title} issued by ${credential.organization}.`,
+                        organization: credential.organization,
+                        date: credential.period,
+                      });
+                    }}
+                  >
+                    {credential.isBadge ? 'View Badge' : 'View Certificate'}{' '}
+                    <Images size={14} />
+                  </button>
+                ) : credential.credentialUrl ? (
                   <a
                     className="certification-link"
                     href={credential.credentialUrl}
@@ -1683,7 +1731,7 @@ function App() {
                   </a>
                 ) : (
                   <span className="certification-link certification-link-muted">
-                    Credential URL soon
+                    View Certificate
                   </span>
                 )}
               </article>
@@ -1723,12 +1771,30 @@ function App() {
             <article className="award-card" key={`${award.title}-${award.period}`}>
               <span className="award-period">{award.period}</span>
               <div className="award-card-copy">
-                <h3>{award.title}</h3>
+                <h3>
+                  {award.icon && <award.icon className="award-title-icon" size={18} />}
+                  {award.title}
+                </h3>
                 <p className="award-issuer">Issued by {award.organization}</p>
-                {award.association ? (
-                  <p className="award-associated">Associated with {award.association}</p>
-                ) : null}
                 <p>{award.description}</p>
+                {award.image && (
+                  <button
+                    type="button"
+                    className="certification-link"
+                    style={{ marginTop: '0.85rem' }}
+                    onClick={() =>
+                      openMediaViewer({
+                        images: [{ src: award.image, alt: award.title }],
+                        title: award.title,
+                        description: award.description,
+                        organization: award.organization,
+                        date: award.period,
+                      })
+                    }
+                  >
+                    View Certificate <Images size={14} />
+                  </button>
+                )}
               </div>
             </article>
           ))}
@@ -1829,16 +1895,39 @@ function App() {
                     <span>{credential.period}</span>
                     <h3>{credential.title}</h3>
                     <p className="certification-issuer">
-                      <span className="certification-logo">{credential.logo}</span>
+                      <span className="certification-logo"><credential.icon size={16} /></span>
                       <span>
                         {credential.organization}
-                      {credential.credentialId
-                        ? ` - Credential ID: ${credential.credentialId}`
-                        : ''}
+                        {credential.credentialId
+                          ? ` - Credential ID: ${credential.credentialId}`
+                          : ''}
                       </span>
                     </p>
                   </div>
-                  {credential.credentialUrl ? (
+                  {credential.images || credential.image ? (
+                    <button
+                      type="button"
+                      className="certification-link"
+                      onClick={() => {
+                        const imgList = credential.images
+                          ? credential.images.map((img, idx) => ({
+                              src: img,
+                              alt: `${credential.title} - Image ${idx + 1}`,
+                            }))
+                          : [{ src: credential.image, alt: credential.title }];
+                        openMediaViewer({
+                          images: imgList,
+                          title: credential.title,
+                          description: `Verification for ${credential.title} issued by ${credential.organization}.`,
+                          organization: credential.organization,
+                          date: credential.period,
+                        });
+                      }}
+                    >
+                      {credential.isBadge ? 'View Badge' : 'View Certificate'}{' '}
+                      <Images size={14} />
+                    </button>
+                  ) : credential.credentialUrl ? (
                     <a
                       className="certification-link"
                       href={credential.credentialUrl}
@@ -1849,7 +1938,7 @@ function App() {
                     </a>
                   ) : (
                     <span className="certification-link certification-link-muted">
-                      Credential URL soon
+                      View Certificate
                     </span>
                   )}
                 </article>
