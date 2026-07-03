@@ -554,19 +554,8 @@ code {
   font-weight: 720;
   letter-spacing: 0.18em;
   margin: 0 0 0.82rem 0.3rem;
-  padding-bottom: 0.55rem;
   position: relative;
   text-transform: uppercase;
-}
-
-.hero-eyebrow::after {
-  background: #f05d5e;
-  bottom: 0;
-  content: "";
-  height: 1px;
-  left: 0;
-  position: absolute;
-  width: 4.6rem;
 }
 
 .hello-stack h1,
@@ -2193,6 +2182,107 @@ h3 {
   grid-template-columns: 0.5fr 1fr;
 }
 
+.education-section {
+  align-items: center;
+}
+
+/* ── Education Timeline ───────────────────────────── */
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.edu-entry {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.edu-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 7rem;
+  padding-top: 0.2rem;
+}
+
+.edu-period {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0f766e;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-align: center;
+  margin-bottom: 0.55rem;
+}
+
+.edu-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f05d5e;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(240, 93, 94, 0.18);
+  z-index: 1;
+}
+
+.edu-line {
+  width: 2px;
+  flex: 1;
+  min-height: 2.5rem;
+  background: linear-gradient(to bottom, rgba(240, 93, 94, 0.35), rgba(240, 93, 94, 0.06));
+  margin: 0.3rem 0;
+}
+
+.edu-right {
+  padding-bottom: 2.2rem;
+  padding-top: 0.05rem;
+}
+
+.edu-school {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #172026;
+  margin: 0 0 0.35rem;
+  opacity: 0.5;
+}
+
+.edu-degree {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #172026;
+  margin: 0 0 0.3rem;
+  line-height: 1.3;
+}
+
+.edu-spec {
+  font-size: 0.84rem;
+  color: #526066;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .edu-period {
+  color: #2dd4bf;
+}
+
+:root[data-theme="dark"] .edu-school {
+  color: #fff8ed;
+}
+
+:root[data-theme="dark"] .edu-degree {
+  color: #fff8ed;
+}
+
+:root[data-theme="dark"] .edu-spec {
+  color: rgba(255, 248, 237, 0.6);
+}
+
 .leadership-section {
   grid-template-columns: 1fr;
 }
@@ -2204,6 +2294,47 @@ h3 {
 
 .leadership-section .experience-title h2 {
   white-space: nowrap;
+}
+
+.leadership-subsection {
+  margin-top: 3.5rem;
+  border-top: 1px solid rgba(23, 32, 38, 0.08);
+  padding-top: 3rem;
+}
+
+.subsection-heading {
+  margin-bottom: 2rem;
+}
+
+.subsection-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #172026;
+  margin-bottom: 0.4rem;
+}
+
+.subsection-title-wrapper h3 {
+  font-size: clamp(1.65rem, 2.6vw, 2.2rem);
+  font-weight: 800;
+  margin: 0;
+}
+
+.subsection-icon {
+  color: #f05d5e;
+  flex-shrink: 0;
+}
+
+:root[data-theme="dark"] .leadership-subsection {
+  border-top-color: rgba(255, 248, 237, 0.08);
+}
+
+:root[data-theme="dark"] .subsection-title-wrapper {
+  color: #fff8ed;
+}
+
+:root[data-theme="dark"] .subsection-icon {
+  color: #ff7778;
 }
 
 .credentials-section {
@@ -3072,6 +3203,7 @@ h3 {
   font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
   margin-top: 0.65rem;
+  margin-bottom: 1.1rem;
 }
 
 .contact-links {
@@ -3689,10 +3821,6 @@ h3 {
 
 :root[data-theme="dark"] .hero-eyebrow {
   color: #ff7778;
-}
-
-:root[data-theme="dark"] .hero-eyebrow::after {
-  background: #ff7778;
 }
 
 :root[data-theme="dark"] .hero-role {
