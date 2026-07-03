@@ -2337,21 +2337,24 @@ h3 {
 }
 
 .certification-logo {
-  align-items: center;
   background: #fff8ed;
   border: 1px solid rgba(240, 93, 94, 0.18);
   border-radius: 999px;
   color: #172026;
-  display: inline-flex;
   flex: 0 0 auto;
-  font-size: 0.62rem;
-  font-weight: 900;
   height: 1.75rem;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: 1;
-  min-width: 1.75rem;
-  padding: 0 0.42rem;
+  width: 1.75rem;
+  position: relative;
+}
+
+.certification-logo svg {
+  color: #172026;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  margin: 0;
 }
 
 .certification-tags {
@@ -2373,6 +2376,9 @@ h3 {
   line-height: 1;
   margin-top: 1.05rem;
   padding: 0.66rem 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
   transition:
     background 180ms ease,
     border-color 180ms ease,
@@ -2545,6 +2551,14 @@ h3 {
   font-size: clamp(1.05rem, 1.4vw, 1.3rem);
   line-height: 1.25;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.award-title-icon {
+  color: #f05d5e;
+  flex-shrink: 0;
 }
 
 .award-card p {
@@ -4149,6 +4163,10 @@ h3 {
   color: #f7f0e6;
 }
 
+:root[data-theme="dark"] .certification-logo svg {
+  color: #f7f0e6;
+}
+
 :root[data-theme="dark"] .certification-link {
   background: rgba(255, 119, 120, 0.14);
   border-color: rgba(255, 119, 120, 0.24);
@@ -4198,6 +4216,10 @@ h3 {
 
 :root[data-theme="dark"] .award-associated {
   color: #7fddcd;
+}
+
+:root[data-theme="dark"] .award-title-icon {
+  color: #ff7778;
 }
 
 :root[data-theme="dark"] .contact-links a,
