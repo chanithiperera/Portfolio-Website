@@ -870,21 +870,22 @@ const awardStats = [
 
 const education = [
   {
-    school: 'SLIIT',
-    period: '2024 - 2028',
-    details: 'BSc (Hons) in Information Technology, Information Technology',
+    school: 'Sri Lanka Institute of Information Technology (SLIIT)',
+    period: '2024 – Present',
+    degree: 'BSc (Hons) in Information Technology',
+    specialization: 'Specializing in Data Science',
   },
   {
     school: 'Devi Balika Vidyalaya',
-    period: 'Jan 2021 - Dec 2023',
-    details:
-      'GCE A/L - Physical Science English Medium. Committee Member in the Senior Science Society and Model United Nations Club.',
+    period: '2021 – 2023',
+    degree: 'GCE Advanced Level',
+    specialization: 'Physical Science Stream (English Medium)',
   },
   {
     school: 'Dharmapala Vidyalaya Pannipitiya',
-    period: 'Feb 2010 - Dec 2020',
-    details:
-      'Grade 1 - 11. Junior/Senior Prefect, Junior Western Band member, and Junior/Senior Choir Group member.',
+    period: '2010 – 2020',
+    degree: 'GCE Ordinary Level (English Medium)',
+    specialization: '',
   },
 ];
 
@@ -1160,9 +1161,12 @@ function App() {
               </span>
             </button>
             <div className="nav-links">
-              <a href="#about">About Me</a>
+              <a href="#about">About</a>
               <a href="#projects">Projects</a>
               <a href="#skills">Skills</a>
+              <a href="#leadership">Leadership</a>
+              <a href="#certifications">Certifications</a>
+              <a href="#awards">Awards</a>
               <a href="#contact">Contact</a>
             </div>
             <a className="book-link" href={profile.cv} download>
@@ -1468,6 +1472,7 @@ function App() {
 
       <section className="section leadership-section" id="leadership">
         <div className="experience-title">
+          <HeartHandshake size={22} />
           <div>
             <h2>Leadership & Impact</h2>
             <p className="section-tagline">
@@ -1523,137 +1528,139 @@ function App() {
             );
           })}
         </div>
-      </section>
 
-      <section className="section feature-section" id="writing">
-        <div className="section-heading">
-          <div>
-            <p className="section-kicker">Writing</p>
-            <h2>Technical Writing</h2>
+        {/* Subsection: Technical Writing */}
+        <div className="leadership-subsection" id="writing">
+          <div className="subsection-heading">
+            <div className="subsection-title-wrapper">
+              <PenLine size={22} className="subsection-icon" />
+              <h3>Technical Writing</h3>
+            </div>
             <p className="section-tagline">
               Sharing knowledge and simplifying complex technical concepts
               through writing.
             </p>
           </div>
-        </div>
-        <div className="project-row-header article-row-header">
-          <span>{writingArticles.length} articles</span>
-          <div className="project-row-controls">
-            <button
-              type="button"
-              aria-label="Previous articles"
-              onClick={() => scrollArticleRow('previous')}
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              type="button"
-              aria-label="Next articles"
-              onClick={() => scrollArticleRow('next')}
-            >
-              <ChevronRight size={18} />
-            </button>
+          <div className="project-row-header article-row-header">
+            <span>{writingArticles.length} articles</span>
+            <div className="project-row-controls">
+              <button
+                type="button"
+                aria-label="Previous articles"
+                onClick={() => scrollArticleRow('previous')}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                type="button"
+                aria-label="Next articles"
+                onClick={() => scrollArticleRow('next')}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+          <div className="feature-grid article-grid" ref={articleScrollerRef}>
+            {writingArticles.map((article) => (
+              <article className="feature-card" key={article.title}>
+                {article.images?.length ? (
+                  <button
+                    className="feature-media-button"
+                    type="button"
+                    aria-label={`Open ${article.title} gallery`}
+                    onClick={() => openMediaViewer(article)}
+                  >
+                    <img
+                      src={article.images[0].src}
+                      alt={article.images[0].alt || `${article.title} preview`}
+                    />
+                    <span>
+                      <Images size={14} />
+                      {article.images.length > 1 ? 'View gallery' : 'View image'}
+                    </span>
+                  </button>
+                ) : (
+                  <div className="feature-media-slot">
+                    <PenLine size={24} />
+                    <span>Article media coming soon</span>
+                  </div>
+                )}
+                <p>{article.publication}</p>
+                <h3>{article.title}</h3>
+                <span>{article.description}</span>
+                <div className="tag-row article-tag-row">
+                  {article.tags.map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+                </div>
+                <a
+                  className="project-link"
+                  href={article.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="project-link-icon">
+                    <MediumLogo />
+                  </span>
+                  Read article <ArrowUpRight size={14} />
+                </a>
+              </article>
+            ))}
           </div>
         </div>
-        <div className="feature-grid article-grid" ref={articleScrollerRef}>
-          {writingArticles.map((article) => (
-            <article className="feature-card" key={article.title}>
-              {article.images?.length ? (
-                <button
-                  className="feature-media-button"
-                  type="button"
-                  aria-label={`Open ${article.title} gallery`}
-                  onClick={() => openMediaViewer(article)}
-                >
-                  <img
-                    src={article.images[0].src}
-                    alt={article.images[0].alt || `${article.title} preview`}
-                  />
-                  <span>
-                    <Images size={14} />
-                    {article.images.length > 1 ? 'View gallery' : 'View image'}
-                  </span>
-                </button>
-              ) : (
-                <div className="feature-media-slot">
-                  <PenLine size={24} />
-                  <span>Article media coming soon</span>
-                </div>
-              )}
-              <p>{article.publication}</p>
-              <h3>{article.title}</h3>
-              <span>{article.description}</span>
-              <div className="tag-row article-tag-row">
-                {article.tags.map((tag) => (
-                  <small key={tag}>{tag}</small>
-                ))}
-              </div>
-              <a
-                className="project-link"
-                href={article.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="project-link-icon">
-                  <MediumLogo />
-                </span>
-                Read article <ArrowUpRight size={14} />
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      <section className="section feature-section" id="community">
-        <div className="section-heading">
-          <div>
-            <p className="section-kicker">Community</p>
-            <h2>Speaking & Moderation</h2>
+        {/* Subsection: Public Speaking */}
+        <div className="leadership-subsection" id="community">
+          <div className="subsection-heading">
+            <div className="subsection-title-wrapper">
+              <Mic2 size={22} className="subsection-icon" />
+              <h3>Speaking & Moderation</h3>
+            </div>
             <p className="section-tagline">
               Engaging audiences, fostering discussions, and sharing ideas with
               the community.
             </p>
           </div>
-        </div>
-        <div className="speaking-bento">
-          {communityHighlights.map((highlight, index) => (
-            <button
-              className={`speaking-tile ${index === 0 ? 'is-featured' : ''}`}
-              type="button"
-              key={highlight.title}
-              aria-label={`Open ${highlight.title} gallery`}
-              onClick={() => openMediaViewer(highlight)}
-            >
-              {highlight.images?.length ? (
-                <img
-                  src={highlight.images[0].src}
-                  alt={highlight.images[0].alt || `${highlight.title} preview`}
-                />
-              ) : (
-                <span className="speaking-tile-fallback">
-                  <UserRound size={26} />
+          <div className="speaking-bento">
+            {communityHighlights.map((highlight, index) => (
+              <button
+                className={`speaking-tile ${index === 0 ? 'is-featured' : ''}`}
+                type="button"
+                key={highlight.title}
+                aria-label={`Open ${highlight.title} gallery`}
+                onClick={() => openMediaViewer(highlight)}
+              >
+                {highlight.images?.length ? (
+                  <img
+                    src={highlight.images[0].src}
+                    alt={highlight.images[0].alt || `${highlight.title} preview`}
+                  />
+                ) : (
+                  <span className="speaking-tile-fallback">
+                    <UserRound size={26} />
+                  </span>
+                )}
+                <span className="speaking-tile-shade" />
+                <span className="speaking-tile-count">
+                  <Images size={14} />
+                  {highlight.images?.length || 0}
                 </span>
-              )}
-              <span className="speaking-tile-shade" />
-              <span className="speaking-tile-count">
-                <Images size={14} />
-                {highlight.images?.length || 0}
-              </span>
-              <span className="speaking-tile-content">
-                <small>{highlight.role}</small>
-                <strong>{highlight.bentoTitle || highlight.title}</strong>
-                <em>
-                  {highlight.bentoSubtitle ||
-                    `${highlight.organization}${highlight.date ? ` • ${highlight.date}` : ''}`}
-                </em>
-                <span className="speaking-tags">
-                  {highlight.tags.slice(0, 3).map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
+                <span className="speaking-tile-content">
+                  <small>{highlight.role}</small>
+                  <strong>{highlight.bentoTitle || highlight.title}</strong>
+                  <em>
+                    {highlight.bentoSubtitle ||
+                      `${highlight.organization}${highlight.date ? ` • ${highlight.date}` : ''}`}
+                  </em>
+                  <span className="speaking-tags">
+                    {highlight.tags.slice(0, 3).map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </span>
                 </span>
-              </span>
-            </button>
-          ))}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1817,7 +1824,7 @@ function App() {
             <article key={item.school}>
               <span>{item.period}</span>
               <h3>{item.school}</h3>
-              <p>{item.details}</p>
+              <p>{item.degree}{item.specialization ? ` · ${item.specialization}` : ''}</p>
             </article>
           ))}
         </div>
@@ -1832,9 +1839,9 @@ function App() {
             conversations.
           </p>
           <p>
-            I am open to opportunities in Colombo with on-site or hybrid work,
-            and interested in data science, AI, technical writing, and
-            technology community initiatives.
+            Currently seeking internship opportunities in Data Science, AI, and
+            related technology domains. Always open to collaborations and
+            meaningful conversations.
           </p>
         </div>
         <div className="contact-links">
@@ -1842,18 +1849,18 @@ function App() {
             <Mail size={18} />
             {profile.email}
           </a>
-          <span>
+          <a href="https://github.com/ChanithiPerera" target="_blank" rel="noreferrer">
             <b className="link-mark">GH</b>
-            GitHub details coming soon
-          </span>
+            GitHub
+          </a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer">
             <b className="link-mark">IN</b>
             LinkedIn
           </a>
-          <span>
+          <a href="https://medium.com/@chanithidehansa" target="_blank" rel="noreferrer">
             <PenLine size={18} />
-            Technical Writer on Medium
-          </span>
+            Medium
+          </a>
           <span>
             <MapPin size={18} />
             {profile.location}
