@@ -1956,6 +1956,14 @@ function App() {
                           : ''}
                       </span>
                     </p>
+                    <div className="tag-row certification-tags" style={{ marginTop: '0.75rem' }}>
+                      {credential.tags.slice(0, 4).map((tag) => (
+                        <small key={tag}>{tag}</small>
+                      ))}
+                      {credential.tags.length > 4 ? (
+                        <small>+{credential.tags.length - 4}</small>
+                      ) : null}
+                    </div>
                   </div>
                   {credential.images || credential.image ? (
                     <button
