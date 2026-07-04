@@ -1765,6 +1765,7 @@ function App() {
                         description: `Verification for ${credential.title} issued by ${credential.organization}.`,
                         organization: credential.organization,
                         date: credential.period,
+                        tags: credential.tags,
                       });
                     }}
                   >
@@ -1982,6 +1983,7 @@ function App() {
                           description: `Verification for ${credential.title} issued by ${credential.organization}.`,
                           organization: credential.organization,
                           date: credential.period,
+                          tags: credential.tags,
                         });
                       }}
                     >
