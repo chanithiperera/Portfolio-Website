@@ -4823,3 +4823,84 @@ h3 {
 .hero-grid::after {
   display: none;
 }
+
+/* ── Floating Navigation Controls ───────────────────────────── */
+.floating-nav-controls {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  z-index: 99;
+}
+
+.floating-nav-btn {
+  background: rgba(255, 250, 240, 0.82);
+  border: 1px solid rgba(240, 93, 94, 0.18);
+  border-radius: 50%;
+  color: #172026;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 44px;
+  box-shadow: 0 8px 24px rgba(23, 32, 38, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    opacity 220ms ease,
+    visibility 220ms ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.floating-nav-btn:hover {
+  background: #f05d5e;
+  border-color: #f05d5e;
+  color: #fff8ed;
+  transform: translateY(-2px);
+}
+
+.floating-nav-btn:active {
+  transform: translateY(1px);
+}
+
+.floating-nav-btn.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+/* Dark mode support */
+:root[data-theme="dark"] .floating-nav-btn {
+  background: rgba(23, 32, 38, 0.82);
+  border-color: rgba(255, 248, 237, 0.14);
+  color: #fff8ed;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .floating-nav-btn:hover {
+  background: #f05d5e;
+  border-color: #f05d5e;
+  color: #fff8ed;
+}
+
+@media (max-width: 768px) {
+  .floating-nav-controls {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    gap: 0.45rem;
+  }
+  .floating-nav-btn {
+    height: 40px;
+    width: 40px;
+  }
+}
+
