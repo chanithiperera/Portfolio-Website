@@ -876,13 +876,13 @@ const education = [
     specialization: 'Specializing in Data Science',
   },
   {
-    school: 'Devi Balika Vidyalaya',
+    school: 'Devi Balika Vidyalaya, Colombo',
     period: '2021 – 2023',
     degree: 'GCE Advanced Level',
     specialization: 'Physical Science Stream (English Medium)',
   },
   {
-    school: 'Dharmapala Vidyalaya Pannipitiya',
+    school: 'Dharmapala Vidyalaya, Pannipitiya',
     period: '2010 – 2020',
     degree: 'GCE Ordinary Level (English Medium)',
     specialization: '',
