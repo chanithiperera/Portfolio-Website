@@ -4481,7 +4481,9 @@ h3 {
     height: 58px;
     justify-content: space-between;
     padding: 0 1rem;
-    right: 0;
+    left: 0;
+    right: auto;
+    top: 0;
     width: 100%;
   }
 
@@ -4562,7 +4564,8 @@ h3 {
     grid-column: 2;
     justify-self: center;
     margin-top: -18vh;
-    width: min(112vw, 720px);
+    width: 100%;
+    transform: scale(1.12); /* Achieve the bleed effect via transform, which is safe */
   }
 
   .portrait {
