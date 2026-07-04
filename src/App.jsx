@@ -142,8 +142,6 @@ const profile = {
   github: 'https://github.com/chanithiperera',
   medium: 'https://medium.com/@chanithidehansa',
   cv: '/Chanithi_Perera_CV.pdf',
-  summary:
-    'I am a Data Science undergraduate at SLIIT with a growing focus on AI, machine learning, data science, and software engineering.',
 };
 
 const projects = [
