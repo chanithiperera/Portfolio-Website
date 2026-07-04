@@ -8,6 +8,8 @@ import {
   BrainCircuit,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
+  ChevronDown,
   Code2,
   Database,
   Download,
@@ -896,6 +898,68 @@ function App() {
   const [projectDetails, setProjectDetails] = useState(null);
   const [showMoreProjects, setShowMoreProjects] = useState(false);
   const [showCertifications, setShowCertifications] = useState(false);
+  const [showScrollArrows, setShowScrollArrows] = useState({ up: false, down: true });
+
+  const SECTIONS = [
+    'home',
+    'about',
+    'projects',
+    'skills',
+    'leadership',
+    'certifications',
+    'awards',
+    'education',
+    'contact'
+  ];
+
+  const navigateSection = (direction) => {
+    const sectionElements = SECTIONS.map(id => document.getElementById(id)).filter(Boolean);
+    const scrollPosition = window.scrollY + 120; // Offset threshold
+
+    let currentIndex = 0;
+    for (let i = 0; i < sectionElements.length; i++) {
+      const el = sectionElements[i];
+      if (el.offsetTop <= scrollPosition) {
+        currentIndex = i;
+      }
+    }
+
+    let targetIndex = currentIndex;
+    if (direction === 'down') {
+      targetIndex = Math.min(currentIndex + 1, sectionElements.length - 1);
+      if (currentIndex === 0 && window.scrollY < sectionElements[1].offsetTop - 200) {
+        targetIndex = 1;
+      }
+    } else if (direction === 'up') {
+      const currentEl = sectionElements[currentIndex];
+      if (window.scrollY > currentEl.offsetTop + 50) {
+        targetIndex = currentIndex;
+      } else {
+        targetIndex = Math.max(currentIndex - 1, 0);
+      }
+    }
+
+    const targetEl = sectionElements[targetIndex];
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isTop = window.scrollY < 80;
+      const isBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 80;
+      setShowScrollArrows({
+        up: !isTop,
+        down: !isBottom
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const [theme, setTheme] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme');
 
@@ -1808,7 +1872,7 @@ function App() {
         </div>
       </section>
 
-      <section className="section education-section">
+      <section className="section education-section" id="education">
         <div className="experience-title">
           <GraduationCap size={22} />
           <div>
@@ -2206,6 +2270,25 @@ function App() {
           </div>
         </div>
       ) : null}
+      {/* Floating navigation controls */}
+      <div className="floating-nav-controls">
+        <button
+          className={`floating-nav-btn ${!showScrollArrows.up ? 'is-hidden' : ''}`}
+          type="button"
+          onClick={() => navigateSection('up')}
+          aria-label="Scroll to previous section"
+        >
+          <ChevronUp size={20} />
+        </button>
+        <button
+          className={`floating-nav-btn ${!showScrollArrows.down ? 'is-hidden' : ''}`}
+          type="button"
+          onClick={() => navigateSection('down')}
+          aria-label="Scroll to next section"
+        >
+          <ChevronDown size={20} />
+        </button>
+      </div>
       </main>
     </>
   );
