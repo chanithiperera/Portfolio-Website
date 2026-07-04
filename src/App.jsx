@@ -1603,22 +1603,6 @@ function App() {
           </div>
           <div className="project-row-header article-row-header">
             <span>{writingArticles.length} articles</span>
-            <div className="project-row-controls">
-              <button
-                type="button"
-                aria-label="Previous articles"
-                onClick={() => scrollArticleRow('previous')}
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                type="button"
-                aria-label="Next articles"
-                onClick={() => scrollArticleRow('next')}
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
           </div>
           <div className="feature-grid article-grid" ref={articleScrollerRef}>
             {writingArticles.map((article) => (
