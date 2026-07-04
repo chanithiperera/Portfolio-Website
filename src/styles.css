@@ -3744,14 +3744,14 @@ h3 {
 }
 
 :root[data-theme="dark"] .motion-grid {
-  opacity: 0.2;
+  opacity: 0.45;
 }
 
 :root[data-theme="dark"] .motion-grid::before,
 :root[data-theme="dark"] .motion-grid::after {
   background:
-    linear-gradient(90deg, transparent 0 94%, rgba(255, 248, 237, 0.16) 94% 95%, transparent 95%),
-    linear-gradient(0deg, transparent 0 94%, rgba(255, 248, 237, 0.12) 94% 95%, transparent 95%);
+    linear-gradient(90deg, transparent 0 94%, rgba(255, 248, 237, 0.25) 94% 95%, transparent 95%),
+    linear-gradient(0deg, transparent 0 94%, rgba(255, 248, 237, 0.20) 94% 95%, transparent 95%);
   background-size: 64px 64px;
 }
 
@@ -3997,8 +3997,9 @@ h3 {
 
 :root[data-theme="dark"] .project-more-card::before {
   background:
-    linear-gradient(90deg, transparent 0 96%, rgba(255, 119, 120, 0.12) 96% 100%),
-    linear-gradient(0deg, transparent 0 96%, rgba(127, 221, 205, 0.12) 96% 100%);
+    linear-gradient(90deg, transparent 0 96%, rgba(255, 119, 120, 0.25) 96% 100%),
+    linear-gradient(0deg, transparent 0 96%, rgba(127, 221, 205, 0.25) 96% 100%);
+  background-size: 44px 44px;
 }
 
 :root[data-theme="dark"] .project-more-icon {
