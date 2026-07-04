@@ -2300,8 +2300,9 @@ function App() {
       {/* Hidden SVG filter to erode image fringe/borders */}
       <svg style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
         <filter id="erode-fringe">
-          <feMorphology operator="erode" in="SourceAlpha" radius="1.8" result="eroded" />
-          <feComposite in="SourceGraphic" in2="eroded" operator="in" />
+          <feMorphology operator="erode" in="SourceAlpha" radius="1.3" result="eroded" />
+          <feGaussianBlur in="eroded" stdDeviation="0.8" result="blurred" />
+          <feComposite in="SourceGraphic" in2="blurred" operator="in" />
         </filter>
       </svg>
       </main>
