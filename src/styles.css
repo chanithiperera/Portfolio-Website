@@ -806,7 +806,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   gap: 0.72rem;
-  margin: 3.35rem 0 0 0.3rem;
+  margin: 2.2rem 0 0 0.3rem;
 }
 
 .hero-socials a {
@@ -869,6 +869,32 @@ code {
   color: #111;
 }
 
+/* Larger, more visible brand icons inside contact links */
+.contact-links .brand-icon {
+  height: 28px;
+  width: 28px;
+}
+
+.contact-links .brand-icon svg {
+  height: 15px;
+  width: 15px;
+}
+
+.contact-links .github-icon {
+  background: #24292f;
+  color: #ffffff;
+}
+
+.contact-links .linkedin-icon {
+  background: #0a66c2;
+  color: #ffffff;
+}
+
+.contact-links .medium-icon {
+  background: #111;
+  color: #ffffff;
+}
+
 .hero-socials a:hover,
 .hero-socials a:focus-visible {
   background: #fff8ed;
@@ -922,7 +948,7 @@ code {
 }
 
 .portrait {
-  filter: grayscale(1);
+  filter: url(#erode-fringe) drop-shadow(0 0 1.5px #fffaf0);
   max-height: min(75svh, 720px);
   max-width: 100%;
   object-fit: contain;
@@ -3202,7 +3228,7 @@ h3 {
 .contact-section .section-tagline {
   font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
-  margin-top: 0.65rem;
+  margin-top: 1.8rem;
   margin-bottom: 1.1rem;
 }
 
@@ -3212,7 +3238,7 @@ h3 {
 }
 
 .contact-links a,
-.contact-links span {
+.contact-links > span {
   align-items: center;
   background: rgba(255, 248, 237, 0.08);
   border: 1px solid rgba(255, 248, 237, 0.14);
@@ -3228,7 +3254,7 @@ h3 {
 }
 
 .contact-links a:hover,
-.contact-links span:hover {
+.contact-links > span:hover {
   background: rgba(255, 248, 237, 0.14);
   border-color: rgba(255, 248, 237, 0.32);
   transform: translateX(6px);
@@ -3729,6 +3755,15 @@ h3 {
   background-size: 64px 64px;
 }
 
+:root[data-theme="dark"] .nav-links a {
+  color: rgba(255, 248, 237, 0.72);
+}
+
+:root[data-theme="dark"] .nav-links a:hover,
+:root[data-theme="dark"] .nav-links a:focus-visible {
+  color: #ff7778;
+}
+
 :root[data-theme="dark"] .book-link {
   background: rgba(255, 218, 220, 0.92);
   border-color: rgba(255, 119, 120, 0.42);
@@ -3861,6 +3896,10 @@ h3 {
     radial-gradient(circle at 42% 80%, rgba(255, 119, 120, 0.28), transparent 34%);
 }
 
+:root[data-theme="dark"] .portrait {
+  filter: url(#erode-fringe) drop-shadow(0 0 2px #11181c);
+}
+
 :root[data-theme="dark"] .portrait-binary {
   color: rgba(255, 119, 120, 0.72);
 }
@@ -3901,6 +3940,34 @@ h3 {
 
 :root[data-theme="dark"] .brand-icon {
   background: rgba(255, 119, 120, 0.18);
+}
+
+:root[data-theme="dark"] .github-icon {
+  color: #fff8ed;
+}
+
+:root[data-theme="dark"] .linkedin-icon {
+  color: #70b5ff;
+}
+
+:root[data-theme="dark"] .medium-icon {
+  color: #fff8ed;
+}
+
+/* Keep contact-links brand icons vivid in dark mode too */
+:root[data-theme="dark"] .contact-links .github-icon {
+  background: rgba(255, 248, 237, 0.12);
+  color: #fff8ed;
+}
+
+:root[data-theme="dark"] .contact-links .linkedin-icon {
+  background: rgba(112, 181, 255, 0.2);
+  color: #70b5ff;
+}
+
+:root[data-theme="dark"] .contact-links .medium-icon {
+  background: rgba(255, 248, 237, 0.12);
+  color: #fff8ed;
 }
 
 :root[data-theme="dark"] .intro-band,
@@ -4351,13 +4418,13 @@ h3 {
 }
 
 :root[data-theme="dark"] .contact-links a,
-:root[data-theme="dark"] .contact-links span {
+:root[data-theme="dark"] .contact-links > span {
   background: rgba(255, 248, 237, 0.07);
   border-color: rgba(255, 248, 237, 0.12);
 }
 
 :root[data-theme="dark"] .contact-links a:hover,
-:root[data-theme="dark"] .contact-links span:hover {
+:root[data-theme="dark"] .contact-links > span:hover {
   background: rgba(255, 248, 237, 0.13);
   border-color: rgba(255, 248, 237, 0.26);
 }
@@ -4903,4 +4970,20 @@ h3 {
     width: 40px;
   }
 }
+
+/* Project Subtitle Styling */
+.project-title-note {
+  display: block;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #526066;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+:root[data-theme="dark"] .project-title-note {
+  color: rgba(255, 248, 237, 0.6);
+}
+
 
