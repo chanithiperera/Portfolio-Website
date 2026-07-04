@@ -139,7 +139,7 @@ const profile = {
   location: 'Colombo, Western Province, Sri Lanka',
   email: 'chanithi.perera23@gmail.com',
   linkedin: 'https://www.linkedin.com/in/chanithi-perera-5253b7392/',
-  github: 'https://github.com/',
+  github: 'https://github.com/chanithiperera',
   medium: 'https://medium.com/@chanithidehansa',
   cv: '/Chanithi_Perera_CV.pdf',
   summary:
@@ -150,8 +150,8 @@ const projects = [
   {
     title:
       'GoviSmart - Smart Fertilizer Recommendation for Paddy Cultivation',
-    titleNote: '& Agricultural Resource Management System',
-    type: 'Y2S2 AIML Project - Team Leader',
+    titleNote: 'and Agricultural Resource Management System',
+    type: 'AIML Project - Team Lead',
     academicYear: '2nd Year',
     year: '2026',
     images: [
@@ -180,7 +180,7 @@ const projects = [
   },
   {
     title: 'ZentraZoo - Zoo & Visitor Management System',
-    type: 'Y2S2 Mobile Application Project - Team Leader',
+    type: 'Mobile Application Project - Team Lead',
     academicYear: '2nd Year',
     year: '2026',
     images: [
@@ -200,7 +200,7 @@ const projects = [
   },
   {
     title: 'Student Depression Prediction System',
-    type: 'Y2S1 AIML Project - Team Leader',
+    type: 'AIML Project - Team Lead',
     academicYear: '2nd Year',
     year: '2025',
     images: [
@@ -225,7 +225,7 @@ const projects = [
   },
   {
     title: 'Web-Based Healthcare Customer Care System',
-    type: 'Y2S1 Software Engineering Project - Team Leader',
+    type: 'Software Engineering Project - Team Lead',
     academicYear: '2nd Year',
     year: '2025',
     images: [
@@ -246,7 +246,7 @@ const projects = [
   },
   {
     title: 'Online Medicine Store',
-    type: 'Y1S2 - Java Spring Boot Project',
+    type: 'Java Spring Boot Project',
     academicYear: '1st Year',
     year: '2025',
     images: [
@@ -267,7 +267,7 @@ const projects = [
   },
   {
     title: 'Automated Garage System',
-    type: 'Y1S1 - Arduino + IoT Project',
+    type: 'Arduino + IoT Project',
     academicYear: '1st Year',
     year: '2024',
     images: [
@@ -633,7 +633,7 @@ const leadershipActivities = [
     organization: 'Sri Lanka Girl Guides Association',
     category: 'Early Leadership',
     description:
-      'Completed national-level guiding challenges and community initiatives to earn the association highest award.',
+      'Completed national-level guiding challenges and community initiatives to earn the association\'s highest award.',
     tags: ['Leadership', 'Teamwork', 'Community Service'],
   },
 ];
@@ -683,16 +683,6 @@ const licensesCertifications = [
   },
   {
     period: 'Jun 2026',
-    title: 'Tools for Data Science V2',
-    organization: 'IBM',
-    credentialId: '',
-    credentialUrl: 'https://www.credly.com/badges/db9d73f5-37d6-4314-950a-b7e69c1c60bb',
-    icon: BrainCircuit,
-    tags: ['Data Science', 'Python', 'SQL', 'Jupyter', 'Data Analysis', 'Data Visualization'],
-    featured: true,
-  },
-  {
-    period: 'Jun 2026',
     title: 'Tools for Data Science',
     organization: 'IBM',
     credentialId: '',
@@ -720,6 +710,16 @@ const licensesCertifications = [
     credentialUrl: 'https://open.uom.lk/verify',
     icon: Braces,
     tags: ['Python', 'Programming'],
+    featured: true,
+  },
+  {
+    period: 'Jun 2026',
+    title: 'Tools for Data Science V2',
+    organization: 'IBM',
+    credentialId: '',
+    credentialUrl: 'https://www.credly.com/badges/db9d73f5-37d6-4314-950a-b7e69c1c60bb',
+    icon: BrainCircuit,
+    tags: ['Data Science', 'Python', 'SQL', 'Jupyter', 'Data Analysis', 'Data Visualization'],
     featured: true,
   },
   {
@@ -796,7 +796,7 @@ const licensesCertifications = [
     credentialUrl:
       'https://badges.parchment.com/public/assertions/4ltykpAvTFuOSHNbGcO43w?identity__email=chanithidehansa%40gmail.com',
     icon: Sparkles,
-    tags: ['Programming'],
+    tags: ['Generative AI', 'LLMs', 'AI Tools'],
     featured: true,
   },
 ];
@@ -864,7 +864,7 @@ const awardStats = [
     detail: 'Achievements across studies and service',
   },
   {
-    value: '2016-Present',
+    value: '2023-Present',
     label: 'Excellence Journey',
     detail: 'A growing record of dedication and excellence',
   },
@@ -1251,10 +1251,6 @@ function App() {
                   <strong>AI</strong>
                   <span>Data science learner</span>
                 </div>
-                <div>
-                  <strong data-count-to="395">0</strong>
-                  <span>LinkedIn connections</span>
-                </div>
               </div>
 
               <div className="hello-stack">
@@ -1269,8 +1265,7 @@ function App() {
                 </h1>
                 <p className="hero-role">Data Science Undergraduate</p>
                 <p className="hero-description">
-                  Passionate about Machine Learning, Data Analytics, and building practical
-                  solutions through technology.
+                  Passionate about solving real-world problems through technology.
                 </p>
                 <div className="hero-cta-row" aria-label="Primary actions">
                   <a className="hero-primary-link" href="#projects">
@@ -1343,9 +1338,8 @@ function App() {
                       'Data Science',
                       'Machine Learning',
                       'Data Analytics',
-                      'Open Source',
-                      'Leadership',
-                      'Community',
+                      'Database Systems',
+                      'Software Engineering',
                       'Problem Solving',
                     ].map((item) => (
                       <span className="hero-marquee-item" key={copyIndex + '-' + item}>
@@ -1443,7 +1437,12 @@ function App() {
                   </div>
                 )}
                 <p>{project.type}</p>
-                <h3>{project.title}</h3>
+                <h3>
+                  {project.title}
+                  {project.titleNote && (
+                    <span className="project-title-note">{project.titleNote}</span>
+                  )}
+                </h3>
                 <span>{project.shortDescription || project.description}</span>
                 <div className="tag-row">
                   {project.tags.slice(0, 5).map((tag) => (
@@ -1487,8 +1486,7 @@ function App() {
                 <p>{hiddenProjectCount} more projects</p>
                 <h3>View More Projects</h3>
                 <span>
-                  Open additional project showcases, including the medicine
-                  store and automated garage system.
+                  Open additional project showcases to explore more of my work and academic projects.
                 </span>
                 <strong>
                   View projects <ArrowUpRight size={15} />
@@ -1899,13 +1897,9 @@ function App() {
           <p className="section-kicker">Contact</p>
           <h2>Let&apos;s connect and build something meaningful.</h2>
           <p className="section-tagline">
-            Always open to collaborations, opportunities, and meaningful
-            conversations.
-          </p>
-          <p>
             Currently seeking internship opportunities in Data Science, AI, and
-            related technology domains. Always open to collaborations and
-            meaningful conversations.
+            related technology domains. Open to collaborations and meaningful
+            conversations.
           </p>
         </div>
         <div className="contact-links">
@@ -1914,15 +1908,21 @@ function App() {
             {profile.email}
           </a>
           <a href="https://github.com/ChanithiPerera" target="_blank" rel="noreferrer">
-            <b className="link-mark">GH</b>
+            <span className="brand-icon github-icon">
+              <GitHubLogo />
+            </span>
             GitHub
           </a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer">
-            <b className="link-mark">IN</b>
+            <span className="brand-icon linkedin-icon">
+              <LinkedInLogo />
+            </span>
             LinkedIn
           </a>
           <a href="https://medium.com/@chanithidehansa" target="_blank" rel="noreferrer">
-            <PenLine size={18} />
+            <span className="brand-icon medium-icon">
+              <MediumLogo />
+            </span>
             Medium
           </a>
           <span>
@@ -2070,7 +2070,12 @@ function App() {
                     </div>
                   )}
                   <p>{project.type}</p>
-                  <h3>{project.title}</h3>
+                  <h3>
+                    {project.title}
+                    {project.titleNote && (
+                      <span className="project-title-note">{project.titleNote}</span>
+                    )}
+                  </h3>
                   <span>{project.shortDescription || project.description}</span>
                   <div className="tag-row">
                     {project.tags.slice(0, 5).map((tag) => (
@@ -2130,7 +2135,12 @@ function App() {
           >
             <div className="media-viewer-header">
               <div>
-                <strong>{projectDetails.title}</strong>
+                <strong>
+                  {projectDetails.title}
+                  {projectDetails.titleNote && (
+                    <span className="project-title-note">{projectDetails.titleNote}</span>
+                  )}
+                </strong>
                 <span>
                   {projectDetails.type} • {projectDetails.year}
                 </span>
@@ -2289,6 +2299,13 @@ function App() {
           <ChevronDown size={20} />
         </button>
       </div>
+      {/* Hidden SVG filter to erode image fringe/borders */}
+      <svg style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
+        <filter id="erode-fringe">
+          <feMorphology operator="erode" in="SourceAlpha" radius="1.8" result="eroded" />
+          <feComposite in="SourceGraphic" in2="eroded" operator="in" />
+        </filter>
+      </svg>
       </main>
     </>
   );
