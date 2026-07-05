@@ -5095,49 +5095,46 @@ h3 {
     width: 100% !important;
     min-height: auto !important;
     padding: 0 !important;
+    position: relative !important;
   }
 
   .hello-stack {
-    display: grid !important;
-    grid-template-columns: 1fr 125px !important;
-    column-gap: 16px !important;
-    row-gap: 0 !important;
+    display: block !important;
     width: 100% !important;
-  }
-
-  .hero-eyebrow,
-  .hello-stack h1,
-  .hero-name,
-  .hero-role,
-  .hero-cta-row,
-  .hero-socials {
-    grid-column: 1 / -1 !important;
+    position: relative !important;
   }
 
   .hero-eyebrow {
+    position: relative !important;
+    z-index: 2 !important;
     margin-top: 0 !important;
   }
 
   .hello-stack h1,
   .hero-name {
-    font-size: 42px !important;
+    font-size: 44px !important;
     line-height: 0.95 !important;
     letter-spacing: -0.04em !important;
     margin-top: 0.8rem !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .hero-role {
     font-size: 22px !important;
     margin-top: 0.8rem !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .hero-description {
-    grid-column: 1 !important;
-    max-width: 100% !important;
+    max-width: 55% !important;
     font-size: 15px !important;
     line-height: 1.45 !important;
     margin-top: 0.8rem !important;
-    align-self: center !important;
+    position: relative !important;
+    z-index: 2 !important;
+    min-height: 230px !important;
   }
 
   .desktop-portrait-only {
@@ -5145,16 +5142,15 @@ h3 {
   }
 
   .mobile-portrait-only {
-    display: flex !important;
-    grid-column: 2 !important;
-    position: relative !important;
-    width: 125px !important;
-    max-width: 100% !important;
-    margin: 0.8rem 0 0 !important;
-    align-self: center !important;
-    justify-self: end !important;
+    display: block !important;
+    position: absolute !important;
+    right: -24px !important;
+    top: 60px !important;
+    width: 260px !important;
+    max-width: 65vw !important;
+    margin: 0 !important;
+    z-index: 1 !important;
     transform: none !important;
-    z-index: 10 !important;
   }
 
   .portrait {
