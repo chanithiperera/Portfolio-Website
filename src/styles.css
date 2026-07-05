@@ -5321,13 +5321,44 @@ h3 {
   }
 
   /* ── 6. Hide Decorative Elements ───────────────────────────── */
-  .portrait-binary,
-  .portrait-dots,
-  .portrait-chart,
   .side-rail,
   .device-notch,
   .motion-grid {
     display: none !important;
+  }
+
+  /* ── 6a. Mobile Portrait Decorations ───────────────────────── */
+  .portrait-binary {
+    display: block !important;
+    font-size: 0.62rem !important;
+    right: 60% !important;
+    top: 14% !important;
+    line-height: 1.35 !important;
+  }
+
+  .portrait-dots {
+    display: block !important;
+    width: 90px !important;
+    height: 70px !important;
+    background-size: 13px 13px !important;
+  }
+
+  .portrait-dots--top {
+    right: 5% !important;
+    top: 19% !important;
+  }
+
+  .portrait-dots--bottom {
+    bottom: 15% !important;
+    left: 2% !important;
+  }
+
+  .portrait-chart {
+    display: block !important;
+    width: 130px !important;
+    height: 100px !important;
+    bottom: 22% !important;
+    right: 2% !important;
   }
 
   .device-shell {
