@@ -19,6 +19,7 @@ import {
   Mail,
   MapPin,
   Mic2,
+  Menu,
   Moon,
   PenLine,
   RadioTower,
@@ -897,6 +898,7 @@ function App() {
   const [showMoreProjects, setShowMoreProjects] = useState(false);
   const [showCertifications, setShowCertifications] = useState(false);
   const [showScrollArrows, setShowScrollArrows] = useState({ up: false, down: true });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const SECTIONS = [
     'home',
@@ -1222,6 +1224,11 @@ function App() {
                 {theme === 'dark' ? <Moon size={15} /> : <Sun size={15} />}
               </span>
             </button>
+
+            <a className="navbar-logo" href="#home" aria-label="Home">
+              CP
+            </a>
+
             <div className="nav-links">
               <a href="#about">About</a>
               <a href="#projects">Projects</a>
@@ -1231,9 +1238,19 @@ function App() {
               <a href="#awards">Awards</a>
               <a href="#contact">Contact</a>
             </div>
+
             <a className="book-link" href={profile.cv} download>
               Download My CV <Download size={15} />
             </a>
+
+            <button
+              className="mobile-menu-btn"
+              type="button"
+              aria-label="Toggle menu"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </nav>
 
           <div className="hero-grid">
@@ -2300,6 +2317,36 @@ function App() {
         </filter>
       </svg>
       </main>
+
+      {/* Mobile Menu Dropdown/Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          className="mobile-menu-overlay" 
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setMobileMenuOpen(false);
+            }
+          }}
+        >
+          <nav className="mobile-menu-links">
+            <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a>
+            <a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a>
+            <a href="#leadership" onClick={() => setMobileMenuOpen(false)}>Leadership</a>
+            <a href="#certifications" onClick={() => setMobileMenuOpen(false)}>Certifications</a>
+            <a href="#awards" onClick={() => setMobileMenuOpen(false)}>Awards</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <a 
+              className="mobile-cv-download" 
+              href={profile.cv} 
+              download 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Download CV <Download size={16} />
+            </a>
+          </nav>
+        </div>
+      )}
     </>
   );
 }
