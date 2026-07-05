@@ -5083,43 +5083,52 @@ h3 {
     padding: 2.5rem 1.5rem 1.5rem !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 2rem !important;
+    gap: 0 !important;
   }
 
-  .hero-copy-block {
-    min-height: auto !important;
-    padding: 0 !important;
-    align-items: flex-start !important;
-    text-align: left !important;
+  .hero-copy-block,
+  .hello-stack {
+    display: contents !important;
   }
 
-  .hello-stack h1 {
+  .hero-eyebrow {
+    order: 1 !important;
+  }
+
+  .hello-stack h1,
+  .hero-name {
     font-size: 48px !important;
     line-height: 0.95 !important;
     letter-spacing: -0.04em !important;
+    order: 2 !important;
+    margin-top: 1rem !important;
   }
 
   .hero-role {
     font-size: 24px !important;
     margin-top: 1rem !important;
+    order: 3 !important;
   }
 
   .hero-description {
     max-width: 100% !important;
     font-size: 16px !important;
     margin-top: 1rem !important;
+    order: 4 !important;
   }
 
   .hero-portrait-stage {
     grid-column: auto !important;
     position: relative !important;
-    width: 320px !important;
-    max-width: 90vw !important;
-    margin: 32px auto 0 !important;
+    width: 260px !important;
+    max-width: 80vw !important;
+    margin: 28px auto 20px !important;
     transform: none !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    align-self: center !important;
+    order: 5 !important;
   }
 
   .portrait {
@@ -5131,17 +5140,17 @@ h3 {
   }
 
   /* ── 3. Stacking Buttons & Socials ─────────────────────────── */
-  .hero-cta-row,
-  .hero-socials {
+  .hero-cta-row {
+    order: 6 !important;
+    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     width: 100% !important;
     gap: 12px !important;
-    margin-top: 1.5rem !important;
+    margin-top: 20px !important;
   }
 
-  .hero-cta-row a,
-  .hero-socials a {
+  .hero-cta-row a {
     width: 100% !important;
     justify-content: center !important;
     text-align: center !important;
@@ -5149,14 +5158,21 @@ h3 {
   }
 
   .hero-socials {
+    order: 7 !important;
+    display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
     justify-content: flex-start !important;
     gap: 10px !important;
+    margin-top: 20px !important;
+    width: 100% !important;
   }
 
   .hero-socials a {
     width: calc(50% - 5px) !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 !important;
     box-sizing: border-box !important;
   }
 
