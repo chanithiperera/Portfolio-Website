@@ -982,7 +982,7 @@ function App() {
     if (!root) return undefined;
 
     const revealItems = root.querySelectorAll(
-      '.section, .intro-band, .project-card, .feature-card, .impact-card, .timeline article, .contact-links > *',
+      '.section-heading, .experience-title, .subsection-heading, .intro-band, .project-card, .feature-card, .impact-card, .timeline article, .article-card, .speaking-tile, .contact-links > *',
     );
 
     const revealObserver = new IntersectionObserver(
