@@ -346,6 +346,43 @@ code {
   transform: translate(3px, -3px);
 }
 
+.navbar-logo {
+  display: none;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #f05d5e;
+  letter-spacing: -0.02em;
+}
+
+:root[data-theme="dark"] .navbar-logo {
+  color: #7fddcd;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 8px;
+  transition: background 180ms ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(23, 32, 38, 0.06);
+}
+
+:root[data-theme="dark"] .mobile-menu-btn:hover {
+  background: rgba(255, 248, 237, 0.08);
+}
+
 .hero-grid {
   --hero-marquee-bottom: 3.05rem;
   --hero-marquee-height: 3.1rem;
@@ -4979,6 +5016,285 @@ h3 {
   .floating-nav-btn {
     height: 40px;
     width: 40px;
+  }
+
+  /* ── 1. Mobile Navbar & Menu Button ────────────────────────── */
+  .nav-links {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: block !important;
+    order: 3 !important;
+    margin-left: 0.5rem !important;
+  }
+
+  .navbar-logo {
+    display: block !important;
+    order: 1 !important;
+    margin-right: auto !important;
+  }
+
+  .theme-toggle-hero {
+    display: inline-flex !important;
+    order: 2 !important;
+    margin: 0 !important;
+  }
+
+  .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    background: rgba(246, 242, 234, 0.94) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(23, 32, 38, 0.1) !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 1.5rem !important;
+  }
+  
+  :root[data-theme="dark"] .navbar {
+    background: rgba(14, 17, 20, 0.94) !important;
+    border-bottom: 1px solid rgba(255, 248, 237, 0.1) !important;
+  }
+
+  /* Hide the vertical desktop sidebar entirely */
+  .site-sidebar {
+    display: none !important;
+  }
+
+  /* Adjust site-main to span full width and have padding at the top for fixed navbar */
+  .site-main {
+    margin-left: 0 !important;
+    padding-top: 58px !important;
+    width: 100% !important;
+  }
+
+  /* ── 2. Hero Component Stack ───────────────────────────────── */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding: 2.5rem 1.5rem 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  .hero-copy-block {
+    min-height: auto !important;
+    padding: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .hello-stack h1 {
+    font-size: 48px !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .hero-role {
+    font-size: 24px !important;
+    margin-top: 1rem !important;
+  }
+
+  .hero-description {
+    max-width: 100% !important;
+    font-size: 16px !important;
+    margin-top: 1rem !important;
+  }
+
+  .hero-portrait-stage {
+    grid-column: auto !important;
+    position: relative !important;
+    width: 75% !important;
+    max-width: 280px !important;
+    margin: 2rem auto 0 !important;
+    transform: none !important;
+    margin-top: 0 !important;
+  }
+
+  .portrait {
+    max-height: 48vh !important;
+  }
+
+  /* ── 3. Stacking Buttons & Socials ─────────────────────────── */
+  .hero-cta-row,
+  .hero-socials {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 12px !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .hero-cta-row a,
+  .hero-socials a {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+
+  .hero-socials {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .hero-socials a {
+    width: calc(50% - 5px) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ── 4. Reduced Section Headings ───────────────────────────── */
+  section.section {
+    padding: 60px 1.5rem !important;
+  }
+
+  .section-kicker {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .section h2 {
+    font-size: 32px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  .section-tagline {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    margin-top: 0.75rem !important;
+  }
+
+  /* ── 5. Single Column Cards/Grids ──────────────────────────── */
+  .projects-grid,
+  .skills-grid,
+  .certification-featured-grid,
+  .certification-impact-grid,
+  .awards-impact-grid,
+  .awards-grid,
+  .leadership-grid,
+  .writing-grid,
+  .speaking-grid,
+  .article-grid {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+    gap: 1.5rem !important;
+  }
+
+  .article-grid {
+    grid-auto-flow: row !important;
+    grid-auto-columns: auto !important;
+    overflow-x: visible !important;
+  }
+
+  /* ── 6. Hide Decorative Elements ───────────────────────────── */
+  .portrait-binary,
+  .portrait-dots,
+  .portrait-chart,
+  .side-rail,
+  .device-notch,
+  .motion-grid {
+    display: none !important;
+  }
+
+  .device-shell {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+
+  .index-frame {
+    padding: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* ── 7. Mobile Menu Overlay ────────────────────────────────── */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 58px);
+    background: rgba(246, 242, 234, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  :root[data-theme="dark"] .mobile-menu-overlay {
+    background: rgba(14, 17, 20, 0.98);
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    width: 100%;
+    max-width: 320px;
+    padding: 2rem;
+  }
+
+  .mobile-menu-links a {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #172026;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  :root[data-theme="dark"] .mobile-menu-links a {
+    color: #fff8ed;
+  }
+
+  .mobile-menu-links a:hover,
+  .mobile-menu-links a:active {
+    color: #f05d5e;
+    transform: scale(1.05);
+  }
+
+  .mobile-cv-download {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    background: #f05d5e;
+    color: #fff8ed !important;
+    border-radius: 99px;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    margin-top: 1rem;
+    box-shadow: 0 8px 24px rgba(240, 93, 94, 0.25);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
