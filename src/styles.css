@@ -5338,27 +5338,29 @@ h3 {
 
   .portrait-dots {
     display: block !important;
-    width: 90px !important;
-    height: 70px !important;
-    background-size: 13px 13px !important;
+    width: 80px !important;
+    height: 60px !important;
+    background-size: 11px 11px !important;
   }
 
   .portrait-dots--top {
-    right: 5% !important;
-    top: 19% !important;
+    right: 8% !important;
+    top: 5% !important;
   }
 
   .portrait-dots--bottom {
     bottom: 15% !important;
     left: 2% !important;
+    width: 60px !important;
+    height: 50px !important;
   }
 
   .portrait-chart {
     display: block !important;
-    width: 130px !important;
-    height: 100px !important;
-    bottom: 22% !important;
-    right: 2% !important;
+    width: 110px !important;
+    height: 80px !important;
+    bottom: 8% !important;
+    right: -2% !important;
   }
 
   .device-shell {
