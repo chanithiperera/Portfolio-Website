@@ -5176,6 +5176,15 @@ h3 {
     box-sizing: border-box !important;
   }
 
+  .hero-marquee {
+    order: 8 !important;
+    margin-top: 30px !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   /* ── 4. Reduced Section Headings & Heights ─────────────────── */
   section,
   section.section {
@@ -5242,10 +5251,51 @@ h3 {
   .speaking-tile,
   .project-card,
   .award-card,
-  .leadership-card {
+  .leadership-card,
+  .article-grid .feature-card {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
+  }
+
+  /* ── 5a. Mobile Education Timeline ───────────────────────── */
+  .edu-entry {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    position: relative !important;
+    padding-left: 1.5rem !important;
+  }
+
+  .edu-left {
+    width: auto !important;
+    align-items: flex-start !important;
+    padding-top: 0 !important;
+  }
+
+  .edu-period {
+    margin-bottom: 0.2rem !important;
+    text-align: left !important;
+  }
+
+  .edu-dot {
+    position: absolute !important;
+    left: 0 !important;
+    top: 6px !important;
+  }
+
+  .edu-line {
+    position: absolute !important;
+    left: 4px !important;
+    top: 16px !important;
+    bottom: 0 !important;
+    width: 2px !important;
+    height: calc(100% - 10px) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+  }
+
+  .edu-right {
+    padding-bottom: 1.5rem !important;
   }
 
   /* ── 6. Hide Decorative Elements ───────────────────────────── */
