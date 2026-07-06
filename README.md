@@ -18,7 +18,7 @@ A modern, responsive, and highly interactive personal portfolio website showcasi
 - **Build Tool:** Vite
 - **Styling:** Pure CSS with custom CSS variables for theme management
 - **Icons:** Lucide React
-- **Hosting:** Netlify (or any static host)
+- **Hosting:** Vercel (or any static host)
 
 ## Local Development
 
