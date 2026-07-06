@@ -1,5 +1,7 @@
 # Chanithi Perera — Personal Portfolio
 
+🌐 **Live Site:** [chanithi.vercel.app](https://chanithi.vercel.app/)
+
 A modern, responsive, and highly interactive personal portfolio website showcasing my journey as a Data Science undergraduate. Built from the ground up to highlight my projects in machine learning, software engineering, technical writing, and community leadership.
 
 ## Features
