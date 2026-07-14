@@ -1313,6 +1313,10 @@ h3 {
     transform 220ms ease;
 }
 
+.project-card > * {
+  flex-shrink: 0;
+}
+
 .project-card-featured {
   background:
     linear-gradient(135deg, rgba(255, 226, 223, 0.52), transparent 38%),
@@ -1410,12 +1414,16 @@ h3 {
 .project-more-modal-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .project-more-modal-panel {
   max-width: min(940px, 94vw);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card-compact {
@@ -1510,6 +1518,7 @@ h3 {
   border-radius: 8px;
   cursor: zoom-in;
   display: block;
+  flex-shrink: 0;
   margin: 0 0 1rem;
   overflow: hidden;
   padding: 0;
@@ -1581,10 +1590,11 @@ h3 {
 .project-card span {
   color: #526066;
   display: -webkit-box;
+  flex-shrink: 0;
   line-height: 1.5;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
 }
 
 .project-title-note {
