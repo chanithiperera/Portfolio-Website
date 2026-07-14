@@ -68,6 +68,10 @@ import sheTalksTechPodcastSpeaker from './assets/she-talks-tech-podcast-speaker.
 import sheTalksTechSessionIntro from './assets/she-talks-tech-session-intro.png';
 import sheTalksTechSessionSdlc from './assets/she-talks-tech-session-sdlc.png';
 import zooManagementWelcome from './assets/zoo-management-welcome.png';
+import spellcraftAiCover from './assets/spellcraft-ai-cover.png';
+import spellcraftAiGameplay1 from './assets/spellcraft-ai-gameplay-1.jpg';
+import spellcraftAiGameplay2 from './assets/spellcraft-ai-gameplay-2.jpg';
+import spellcraftAiGameplay3 from './assets/spellcraft-ai-gameplay-3.jpg';
 import certificateDatabricks from './assets/certificate-databricks.png';
 import certificateImpactx2026 from './assets/certificate-impactx-2026.png';
 import badgePostmanApi from './assets/badge-postman-api.png';
@@ -146,6 +150,43 @@ const profile = {
 };
 
 const projects = [
+  {
+    title: 'SpellCraft AI - Hand Gesture-Controlled Wizard Battle Game',
+    type: 'AI, ML & Data Science Project',
+    academicYear: '2nd Year',
+    year: '2026',
+    images: [
+      {
+        src: spellcraftAiCover,
+        alt: 'SpellCraft AI wizard gesture game key visual artwork banner',
+      },
+      {
+        src: spellcraftAiGameplay1,
+        alt: 'SpellCraft AI wizard casting an Ice Spell with real-time hand gesture tracking overlay',
+      },
+      {
+        src: spellcraftAiGameplay2,
+        alt: 'SpellCraft AI wizard casting a Shield protection rune in real-time combat',
+      },
+      {
+        src: spellcraftAiGameplay3,
+        alt: 'SpellCraft AI boss encounter casting a Fireball gesture to defeat the Dragon boss',
+      },
+    ],
+    description:
+      'Real-time hand gesture-controlled wizard battle game powered by MediaPipe and OpenCV, featuring adaptive game difficulty scaling and a data-science pipeline with an offline-trained Random Forest model for real-time gameplay failure risk alerts.',
+    shortDescription:
+      'Real-time gesture-controlled wizard battle game powered by MediaPipe, OpenCV, and a Random Forest classification model. Defend the academy against fantasy enemies by performing gesture spells in front of your webcam, backed by an adaptive difficulty system that scales timers based on live telemetry analysis.',
+    highlights: [
+      'Real-time hand gesture recognition with MediaPipe & OpenCV (detects 21 landmarks)',
+      'Adaptive difficulty algorithm that dynamically adjusts countdown timers based on success rate',
+      'Random Forest Classifier (scikit-learn) with GridSearchCV tuning for predicting next-encounter success',
+      'Real-time ML inference loop triggering in-game HUD alerts for high casting failure risks (proba > 60%)',
+      'Data science telemetry pipeline compiling performance graphs (heatmaps, confusion matrices, learning curves)',
+    ],
+    github: 'https://github.com/chanithiperera/spellcraft-ai-gesture-game.git',
+    tags: ['Python', 'MediaPipe', 'OpenCV', 'Pygame', 'scikit-learn', 'pandas', 'Matplotlib'],
+  },
   {
     title:
       'GoviSmart - Smart Fertilizer Recommendation for Paddy Cultivation',
@@ -310,8 +351,6 @@ const projects = [
       'ESP8266 + Blynk remote monitoring',
       'Bluetooth-controlled ventilation system',
     ],
-    contribution:
-      'Built the embedded control flow, sensor validation logic, smart lighting behavior, monitoring setup, and ventilation control workflow.',
     github: 'https://github.com/chanithiperera/AutomatedGarageSystem.git',
     tags: ['Arduino', 'IoT', 'Embedded Systems', 'ESP8266', 'RFID', 'C/C++'],
   },
@@ -1070,8 +1109,8 @@ function App() {
     [],
   );
 
-  const featuredProjects = projects.slice(0, -2);
-  const extraProjects = projects.slice(-2);
+  const featuredProjects = projects.slice(0, 4);
+  const extraProjects = projects.slice(4);
   const hiddenProjectCount = extraProjects.length;
 
   const scrollArticleRow = (direction) => {
@@ -2065,7 +2104,15 @@ function App() {
             <div className="media-viewer-header">
               <div>
                 <strong>Additional Projects</strong>
-                <span>Two more project showcases</span>
+                <span>
+                  {hiddenProjectCount === 1
+                    ? 'One more project showcase'
+                    : hiddenProjectCount === 2
+                      ? 'Two more project showcases'
+                      : hiddenProjectCount === 3
+                        ? 'Three more project showcases'
+                        : `${hiddenProjectCount} more project showcases`}
+                </span>
               </div>
               <button
                 type="button"
